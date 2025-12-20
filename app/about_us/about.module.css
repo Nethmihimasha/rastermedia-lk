@@ -1,0 +1,326 @@
+/* Page */
+.page {
+  padding-top: 72px;
+}
+
+/* Hero Section */
+.hero {
+  padding: 128px 48px;
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 896px;
+  margin: 0 auto;
+}
+
+.heroHeading {
+  font-size: 77.712px;
+  font-weight: 700;
+  line-height: 85px;
+  letter-spacing: -1.55424px;
+  margin-bottom: 32px;
+  color: #FFFFFF;
+}
+
+.heroDescription {
+  font-size: 20px;
+  line-height: 28px;
+  color: #A0A0A0;
+  max-width: 812px;
+  margin: 0 auto;
+}
+
+/* Story Section */
+.storySection {
+  padding: 128px 0;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.storyImage {
+  width: 560px;
+  height: 420px;
+  background: linear-gradient(45deg, #2A2A2A 0%, #3A3A3A 100%);
+  border-radius: 0px;
+}
+
+.storyContent {
+  position: relative;
+}
+
+.storyTitle {
+  font-size: 51.808px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
+  color: #FFFFFF;
+  margin-bottom: 24px;
+}
+
+.storyText {
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+  margin-bottom: 24px;
+}
+
+.storyPattern {
+  display: grid;
+  grid-template-columns: repeat(3, 8px);
+  gap: 4px;
+  margin-top: 32px;
+}
+
+.pixel {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+}
+
+/* Mission Vision Section */
+.missionVisionSection {
+  padding: 128px 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1A1A1A 50%, rgba(0, 0, 0, 0) 100%);
+}
+
+.mvGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+}
+
+.mvCard {
+  padding: 48px;
+  background: rgba(37, 37, 37, 0.6);
+  border: 0.8px solid rgba(93, 205, 219, 0.1);
+  min-height: 351.2px;
+}
+
+.mvIcon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircle,
+.iconTarget {
+  width: 100%;
+  height: 100%;
+  border: 4px solid #5DCDDB;
+  border-radius: 50%;
+}
+
+.mvTitle {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.mvText {
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+}
+
+/* Why Choose Us Section */
+.whySection {
+  padding: 128px 0;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.sectionTitle {
+  font-size: 51.808px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
+  margin-bottom: 16px;
+}
+
+.sectionSubtitle {
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+  max-width: 713px;
+  margin: 0 auto;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.valueCard {
+  padding: 32px;
+  background: rgba(37, 37, 37, 0.6);
+  border: 0.8px solid rgba(93, 205, 219, 0.1);
+  min-height: 266px;
+}
+
+.valueIcon {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(93, 205, 219, 0.2) 0%, rgba(125, 216, 229, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.valueTitle {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 43px;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.valueText {
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+}
+
+/* Behind The Scenes Section */
+.btsSection {
+  padding: 128px 0;
+}
+
+.btsTitle {
+  font-size: 51.808px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 64px;
+}
+
+.btsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.btsImage {
+  width: 100%;
+  height: 432px;
+  background: linear-gradient(45deg, #2A2A2A 0%, #3A3A3A 100%);
+}
+
+/* Technology Stack Section */
+.techSection {
+  padding: 128px 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1A1A1A 50%, rgba(0, 0, 0, 0) 100%);
+  overflow: hidden;
+}
+
+.techRibbon {
+  position: relative;
+  overflow: hidden;
+  padding: 24px 0;
+  margin-bottom: 32px;
+}
+
+.techTrack {
+  display: flex;
+  gap: 12px;
+  animation: slideLeft 40s linear infinite;
+  width: fit-content;
+}
+
+.techItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  height: 49.6px;
+  background: rgba(37, 37, 37, 0.6);
+  border: 0.8px solid rgba(93, 205, 219, 0.1);
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A0A0A0;
+}
+
+.techDot {
+  width: 6px;
+  height: 6px;
+  background: #5DCDDB;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.techNote {
+  text-align: center;
+  padding: 12px 24px;
+  max-width: 453px;
+  margin: 0 auto;
+  background: rgba(37, 37, 37, 0.6);
+  border: 0.8px solid rgba(93, 205, 219, 0.1);
+  font-size: 14px;
+  line-height: 20px;
+  color: #A0A0A0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .heroHeading {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .storyImage {
+    width: 100%;
+  }
+
+  .mvGrid,
+  .valuesGrid,
+  .btsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroHeading {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .hero {
+    padding: 64px 24px;
+  }
+
+  .sectionTitle,
+  .btsTitle {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .valueTitle,
+  .mvTitle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
