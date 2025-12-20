@@ -16,21 +16,21 @@ export default function Home() {
         {/* Coming Soon Badge */}
         <div className="inline-block bg-white/10 backdrop-blur-lg px-8 py-4 rounded-full border border-white/20 mb-12">
           <p className="text-xl text-white font-semibold">
-            🚀 Coming Soon - January 2025
+            Coming Soon - January 2025
           </p>
         </div>
         
         {/* Contact Info */}
-        <div className="space-y-3 text-purple-200">
+        <div className="space-y-3 text-blue-200">
           <p className="text-lg">rastermedia.lk</p>
           <p className="text-lg">📧 info@rastermedia.lk</p>
         </div>
         
         {/* Animated Dots */}
         <div className="mt-12 flex justify-center gap-2">
-          <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce"></div>
-          <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce delay-100"></div>
-          <div className="w-3 h-3 bg-purple-400 rounded-full animate-bounce delay-200"></div>
+          <div className="w-3 h-3 bg-blue-400 rounded-full animate-bounce"></div>
+          <div className="w-3 h-3 bg-blue-400 rounded-full animate-bounce delay-100"></div>
+          <div className="w-3 h-3 bg-blue-400 rounded-full animate-bounce delay-200"></div>
         </div>
         
       </div>
