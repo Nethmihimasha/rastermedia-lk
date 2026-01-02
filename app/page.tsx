@@ -49,8 +49,8 @@ function HeroSection() {
           We build modern, pixel-sharp campaigns for brands that want to stand out.
         </p>
         <div style={styles.heroButtons} className="hero-buttons">
-          <Link href="/contact" className="btn" aria-label="Start a project">START A PROJECT</Link>
-          <Link href="/studio" className="btn" aria-label="Book studio space">BOOK STUDIO SPACE</Link>
+          <Link href="/contact" className="btn btn--home" aria-label="Start a project">START A PROJECT</Link>
+          <Link href="/studio" className="btn btn--home" aria-label="Book studio space">BOOK STUDIO SPACE</Link>
         </div>
         <div style={styles.heroDots}>
           {[0, 1, 2, 3, 4].map((i) => (
@@ -330,7 +330,7 @@ function FeaturedWorkSection() {
           ))}
         </div>
         <div style={styles.portfolioButtonWrapper}>
-          <Link href="/portfolio" className="btn">VIEW FULL PORTFOLIO</Link>
+          <Link href="/portfolio" className="btn btn--home">VIEW FULL PORTFOLIO</Link>
         </div>
       </div>
     </section>
@@ -499,7 +499,7 @@ function TestimonialsSection() {
   return (
     <section style={styles.testimonialsSection}>
       <div style={styles.container}>
-        <div style={styles.sectionHeader}>
+          <div style={styles.sectionHeader}>
           <h2 style={styles.sectionTitle}>
             Client <span style={styles.gradientText}>Testimonials</span>
           </h2>
@@ -507,7 +507,7 @@ function TestimonialsSection() {
             Hear what our clients have to say about working with us.
           </p>
           <div style={styles.reviewButtonWrapper}>
-            <a href="/review" target="_blank" rel="noopener noreferrer" className="btn" aria-label="Leave a review">LEAVE A REVIEW</a>
+            <a href="/review" target="_blank" rel="noopener noreferrer" className="btn btn--home" aria-label="Leave a review">LEAVE A REVIEW</a>
           </div>
         </div>
 
@@ -607,7 +607,7 @@ function CTASection() {
         <p style={styles.ctaDescription}>
           Let us collaborate and bring your vision to life with pixel-perfect precision.
         </p>
-        <Link href="/contact" className="btn animate-shimmer">Start Your Project</Link>
+        <Link href="/contact" className="btn btn--home animate-shimmer">Start Your Project</Link>
       </div>
     </section>
   );

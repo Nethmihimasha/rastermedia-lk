@@ -77,14 +77,7 @@ export default function ContactPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <Image
-              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDE3fHxjb250YWN0JTIwdXN8ZW58MHx8fHwxNjc4OTg3ODMx&ixlib=rb-4.0.3&q=80&w=1920"
-              alt="Contact Us"
-              className={styles.heroImage}
-              fill
-              sizes="100vw"
-              priority
-            />
+            {/* Hero image removed — keep overlay so the text remains readable */}
             <div className={styles.heroImageOverlay} />
           </motion.div>
 

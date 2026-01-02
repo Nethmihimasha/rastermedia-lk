@@ -384,6 +384,25 @@ body, .hero-heading, .heroHeading, .heroHeading * {
   text-decoration: none;
 }
 
+/* Home page button variant: match hero button properties but slightly smaller */
+.btn--home {
+  padding: 10px 28px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border: 1.2px solid #5DCDDB;
+  background: transparent;
+}
+
+.btn--home:hover {
+  background: rgba(93, 205, 219, 0.06);
+}
+
+.btn--home:focus-visible {
+  box-shadow: 0 0 0 4px rgba(93, 205, 219, 0.08);
+}
+
 /* Unified outlined style for all buttons */
 .btn--outline,
 .btn--primary,
