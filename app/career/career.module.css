@@ -1,0 +1,762 @@
+/* App Container */
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  color: #FFFFFF;
+  font-family: 'Cousine', monospace;
+} 
+
+/* Careers Page */
+.careersPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Hero Section */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.heroImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroImageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 1800px;
+  padding: 0 48px;
+  text-align: center;
+}
+
+.heading1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.joinOur {
+  font-family: 'Erbaum', 'Cousine', monospace;
+  font-weight: 700;
+  font-size: 77.712px;
+  line-height: 85px;
+  letter-spacing: -1.55424px;
+  color: #FFFFFF;
+}
+
+.textWrapper {
+  display: inline-block;
+}
+
+.creativeTeam {
+  font-family: 'Erbaum', 'Cousine', monospace;
+  font-weight: 700;
+  font-size: 77.712px;
+  line-height: 85px;
+  letter-spacing: -1.55424px;
+  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroParagraph {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: #A0A0A0;
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+/* Open Positions Section */
+.positionsSection {
+  width: 100%;
+  max-width: 1800px;
+  padding: 96px 48px;
+}
+
+.positionsHeader {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.heading2 {
+  font-family: 'Erbaum', 'Cousine', monospace;
+  font-weight: 700;
+  font-size: 51.808px;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
+  color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+}
+
+.openText {
+  color: #FFFFFF;
+}
+
+.positionsText {
+  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.positionsSubtext {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+  margin-top: 16px;
+}
+
+/* Job Listings */
+.jobListings {
+  max-width: 1800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.jobCard {
+  background: rgba(37, 37, 37, 0.6);
+  border: 0.8px solid rgba(93, 205, 219, 0.1);
+  padding: 32.8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jobTitle {
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.jobCategory {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5DCDDB;
+}
+
+.applyButton {
+  background: linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%);
+  border: none;
+  padding: 8.8px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.applyButton:hover {
+  opacity: 0.9;
+}
+
+.jobDetails {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.jobDetail {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6B6B6B;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  fill: #6B6B6B;
+}
+
+.jobExcerpt {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #A0A0A0;
+  margin: 0;
+}
+
+/* Model Section */
+.modelSection {
+  width: 100%;
+  max-width: 1800px;
+  padding: 96px 192px;
+}
+
+.modelContainer {
+  background: rgba(37, 37, 37, 0.6);
+  border: 1.6px solid rgba(93, 205, 219, 0.3);
+  padding: 49.6px;
+  display: flex;
+  gap: 32px;
+  position: relative;
+}
+
+.modelContainer::before {
+  /* removed glow background to avoid visual band near footer */
+  content: none;
+}
+
+.modelContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modelBadge {
+  background: rgba(93, 205, 219, 0.2);
+  padding: 7.8px 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5DCDDB;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+}
+
+.modelHeading {
+  font-weight: 700;
+  font-size: 51.808px;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
+  margin: 0;
+}
+
+.modelRaster {
+  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modelParagraph {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 31px;
+  color: #A0A0A0;
+  margin: 0;
+}
+
+.modelList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modelList li {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #A0A0A0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modelList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: #5DCDDB;
+}
+
+.modelButton {
+  background: linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%);
+  border: none;
+  padding: 17.6px 32px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  width: fit-content;
+}
+
+.modelButton:hover {
+  opacity: 0.9;
+}
+
+.modelImage {
+  width: 320px;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(93, 205, 219, 0.2) 0%, rgba(125, 216, 229, 0.2) 100%);
+  margin-top: 24px;
+}
+
+.modelImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(93, 205, 219, 0.3) 0%, rgba(125, 216, 229, 0.3) 100%);
+}
+
+.modelImageActual {
+  object-fit: cover;
+}
+
+/* "Don't See Your Role?" section removed - related CSS deleted */
+
+/* "Don't See Your Role" form and its form-specific styles removed */
+
+/* Modal Styles for Apply Now popup */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(5,8,12,0.6) 0%, rgba(3,6,9,0.75) 60%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  backdrop-filter: blur(6px) saturate(110%);
+}
+
+.modalContainer {
+  position: relative;
+  width: 768px;
+  max-width: 100%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius: 14px;
+  box-sizing: border-box;
+  padding: 36px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 20px 50px rgba(3,6,9,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(8px) saturate(120%);
+}
+
+.modalInner {
+  width: 100%;
+  color: #FFFFFF;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.modalTitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 34px;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.modalClose {
+  background: rgba(255,255,255,0.04);
+  border: none;
+  color: #FFFFFF;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.modalClose:hover {
+  transform: scale(1.06);
+  background: rgba(255,255,255,0.08);
+}
+
+.modalBodyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.modalDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.jobDetailsTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sectionHeading {
+  font-size: 18px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.modalList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modalList li {
+  font-size: 14px;
+  line-height: 20px;
+  color: #A0A0A0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modalList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 6px;
+  height: 6px;
+  background: #5DCDDB;
+  border-radius: 50%;
+}
+
+.modalApply {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalSubtitle {
+  color: #A0A0A0;
+  font-size: 14px;
+  margin: 0;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modalRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.modalInput {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.8px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: 'Cousine', monospace;
+  font-size: 14px;
+}
+
+.modalInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.uploadBox {
+  border: 1.6px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.uploadBox:hover {
+  border-color: rgba(93, 205, 219, 0.5);
+}
+
+.hiddenFileInput {
+  display: none;
+}
+
+.uploadIconPlaceholder {
+  width: 32px;
+  height: 32px;
+  background: #5DCDDB;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.uploadTextBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.uploadTitle {
+  font-size: 14px;
+  color: #FFFFFF;
+}
+
+.uploadSubtitle {
+  font-size: 12px;
+  color: #6B6B6B;
+}
+
+.uploadFilename {
+  max-width: 420px;
+  display: inline-block;
+  color: #FFFFFF;
+  font-family: 'Cousine', monospace;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.modalTextarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 0.8px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #FFFFFF;
+  min-height: 100px;
+  font-family: 'Cousine', monospace;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.modalTextarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modalSubmit {
+  background: linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%);
+  border: none;
+  padding: 12px 24px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #FFFFFF;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.modalSubmit:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .modelSection {
+    padding: 96px 48px;
+  }
+
+  .modelContainer {
+    flex-direction: column;
+  }
+
+  .modelImage {
+    width: 100%;
+    height: 400px;
+  }
+
+  .modalBodyGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .joinOur,
+  .creativeTeam {
+    font-size: 48px;
+    line-height: 56px;
+  }
+
+  .heading2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+
+  .modalContainer { 
+    padding: 24px;
+    max-height: 94vh;
+    overflow-y: auto;
+  }
+  
+
+/* One-tone modal: remove inner backgrounds, borders and gradients to keep popup a single color */
+.modalContainer,
+.modalContainer .modalInner,
+.modalContainer .modalHeader,
+.modalContainer .modalBodyGrid,
+.modalContainer .modalDetails,
+.modalContainer .modalApply,
+.modalContainer .formContainer,
+.modalContainer .modelContainer,
+.modalContainer .compactContainer {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.modalContainer .modalClose {
+  background: rgba(255,255,255,0.04);
+}
+
+.modalContainer .modalTitle {
+  color: #FFFFFF;
+}
+
+/* Ensure inputs remain visible on single-tone background */
+.modalContainer .textInput,
+.modalContainer .selectInput,
+.modalContainer .textArea,
+.modalContainer .compactInput {
+  background: rgba(255,255,255,0.02) !important;
+  border: 0.8px solid rgba(255,255,255,0.06) !important;
+}
+
+/* Tone down accent buttons inside modal to match one-tone aesthetic */
+.modalContainer .submitButton,
+.modalContainer .compactSubmitButton,
+.modalContainer .applyButton,
+.modalContainer .modelButton {
+  background: #5DCDDB !important;
+  color: #0F0F10 !important;
+  box-shadow: none !important;
+}
+
+.modalContainer .uploadBox { border: 0.8px dashed rgba(255,255,255,0.06) !important; }
+
+/* Push the first form section (Personal Information) slightly down inside the modal */
+.modalContainer .formContainer:first-of-type {
+  margin-top: 32px;
+}
+
+/* Use a solid, dark background for form sections inside the modal so they sit on black */
+.modalContainer .formContainer {
+  background: transparent !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-top: 18px;
+  border: none !important;
+}
+
+/* Slightly increase spacing between internal sections for clarity */
+.modalContainer .formContainer + .formContainer {
+  margin-top: 18px;
+}
+
+/* Shift the entire embedded model registration page down inside the modal */
+.modalContainer .modelApplicationPage {
+  margin-top: 28px;
+}
+
+@media (max-width: 768px) {
+  .modalContainer .modelApplicationPage {
+    margin-top: 16px;
+  }
+}
+  .modalTitle { 
+    font-size: 32px; 
+    line-height: 38px; 
+  }
+}
+
+/* Iframe wrapper for Model Registration modal */
+.modelIframeWrapper {
+  width: 100%;
+  height: 60vh;
+  max-height: 720px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 0.8px solid rgba(255,255,255,0.04);
+}
+
+.modelIframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #0F0F10;
+}

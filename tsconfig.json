@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "app/page.tsx", "app/about_us/page.js", "app/api/upload/route.js", "app/api/career/route.js", "app/api/model/route.js", "app/api/booking/route.js", "app/api/review/route.js", "app/api/contact/route.js"  ],
   "exclude": ["node_modules"]
 }

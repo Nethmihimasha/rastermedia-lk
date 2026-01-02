@@ -1,26 +1,523 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Cousine:wght@400;700&display=swap');
+
+/* Erbaum font family (local files under public/fonts/erbaum) */
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Thin.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Thin.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Light.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Regular.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Book.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Book.woff') format('woff');
+  font-weight: 450;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Medium.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Bold.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Erbaum';
+  src: url('/fonts/erbaum/Erbaum-Black.woff2') format('woff2'),
+       url('/fonts/erbaum/Erbaum-Black.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Typography scale */
+  --font-family-heading: 'Erbaum', 'Cousine', monospace;
+  --font-family-body: 'Cousine', monospace;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --hero-size: clamp(44px, 7.5vw, 88px);
+  --section-title-size: clamp(32px, 5.5vw, 52px);
+  --card-title-size: clamp(28px, 4.3vw, 36px);
+  --body-size: 18px;
+  --small-size: 14px;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --accent-start: #5DCDDB;
+  --accent-end: #7DD8E5;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Cousine', monospace;
+  background-color: #0F0F0F;
+  color: #FFFFFF;
+  overflow-x: hidden;
+} 
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Erbaum', 'Cousine', monospace;
+}
+
+/* Ensure key headings and hero lines use Erbaum explicitly */
+.heroHeading,
+.heroTitle,
+.sectionTitle,
+.storyTitle,
+.mvTitle,
+.valueTitle,
+.btsTitle,
+.techTitle {
+  font-family: 'Erbaum', 'Cousine', monospace;
+}
+
+/* Temporary: force Erbaum globally (useful for debugging font loading) */
+body, .hero-heading, .heroHeading, .heroHeading * {
+  font-family: 'Erbaum', 'Cousine', monospace !important;
+}
+
+/* ensure hero heading class used in JSX has Erbaum */
+.hero-heading {
+  font-family: 'Erbaum', 'Cousine', monospace;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Consistent heading and text sizes */
+.mainTitle,
+.heroHeading,
+.heroTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--hero-size);
+}
+
+.gradientText span {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: var(--hero-size);
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sectionTitle {
+  font-family: var(--font-family-heading);
+  font-size: var(--section-title-size);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+}
+
+.sectionSubtitle {
+  font-family: var(--font-family-body);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  color: #A0A0A0;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Animations */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(0, 0, 0, 0) 100%);
+  animation: shimmer 3s infinite;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5DCDDB;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7DD8E5;
+}
+
+/* Nav link underline animation */
+.nav-link {
+  color: #A0A0A0;
+  text-decoration: none;
+  position: relative;
+  padding: 6px 0;
+  transition: color 180ms ease;
+  font-weight: 700;
+} 
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, #5DCDDB 0%, #7DD8E5 100%);
+  transition: width 280ms cubic-bezier(.2,.8,.2,1);
+  transform-origin: left center;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #FFFFFF;
+}
+
+/* Footer link hover animation */
+.footer-link {
+  color: #6B6B6B;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 6px;
+  transition: color 320ms cubic-bezier(.16,.84,.3,1), transform 320ms cubic-bezier(.16,.84,.3,1);
+  display: inline-block;
+  will-change: transform, color;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(90deg, #5DCDDB 0%, #7DD8E5 100%);
+  transition: width 360ms cubic-bezier(.16,.84,.3,1);
+  transform-origin: left center;
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+  transform: translateX(4px) translateY(-1px);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Disable hover/animation for contact column links */
+.footer-contact-link {
+  transition: none !important;
+  transform: none !important;
+}
+
+.footer-contact-link::after {
+  width: 0 !important;
+  transition: none !important;
+}
+
+.footer-contact-link:hover,
+.footer-contact-link:focus,
+.footer-contact-link:focus-visible {
+  color: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.footer-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 6px rgba(93,205,219,0.06);
+} 
+/* Responsive tweaks */
+@media (max-width: 1200px) {
+  header .nav {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 0 20px;
+  }
+  header .nav {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .hero-heading {
+    font-size: clamp(28px, 7.5vw, 64px);
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
+  header .nav {
+    gap: 12px;
+  }
+  .hero-heading {
+    font-size: clamp(22px, 9vw, 44px);
+  }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Button styles */
+.btn {
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 180ms cubic-bezier(.2,.8,.2,1), box-shadow 180ms cubic-bezier(.2,.8,.2,1), background-color 180ms;
+  will-change: transform, box-shadow;
+  outline: none;
+  text-decoration: none;
+  padding: 14px 36px;
+  font-family: 'Erbaum', 'Cousine', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: transparent;
+  border: 1.6px solid #5DCDDB;
+  box-sizing: border-box;
+}
+
+.btn:focus-visible {
+  box-shadow: 0 0 0 4px rgba(93, 205, 219, 0.12);
+  text-decoration: none;
+}
+
+/* Unified outlined style for all buttons */
+.btn--outline,
+.btn--primary,
+.btn--cta {
+  background: transparent;
+  color: #FFFFFF;
+  border: 1.6px solid #5DCDDB;
+}
+
+.btn--outline:hover,
+.btn--primary:hover,
+.btn--cta:hover,
+.btn:hover {
+  background: rgba(93, 205, 219, 0.06);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(93, 205, 219, 0.08);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.995);
+}
+
+/* footer hide rules removed (no longer needed) */
+
+/* ScrollStack component styles (used by app/components/ScrollStack.client.js) */
+.scroll-stack-scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  will-change: scroll-position;
+}
+
+.scroll-stack-inner {
+  padding: 12vh 5rem 50rem;
+  min-height: 100vh;
+}
+
+.scroll-stack-card-wrapper {
+  position: relative;
+}
+
+.scroll-stack-card {
+  transform-origin: top center;
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  min-height: 20rem;
+  width: 100%;
+  margin: 28px 0;
+  padding: 3.25rem 2.5rem;
+  border-radius: 24px;
+  box-sizing: border-box;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  background: linear-gradient(180deg, rgba(24,24,24,0.85) 0%, rgba(20,20,20,0.75) 100%);
+  border: 1px solid rgba(93,205,219,0.06);
+  color: #FFFFFF;
+  backdrop-filter: blur(6px);
+}
+
+.scroll-stack-card {
+  transition: transform 240ms cubic-bezier(.2,.8,.2,1),
+              filter 200ms linear,
+              box-shadow 280ms cubic-bezier(.2,.8,.2,1);
+}
+
+.scroll-stack-card.is-top {
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.7), 0 2px 0 rgba(93,205,219,0.02) inset;
+  transform: translateZ(0) scale(1.01);
+}
+
+.scroll-stack-card.is-top::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 6px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%);
+  box-shadow: 0 6px 18px rgba(93,205,219,0.14);
+}
+.scroll-stack-card h2 {
+  font-family: var(--font-family-heading);
+  font-size: var(--card-title-size);
+  line-height: 1.2;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+}
+
+.scroll-stack-card p {
+  font-family: var(--font-family-body);
+  font-size: var(--body-size);
+  line-height: 1.6;
+  color: #CFCFCF;
+  margin: 0;
+}
+
+.scroll-stack-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  pointer-events: none;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.01) inset, 0 0 0 1px rgba(0,0,0,0.18) inset;
+}
+
+.scroll-stack-end {
+  width: 100%;
+  height: 1px;
+}
+
+@media (max-width: 900px) {
+  .scroll-stack-card {
+    padding: 2rem 1.25rem;
+    border-radius: 18px;
+    min-height: 18rem;
+  }
+  .scroll-stack-card h2 {
+    font-size: calc(var(--card-title-size) * 0.8);
+    line-height: 1.25;
+  }
+  .scroll-stack-card p {
+    font-size: calc(var(--body-size) * 0.9);
+    line-height: 1.4;
+  }
 }
