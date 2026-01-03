@@ -12,7 +12,7 @@
 /* Contact Page */
 .contactPage {
   width: 100%;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0;
 }
@@ -74,10 +74,10 @@
 .mainTitle {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 80px;
-  line-height: 88px;
+  font-size: 51.808px;
+  line-height: 60px;
   text-align: center;
-  letter-spacing: -1.6px;
+  letter-spacing: -0.51808px;
   color: #FFFFFF;
   margin: 0;
 }
@@ -89,10 +89,10 @@
 .gradientText span {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 80px;
-  line-height: 88px;
+  font-size: 51.808px;
+  line-height: 60px;
   text-align: center;
-  letter-spacing: -1.6px;
+  letter-spacing: -0.51808px;
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -435,13 +435,13 @@
 .studioSection {
   background: rgba(37, 37, 37, 0.6);
   border: 0.8px solid rgba(93, 205, 219, 0.1);
-  padding: 64px;
-  margin-bottom: 64px;
+  padding: 80px 48px;
+  margin-bottom: 80px;
 }
 
 .studioContent {
   text-align: center;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -490,22 +490,22 @@
   width: 100%;
   background: #1A1A1A;
   border-top: 0.8px solid #000000;
-  padding: 64px 48px 32px;
+  padding: 48px 48px;
 }
 
 .footerContent {
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 48px;
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .footerColumn {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
 }
 
 .logo {
@@ -594,12 +594,12 @@
 
 /* Footer Bottom */
 .footerBottom {
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 24px;
+  padding-top: 16px;
   border-top: 0.8px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -614,7 +614,7 @@
 
 .footerSocial {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .footerSocialLink {

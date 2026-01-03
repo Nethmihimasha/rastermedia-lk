@@ -7,7 +7,7 @@
 /* Hero Section */
 .heroSection {
   width: 100%;
-  padding: 80px 48px 60px;
+  padding: 80px 48px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -43,16 +43,16 @@
 }
 
 .heroContent {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
 }
 
 .heroTitle {
-  font-size: clamp(40px, 5vw, 64px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
+  font-size: 51.808px;
+  line-height: 60px;
+  letter-spacing: -0.51808px;
   color: #FFFFFF;
   margin-bottom: 24px;
   font-family: 'Erbaum', 'Cousine', monospace;
@@ -77,14 +77,14 @@
 
 /* Container */
 .container {
-  max-width: 1600px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 48px;
 }
 
 /* Package Selector Section */
 .packageSelectorSection {
-  padding: 60px 0 100px;
+  padding: 80px 0;
 }
 
 /* Package Type Toggle */
@@ -546,7 +546,7 @@
 
 /* Location Section */
 .locationSection {
-  padding: 0 0 100px;
+  padding: 80px 0;
 }
 
 .locationCard {
@@ -837,7 +837,7 @@
   }
 
   .heroSection {
-    padding: 60px 24px 40px;
+    padding: 80px 24px;
   }
 
   .heroTitle {

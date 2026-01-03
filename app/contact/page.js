@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import Image from 'next/image';
 import styles from './contact.module.css';
 import { Mail, Phone, MapPin, Send, MessageCircle } from 'lucide-react';
+import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 export default function ContactPage() {
   // Form state
@@ -66,6 +67,9 @@ export default function ContactPage() {
     }
   };
 
+  const { ref: contactRef, isInView: contactInView } = useScrollAnimation();
+  const { ref: studioRef, isInView: studioInView } = useScrollAnimation();
+
   return (
     <div className={styles.app}>
       <div className={styles.contactPage}>
@@ -103,11 +107,17 @@ export default function ContactPage() {
         </section>
 
         {/* Main Content Section */}
-        <section className={styles.mainSection}>
-          {/* Left Column */}
-          <div className={styles.leftColumn}>
-            {/* Contact Information */}
-            <div className={styles.contactInfoCard}>
+        <section className={styles.mainSection} ref={contactRef}>
+          <motion.div
+            initial="hidden"
+            animate={contactInView ? "visible" : "hidden"}
+            variants={staggerContainerVariants}
+            style={{ display: 'contents' }}
+          >
+            {/* Left Column */}
+            <motion.div className={styles.leftColumn} variants={staggerItemVariants}>
+              {/* Contact Information */}
+              <div className={styles.contactInfoCard}>
               <h2 className={styles.cardTitle}>Contact Information</h2>
               
               <div className={styles.contactList}>
@@ -197,10 +207,10 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Contact Form */}
-          <div className={styles.formCard}>
+          <motion.div className={styles.formCard} variants={staggerItemVariants}>
             <h2 className={styles.formTitle}>Send Us a Message</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
               <div className={styles.formRow}>
@@ -337,21 +347,28 @@ export default function ContactPage() {
                 </div>
               )}
             </form>
-          </div>
+          </motion.div>
+          </motion.div>
         </section>
 
         {/* Visit Studio Section */}
-        <section className={styles.studioSection}>
-          <div className={styles.studioContent}>
-            <MapPin size={48} className={styles.studioIcon} />
-            <h2 className={styles.studioTitle}>Visit Our Studio</h2>
-            <p className={styles.studioAddress}>
-              123 Creative Street, New York, NY 10001
-            </p>
-            <a href="#" className={styles.mapsLink}>
-              Open in Google Maps →
-            </a>
-          </div>
+        <section className={styles.studioSection} ref={studioRef}>
+          <motion.div
+            initial="hidden"
+            animate={studioInView ? "visible" : "hidden"}
+            variants={scrollAnimationVariants}
+          >
+            <div className={styles.studioContent}>
+              <MapPin size={48} className={styles.studioIcon} />
+              <h2 className={styles.studioTitle}>Visit Our Studio</h2>
+              <p className={styles.studioAddress}>
+                123 Creative Street, New York, NY 10001
+              </p>
+              <a href="#" className={styles.mapsLink}>
+                Open in Google Maps →
+              </a>
+            </div>
+          </motion.div>
         </section>
       </div>
     </div>

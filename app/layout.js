@@ -149,13 +149,13 @@ const styles = {
   footerContent: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-    gap: '48px',
-    marginBottom: '48px',
+    gap: '32px',
+    marginBottom: '32px',
   },
   footerColumn: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
+    gap: '16px',
   },
   footerLogoLink: {
     textDecoration: 'none',
@@ -173,9 +173,9 @@ const styles = {
     lineHeight: '20px',
   },
   footerHeading: {
-    fontSize: '25.904px',
+    fontSize: '20px',
     fontWeight: '600',
-    lineHeight: '34px',
+    lineHeight: '28px',
     color: '#FFFFFF',
   },
   footerList: {
@@ -210,7 +210,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: '24px',
+    paddingTop: '16px',
     paddingBottom: '20px',
     borderTop: '0.8px solid rgba(255, 255, 255, 0.05)',
   },
@@ -220,7 +220,7 @@ const styles = {
   },
   socialLinks: {
     display: 'flex',
-    gap: '24px',
+    gap: '16px',
   },
   socialLink: {
     color: '#5DCDDB',

@@ -5,6 +5,7 @@
   import Image from 'next/image';
   import styles from './career.module.css';
   import ModelRegistrationPage from './ModelRegistration.client';
+  import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 
   export default function CareersPage() {
@@ -33,6 +34,9 @@
     function closeModelModal() {
       setIsModelModalOpen(false);
     }
+
+    const { ref: positionsRef, isInView: positionsInView } = useScrollAnimation();
+    const { ref: modelRef, isInView: modelInView } = useScrollAnimation();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -288,20 +292,26 @@
           )}
 
           {/* Open Positions Section */}
-          <section className={styles.positionsSection}>
-            <div className={styles.positionsHeader}>
-              <h2 className={styles.heading2}>
-                <span className={styles.openText}>Open </span>
-                <span className={styles.positionsText}>Positions</span>
-              </h2>
-              <p className={styles.positionsSubtext}>
-                Explore our current openings and find your perfect role
-              </p>
-            </div>
+          <section className={styles.positionsSection} ref={positionsRef}>
+            <motion.div
+              initial="hidden"
+              animate={positionsInView ? "visible" : "hidden"}
+              variants={staggerContainerVariants}
+              style={{ display: 'contents' }}
+            >
+              <div className={styles.positionsHeader} style={{ display: 'contents' }}>
+                <motion.h2 className={styles.heading2} variants={staggerItemVariants}>
+                  <span className={styles.openText}>Open </span>
+                  <span className={styles.positionsText}>Positions</span>
+                </motion.h2>
+                <motion.p className={styles.positionsSubtext} variants={staggerItemVariants}>
+                  Explore our current openings and find your perfect role
+                </motion.p>
+              </div>
 
-            <div className={styles.jobListings}>
-              <div className={styles.jobCard}>
-                <div className={styles.jobHeader}>
+              <motion.div className={styles.jobListings} variants={staggerItemVariants}>
+                <div className={styles.jobCard}>
+                  <div className={styles.jobHeader}>
                   <div className={styles.jobInfo}>
                     <h3 className={styles.jobTitle}>Studio Assistant</h3>
                     <span className={styles.jobCategory}>Production</span>
@@ -336,13 +346,19 @@
                 <p className={styles.jobExcerpt}>
                   Support studio operations and assist on shoots. This role helps keep productions running smoothly and provides hands-on experience with equipment and client services.
                 </p>
-              </div>
-            </div>
+                </div>
+              </motion.div>
+            </motion.div>
           </section>
 
           {/* Model Registration Section */}
-          <section className={styles.modelSection}>
-            <div className={styles.modelContainer}>
+          <section className={styles.modelSection} ref={modelRef}>
+            <motion.div
+              className={styles.modelContainer}
+              initial="hidden"
+              animate={modelInView ? "visible" : "hidden"}
+              variants={staggerContainerVariants}
+            >
               <div className={styles.modelContent}>
                 <div className={styles.modelBadge}>Model Registration</div>
                 <h2 className={styles.modelHeading}>
@@ -375,13 +391,11 @@
                   className={styles.modelImageActual}
                 />
               </div>
-            </div>
+            </motion.div>
           </section>
 
           {/* "Don't See Your Role?" section removed per request */}
         </div>
-
-
       </div>
     );
   }

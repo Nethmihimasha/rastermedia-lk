@@ -14,7 +14,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 48px;
   display: flex;
   flex-direction: column;
 }
@@ -28,7 +28,7 @@
   margin-left: calc(50% - 50vw);
   height: 60vh;
   min-height: 420px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -63,7 +63,7 @@
   position: relative;
   z-index: 2;
   max-width: 900px;
-  padding: 0 24px;
+  padding: 0 48px;
 }
 
 .heading1 {
@@ -77,10 +77,10 @@
 .mainTitle {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 1.1;
+  font-size: 51.808px;
+  line-height: 60px;
   text-align: center;
-  letter-spacing: -2px;
+  letter-spacing: -0.51808px;
   color: #FFFFFF;
   margin: 0;
 }
@@ -92,10 +92,10 @@
 .gradientText span {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: clamp(40px, 5vw, 72px);
-  line-height: 1.1;
+  font-size: 51.808px;
+  line-height: 60px;
   text-align: center;
-  letter-spacing: -2px;
+  letter-spacing: -0.51808px;
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

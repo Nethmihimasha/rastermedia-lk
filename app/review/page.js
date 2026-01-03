@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { motion } from 'motion/react';
 import styles from './review.module.css';
 import { reviews } from '../../src/data/reviews';
+import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 export default function ReviewsPage() {
   const [rating, setRating] = useState(0);
@@ -29,6 +31,9 @@ export default function ReviewsPage() {
     { stars: 1, count: 0, percentage: 0 },
   ];
 
+  const { ref: mainRef, isInView: mainInView } = useScrollAnimation();
+  const { ref: recentRef, isInView: recentInView } = useScrollAnimation();
+
   return (
     <div className={styles.page}>
       {/* Hero Section */}
@@ -47,12 +52,17 @@ export default function ReviewsPage() {
       </section>
 
       {/* Main Content Section */}
-      <section className={styles.mainSection}>
-        <div className={styles.container}>
-          <div className={styles.contentGrid}>
+      <section className={styles.mainSection} ref={mainRef}>
+        <motion.div
+          className={styles.container}
+          initial="hidden"
+          animate={mainInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
+          <motion.div className={styles.contentGrid} variants={staggerItemVariants}>
             
             {/* Left Column - Review Form */}
-            <div className={styles.formColumn}>
+            <motion.div className={styles.formColumn} variants={staggerItemVariants}>
               <div className={styles.formCard}>
                 <div className={styles.formHeader}>
                   <h2 className={styles.formTitle}>Leave Your Review</h2>
@@ -140,10 +150,10 @@ export default function ReviewsPage() {
                   </p>
                 </form>
               </div>
-            </div>
+            </motion.div>
 
             {/* Right Column - Stats & Info */}
-            <div className={styles.infoColumn}>
+            <motion.div className={styles.infoColumn} variants={staggerItemVariants}>
               
               {/* Rating Distribution */}
               <div className={styles.infoCard}>
@@ -192,15 +202,20 @@ export default function ReviewsPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Recent Reviews */}
-      <section className={styles.recentSection}>
-        <div className={styles.container}>
+      <section className={styles.recentSection} ref={recentRef}>
+        <motion.div
+          className={styles.container}
+          initial="hidden"
+          animate={recentInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
           <div className={styles.sectionHeader}>
             <h2 className={styles.sectionTitle}>
               Recent <span className={styles.gradientText}>Reviews</span>
@@ -209,9 +224,9 @@ export default function ReviewsPage() {
               See what our amazing clients are saying about their experience
             </p>
           </div>
-          <div className={styles.reviewsGrid}>
+          <motion.div className={styles.reviewsGrid} variants={staggerContainerVariants}>
             {recentReviews.map((review, index) => (
-              <div key={index} className={styles.reviewCard}>
+              <motion.div key={index} className={styles.reviewCard} variants={staggerItemVariants}>
                 <div className={styles.reviewHeader}>
                   <div className={styles.reviewAvatar}>{(review.author || '').split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
                   <div className={styles.reviewInfo}>
@@ -223,10 +238,10 @@ export default function ReviewsPage() {
                   {'★'.repeat(review.rating)}
                 </div>
                 <p className={styles.reviewText}>&ldquo;{review.text}&rdquo;</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     </div>
   );

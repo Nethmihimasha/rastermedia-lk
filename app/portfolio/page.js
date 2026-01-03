@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import styles from './portfolio.module.css';
+import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 const portfolioItems = [
   { id: 1, category: 'Photos', album: 'Christmas', title: 'Snowy Editorial', client: 'Elegance Co.', image: '/portfolio1.jpg' },
@@ -90,6 +91,9 @@ export default function Portfolio() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const { ref: filterRef, isInView: filterInView } = useScrollAnimation();
+  const { ref: gridRef, isInView: gridInView } = useScrollAnimation();
+
   return (
     <div className={styles.portfolioPage}>
       {/* Header Section with Image */}
@@ -115,30 +119,43 @@ export default function Portfolio() {
       </section>
 
       {/* Filter Buttons */}
-      <section className={styles.filterSection}>
-        <div className={styles.filterButtons}>
+      <section className={styles.filterSection} ref={filterRef}>
+        <motion.div
+          className={styles.filterButtons}
+          initial="hidden"
+          animate={filterInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
           {categories.map((category) => (
-            <button
+            <motion.button
               key={category}
               className={`${styles.filterBtn} ${
                 activeCategory === category ? styles.active : ''
               }`}
               onClick={() => { setActiveCategory(category); setIsAlbumOpen(false); setActiveAlbum(null); }}
+              variants={staggerItemVariants}
             >
               {category}
-            </button>
-          ))}
-        </div>
+            </motion.button>
+            ))}
+        </motion.div>
       </section>
 
       {/* Portfolio Grid / Albums or Album Items (drill-in) */}
       {!isAlbumOpen && (
-        <section className={styles.portfolioGrid}>
-          <div className={styles.gridContainer}>
+        <section className={styles.portfolioGrid} ref={gridRef}>
+          <motion.div 
+            className={styles.gridContainer}
+            initial="hidden"
+            animate={gridInView ? "visible" : "hidden"}
+            variants={staggerContainerVariants}
+          >
             {albums.map((album) => (
-              <AlbumCard key={album.name} album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
+              <motion.div key={album.name} variants={staggerItemVariants}>
+                <AlbumCard album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       )}
 

@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import styles from './about.module.css';
 import { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 export default function AboutPage() {
   return (
@@ -36,9 +38,16 @@ function HeroSection() {
 }
 
 function StorySection() {
+  const { ref, isInView } = useScrollAnimation();
+  
   return (
-    <section className={styles.storySection}>
-      <div className="container">
+    <section className={styles.storySection} ref={ref}>
+      <motion.div
+        className="container"
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={scrollAnimationVariants}
+      >
         <div className={styles.storyGrid}>
           <div className={styles.storyImage}>
             <Image
@@ -70,17 +79,24 @@ function StorySection() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
 
 function MissionVisionSection() {
+  const { ref, isInView } = useScrollAnimation();
+  
   return (
-    <section className={styles.missionVisionSection}>
-      <div className="container">
+    <section className={styles.missionVisionSection} ref={ref}>
+      <motion.div
+        className="container"
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={staggerContainerVariants}
+      >
         <div className={styles.mvGrid}>
-          <div className={styles.mvCard}>
+          <motion.div className={styles.mvCard} variants={staggerItemVariants}>
             <div className={styles.mvIcon}>
               {/* mission icon (SVG, uses global blue via currentColor) */}
               <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -94,8 +110,8 @@ function MissionVisionSection() {
               To empower brands with creative solutions that inspire audiences, challenge conventions, and 
               deliver measurable impact through responsible creativity and precise execution.
             </p>
-          </div>
-          <div className={styles.mvCard}>
+          </motion.div>
+          <motion.div className={styles.mvCard} variants={staggerItemVariants}>
             <div className={styles.mvIcon}>
               {/* vision icon (SVG, uses global blue via currentColor) */}
               <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -108,9 +124,9 @@ function MissionVisionSection() {
               To be the world&apos;s most trusted creative partner, building brands among the top 10 globally 
               through innovative design, strategic thinking, and unwavering commitment to excellence.
             </p>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -153,6 +169,8 @@ function ValueIcon({ name }) {
 }
 
 function WhyChooseUsSection() {
+  const { ref, isInView } = useScrollAnimation();
+  
   const values = [
     {
       icon: 'lightbulb',
@@ -177,8 +195,13 @@ function WhyChooseUsSection() {
   ];
 
   return (
-    <section className={styles.whySection}>
-      <div className="container">
+    <section className={styles.whySection} ref={ref}>
+      <motion.div
+        className="container"
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+        variants={staggerContainerVariants}
+      >
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>
             Why <span className="gradient-text">Choose Us</span>
@@ -189,14 +212,14 @@ function WhyChooseUsSection() {
         </div>
         <div className={styles.valuesGrid}>
           {values.map((value, index) => (
-            <div key={index} className={styles.valueCard}>
+            <motion.div key={index} className={styles.valueCard} variants={staggerItemVariants}>
               <div className={styles.valueIcon}><ValueIcon name={value.icon} /></div>
               <h3 className={styles.valueTitle}>{value.title}</h3>
               <p className={styles.valueText}>{value.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

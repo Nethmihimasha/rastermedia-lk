@@ -8,11 +8,11 @@
 /* Header Section */
 .header {
   position: relative;
-  padding: 0;
+  padding: 80px 48px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60vh;
+  height: auto;
   min-height: 420px;
   overflow: hidden;
   margin-bottom: 0;
@@ -46,9 +46,9 @@
 .headerContent {
   position: relative;
   z-index: 2;
-  max-width: 1800px;
+  max-width: 1400px;
   text-align: center;
-  padding: 0 48px;
+  padding: 0;
 }
 
 .heading {
@@ -75,13 +75,13 @@
   line-height: 31px;
   text-align: center;
   color: #A0A0A0;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 /* Filter Section */
 .filterSection {
-  padding: 12px 48px 0; /* reduced gap to hero text */
+  padding: 32px 48px;
   display: flex;
   justify-content: center;
 }
@@ -221,11 +221,11 @@
 
 /* Portfolio Grid */
 .portfolioGrid {
-  padding: 48px 48px 128px;
+  padding: 80px 48px;
 }
 
 .gridContainer {
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

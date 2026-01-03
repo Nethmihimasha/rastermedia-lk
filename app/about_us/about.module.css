@@ -4,12 +4,12 @@
 }
 
 .page {
-  padding-top: 72px;
+  padding-top: 140px;
 }
 
 /* Hero Section */
 .hero {
-  padding: 128px 240px ;
+  padding: 80px 48px;
   text-align: center;
   overflow: hidden; 
 }
@@ -24,34 +24,36 @@
 }
 
 .heroContent {
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 
 .heroHeading {
-  font-size: 77.712px;
+  font-size: 51.808px;
   font-weight: 700;
-  line-height: 85px;
+  line-height: 60px;
   margin-bottom: 32px;
   color: #FFFFFF;
   font-family: 'Erbaum', 'Cousine', monospace;
 }
 
 .heroDescription {
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 18px;
+  line-height: 31px;
   color: #A0A0A0;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
 /* Story Section */
 .storySection {
-  padding: 128px 0;
+  padding: 80px 48px;
 }
 
 .storyGrid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 700px 1fr;
   gap: 64px;
@@ -90,9 +92,9 @@
 } 
 
 .storyTitle {
-  font-size: 64px;
+  font-size: 36px;
   font-weight: 700;
-  line-height: 72px;
+  line-height: 43px;
   letter-spacing: -0.5px;
   color: #FFFFFF;
   margin-bottom: 20px;
@@ -122,11 +124,13 @@
 
 /* Mission Vision Section */
 .missionVisionSection {
-  padding: 128px 0;
+  padding: 80px 48px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1A1A1A 50%, rgba(0, 0, 0, 0) 100%);
 }
 
 .mvGrid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 48px;
@@ -190,7 +194,7 @@
 
 /* Why Choose Us Section */
 .whySection {
-  padding: 128px 0;
+  padding: 80px 48px;
 }
 
 .sectionHeader {
@@ -211,12 +215,14 @@
   font-size: 18px;
   line-height: 31px;
   color: #A0A0A0;
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
   font-family: 'Erbaum', 'Cousine', monospace;
 }
 
 .valuesGrid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
@@ -263,7 +269,7 @@
 
 /* Behind The Scenes Section */
 .btsSection {
-  padding: 128px 0;
+  padding: 80px 48px;
 }
 
 .btsTitle {
@@ -278,6 +284,8 @@
 }
 
 .btsGrid {
+  max-width: 1400px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
@@ -420,15 +428,15 @@
 
 /* Technology Stack Section */
 .techSection {
-  padding: 128px 0;
+  padding: 80px 48px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1A1A1A 50%, rgba(0, 0, 0, 0) 100%);
   overflow: hidden;
 }
 
 .container {
-  max-width: 1800px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0;
 }
 
 .techTitle {
@@ -617,7 +625,15 @@
   }
 
   .hero {
-    padding: 64px 24px;
+    padding: 80px 24px;
+  }
+
+  .storySection,
+  .missionVisionSection,
+  .whySection,
+  .btsSection,
+  .techSection {
+    padding: 80px 24px;
   }
 
   .sectionTitle,

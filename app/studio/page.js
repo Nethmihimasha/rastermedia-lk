@@ -21,6 +21,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import styles from './StudioBookingPage.module.css';
+import { useScrollAnimation, scrollAnimationVariants, staggerContainerVariants, staggerItemVariants } from '../hooks/useScrollAnimation';
 
 export default function StudioBookingPage() {
   const [packageType, setPackageType] = useState('backdrop');
@@ -174,6 +175,8 @@ export default function StudioBookingPage() {
 
   const currentPackage = packages[packageType][selectedDuration];
   const featuredRef = useRef(null);
+  const { ref: packageRef, isInView: packageInView } = useScrollAnimation();
+  const { ref: locationRef, isInView: locationInView } = useScrollAnimation();
 
   function HeroSection() {
     return (
@@ -219,10 +222,15 @@ export default function StudioBookingPage() {
 
   function PackageSelector() {
     return (
-      <section className={styles.packageSelectorSection}>
-        <div className={styles.container}>
+      <section className={styles.packageSelectorSection} ref={packageRef}>
+        <motion.div
+          className={styles.container}
+          initial="hidden"
+          animate={packageInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
           {/* Package Type Toggle */}
-          <div className={styles.packageTypeToggle}>
+          <motion.div className={styles.packageTypeToggle} variants={staggerItemVariants}>
             <motion.button
               className={`${styles.toggleButton} ${packageType === 'backdrop' ? styles.active : ''}`}
               onClick={() => setPackageType('backdrop')}
@@ -248,16 +256,17 @@ export default function StudioBookingPage() {
                 <span className={styles.toggleDesc}>Content Creation & Interviews</span>
               </div>
             </motion.button>
-          </div>
+          </motion.div>
 
-          {/* Duration Selector */}
-          <motion.div 
-            className={styles.durationSelector}
-            key={packageType}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
+          {/* Duration & Pricing Section */}
+          <motion.div className={styles.durationSection} variants={staggerItemVariants}>
+            <motion.div 
+              className={styles.durationSelector}
+              key={packageType}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
             <div className={styles.durationHeader}>
               <Clock className={styles.durationIcon} />
               <h3 className={styles.durationTitle}>Select Duration</h3>
@@ -377,16 +386,22 @@ export default function StudioBookingPage() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+            </motion.div>
+        </motion.div>
       </section>
     );
   }
 
   function LocationSection() {
     return (
-      <section className={styles.locationSection}>
-        <div className={styles.container}>
-          <div className={styles.locationCard}>
+      <section className={styles.locationSection} ref={locationRef}>
+        <motion.div
+          className={styles.container}
+          initial="hidden"
+          animate={locationInView ? "visible" : "hidden"}
+          variants={staggerContainerVariants}
+        >
+          <motion.div className={styles.locationCard} variants={staggerItemVariants}>
             <MapPin size={56} className={styles.locationIcon} />
             <div className={styles.locationContent}>
               <h3 className={styles.locationTitle}>Visit Our Studio</h3>
@@ -409,8 +424,8 @@ export default function StudioBookingPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
     );
   }
