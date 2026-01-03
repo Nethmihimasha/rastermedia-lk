@@ -90,18 +90,18 @@ const styles = {
   footerContainer: {
     maxWidth: '1800px',
     margin: '0 auto',
-    padding: '48px 48px 0',
+    padding: '32px 48px 0',
   },
   footerContent: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-    gap: '48px',
-    marginBottom: '48px',
+    gap: '32px',
+    marginBottom: '32px',
   },
   footerColumn: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '24px',
+    gap: '16px',
   },
   footerLogoLink: {
     textDecoration: 'none',
@@ -119,16 +119,16 @@ const styles = {
     lineHeight: '20px',
   },
   footerHeading: {
-    fontSize: '25.904px',
+    fontSize: '18px',
     fontWeight: '600',
-    lineHeight: '34px',
+    lineHeight: '26px',
     color: '#FFFFFF',
   },
   footerList: {
     listStyle: 'none',
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px',
+    gap: '8px',
   },
   footerLink: {
     color: '#6B6B6B',
@@ -156,8 +156,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingTop: '24px',
-    paddingBottom: '20px',
+    paddingTop: '16px',
+    paddingBottom: '16px',
     borderTop: 'none',
   },
   copyright: {
