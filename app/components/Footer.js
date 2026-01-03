@@ -31,7 +31,6 @@ export default function Footer() {
                 <li><Link href="/career" style={styles.footerLink} className="footer-link">career</Link></li>
                 <li><Link href="/studio" style={styles.footerLink} className="footer-link">studio</Link></li>
                 <li><Link href="/contact" style={styles.footerLink} className="footer-link">contact</Link></li>
-                <li><Link href="/review" style={styles.footerLink} className="footer-link">review us</Link></li>
               </ul>
             </nav>
           </div>
