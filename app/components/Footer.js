@@ -85,11 +85,12 @@ const styles = {
     backgroundColor: 'rgba(37, 37, 37, 0.6)',
     borderTop: 'none',
     padding: '0',
+    marginTop: '0',
   },
   footerContainer: {
     maxWidth: '1800px',
     margin: '0 auto',
-    padding: '64px 48px 0',
+    padding: '48px 48px 0',
   },
   footerContent: {
     display: 'grid',

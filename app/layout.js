@@ -96,7 +96,7 @@ const styles = {
     justifyContent: 'space-between',
   },
   main: {
-    paddingBottom: '64px',
+    paddingBottom: '0',
   },
   logoLink: {
     textDecoration: 'none',

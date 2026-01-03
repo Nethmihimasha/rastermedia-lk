@@ -2,9 +2,10 @@
 .page {
   padding: 0;
   min-height: 100vh;
-  background-color: #0A0A0A;
+  background-color: #0F0F0F;
   position: relative;
   overflow-x: hidden;
+  padding-top: 140px;
 }
 
 /* Hero Section */
@@ -15,7 +16,6 @@
   align-items: center;
   justify-content: center;
   padding: 80px 48px;
-  background: linear-gradient(180deg, #0A0A0A 0%, #0E0E0E 100%);
 }
 
 .heroContent {
@@ -380,8 +380,8 @@
 
 /* Recent Reviews Section */
 .recentSection {
-  padding: 80px 0;
-  background: #0B0B0B;
+  padding: 80px 0 120px;
+  background: #0F0F0F;
   position: relative;
   z-index: 2;
 }
