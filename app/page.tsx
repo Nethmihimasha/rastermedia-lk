@@ -147,7 +147,7 @@ function ServicesSection() {
             Comprehensive creative solutions tailored to elevate your brand and drive impactful results.
           </p>
         </div>
-        <div style={styles.servicesGrid}>
+        <div style={styles.servicesGrid} className="services-grid">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
@@ -260,7 +260,7 @@ function StatsSection() {
   return (
     <section ref={sectionRef} style={styles.statsSection}>
       <div style={styles.container}>
-        <div style={styles.statsGrid}>
+        <div style={styles.statsGrid} className="stats-grid">
           {stats.map((stat, index) => (
             <StatItem 
               key={index} 
@@ -324,7 +324,7 @@ function FeaturedWorkSection() {
             A selection of our most impactful projects across various creative disciplines.
           </p>
         </div>
-        <div style={styles.portfolioGrid}>
+        <div style={styles.portfolioGrid} className="portfolio-grid">
           {projects.map((project, index) => (
             <PortfolioCard key={index} {...project} />
           ))}
