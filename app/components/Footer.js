@@ -150,6 +150,7 @@ const styles = {
     color: '#5DCDDB',
     verticalAlign: 'middle',
     lineHeight: '1',
+    flexShrink: 0,
   },
   footerBottom: {
     display: 'flex',

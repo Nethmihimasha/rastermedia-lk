@@ -2,6 +2,7 @@
 .page {
   min-height: 100vh;
   background-color: #0F0F0F;
+  padding-top: 140px;
 }
 
 /* Hero Section */

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import NavLinkActive from './components/NavLinkActive.client';
 import Footer from './components/Footer';
+import MobileMenu from './components/MobileMenu.client';
 
 export const metadata = {
   title: 'Raster Media - Pixel Perfect Creative Solutions',
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <style>{`
           .hero-heading { font-family: 'Erbaum', 'Cousine', monospace !important; }
           .btn { font-family: 'Erbaum', 'Cousine', monospace !important; }
@@ -47,7 +49,7 @@ export default function RootLayout({ children }) {
 function Header() {
   return (
     <header style={styles.header}>
-      <div style={styles.headerContainer}>
+      <div style={styles.headerContainer} className="header-container">
         <Link href="/" style={styles.logoLink}>
           <div style={styles.logo}>
             <Image
@@ -60,7 +62,7 @@ function Header() {
             />
           </div>
         </Link>
-        <nav style={styles.nav} className="nav">
+        <nav style={styles.nav} className="nav desktop-nav">
   <Link href="/" style={styles.navLink} className="nav-link">Home</Link>
   <Link href="/about_us" style={styles.navLink} className="nav-link">About</Link>
   <Link href="/services" style={styles.navLink} className="nav-link">Services</Link>
@@ -71,7 +73,8 @@ function Header() {
   
 </nav>
         <NavLinkActive />
-        <Link href="/contact" style={styles.ctaButton} aria-label="Get Started - Contact Us">Get Started</Link>
+        <Link href="/contact" style={styles.ctaButton} className="desktop-cta" aria-label="Get Started - Contact Us">Get Started</Link>
+        <MobileMenu />
       </div>
     </header>
   );
@@ -85,7 +88,7 @@ const styles = {
     backgroundColor: 'rgba(15, 15, 15, 0.95)',
     backdropFilter: 'blur(10px)',
     borderBottom: '0.8px solid rgba(93, 205, 219, 0.1)',
-    zIndex: 1000,
+    zIndex: 10002,
   },
   headerContainer: {
     maxWidth: '1800px',

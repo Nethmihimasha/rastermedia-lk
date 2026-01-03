@@ -521,3 +521,49 @@
     font-size: 36px;
   }
 }
+@media (max-width: 480px) {
+  .hero {
+    padding: 80px 16px 48px;
+  }
+  
+  .heroTitle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .heroDescription {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  
+  .formCard {
+    padding: 20px;
+  }
+  
+  .star {
+    font-size: 32px;
+  }
+  
+  .textInput,
+  .textArea {
+    font-size: 15px;
+    padding: 12px 14px;
+  }
+  
+  .submitButton {
+    padding: 14px 24px;
+    font-size: 15px;
+  }
+  
+  .reviewCard {
+    padding: 20px;
+  }
+  
+  .reviewerName {
+    font-size: 16px;
+  }
+  
+  .reviewText {
+    font-size: 14px;
+  }
+}

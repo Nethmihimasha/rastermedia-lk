@@ -598,16 +598,16 @@ function TestimonialCard({ quote, name, role, rating, time }: { quote: string; n
 
 function CTASection() {
   return (
-    <section style={styles.ctaSection}>
+    <section style={styles.ctaSection} className="cta-section-home">
 
-      <div style={styles.ctaContent}>
-        <h2 style={styles.ctaHeading}>
+      <div style={styles.ctaContent} className="cta-content-home">
+        <h2 style={styles.ctaHeading} className="cta-heading-home">
           Ready to Create Something <span style={styles.gradientText}>Extraordinary?</span>
         </h2>
-        <p style={styles.ctaDescription}>
+        <p style={styles.ctaDescription} className="cta-description-home">
           Let us collaborate and bring your vision to life with pixel-perfect precision.
         </p>
-        <Link href="/contact" className="btn btn--home animate-shimmer">Start Your Project</Link>
+        <Link href="/contact" className="btn btn--home animate-shimmer cta-button-home">Start Your Project</Link>
       </div>
     </section>
   );
@@ -728,6 +728,7 @@ const styles: Record<string, CSSProperties> = {
     lineHeight: '85px',
     letterSpacing: '-1.9428px',
     marginBottom: '30px',
+    marginTop: '300px',
   },
   heroLine1: {
     color: '#FFFFFF',

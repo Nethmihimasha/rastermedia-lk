@@ -590,25 +590,38 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .page {
+    padding-top: 100px;
+  }
+  
   .heroHeading {
-    font-size: 48px;
-    line-height: 56px;
+    font-size: 44px;
+    line-height: 52px;
+  }
+  
+  .hero {
+    padding: 60px 32px;
   }
 
   .storyGrid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 40px;
   }
 
   .storyImage {
     width: 100%;
-    height: 360px;
+    height: 400px;
   }
 
   .mvGrid,
   .valuesGrid,
   .btsGrid {
     grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .mvCard {
+    padding: 36px;
   }
 
   /* reduce overlay width on smaller screens so content isn't overly masked */
@@ -616,16 +629,33 @@
   .techRibbon::after {
     width: 64px;
   }
+  
+  .storySection,
+  .missionVisionSection,
+  .whySection,
+  .btsSection,
+  .techSection {
+    padding: 60px 32px;
+  }
 }
 
 @media (max-width: 768px) {
+  .page {
+    padding-top: 90px;
+  }
+  
   .heroHeading {
     font-size: 36px;
-    line-height: 42px;
+    line-height: 44px;
+  }
+  
+  .heroDescription {
+    font-size: 16px;
+    line-height: 26px;
   }
 
   .hero {
-    padding: 80px 24px;
+    padding: 50px 24px;
   }
 
   .storySection,
@@ -633,18 +663,94 @@
   .whySection,
   .btsSection,
   .techSection {
-    padding: 80px 24px;
+    padding: 50px 24px;
   }
 
   .sectionTitle,
   .btsTitle {
-    font-size: 36px;
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 40px;
+    margin-bottom: 20px;
   }
 
   .valueTitle,
   .mvTitle {
+    font-size: 26px;
+    line-height: 34px;
+  }
+  
+  .mvCard,
+  .valueCard {
+    padding: 28px;
+    min-height: auto;
+  }
+  
+  .storyImage {
+    height: 300px;
+  }
+  
+  .storyGrid {
+    gap: 32px;
+  }
+  
+  .mvGrid,
+  .valuesGrid {
+    gap: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .page {
+    padding-top: 80px;
+  }
+  
+  .hero {
+    padding: 40px 16px;
+  }
+  
+  .heroHeading {
     font-size: 28px;
     line-height: 36px;
+  }
+  
+  .heroDescription {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  
+  .storySection,
+  .missionVisionSection,
+  .whySection,
+  .btsSection,
+  .techSection {
+    padding: 40px 16px;
+  }
+  
+  .sectionTitle,
+  .btsTitle {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .valueTitle,
+  .mvTitle,
+  .storyTitle {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  
+  .mvCard,
+  .valueCard {
+    padding: 20px;
+  }
+  
+  .storyText,
+  .mvText,
+  .valueText {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  
+  .storyImage {
+    height: 250px;
   }
 }

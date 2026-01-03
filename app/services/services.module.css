@@ -14,7 +14,7 @@
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 140px 48px 0;
   display: flex;
   flex-direction: column;
 }
@@ -29,7 +29,7 @@
   height: 60vh;
   min-height: 420px;
   margin-bottom: 32px;
-  margin-top: 30px;
+  margin-top: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -115,13 +115,76 @@
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
+  .servicesPage {
+    padding: 0 32px;
+  }
+  
   .heroSection {
-    padding: 80px 0 48px;
+    min-height: 380px;
+    margin-top: 20px;
+  }
+  
+  .heroContent {
+    padding: 0 32px;
+  }
+  
+  .mainTitle,
+  .gradientText span {
+    font-size: 44px;
+    line-height: 52px;
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesPage {
+    padding: 0 24px;
+  }
+  
+  .heroSection {
+    min-height: 350px;
+    padding: 60px 0 40px;
+  }
+  
+  .heroContent {
+    padding: 0 24px;
+  }
+
+  .mainTitle,
+  .gradientText span {
+    font-size: 36px;
+    line-height: 44px;
   }
 
   .heroParagraph {
     font-size: 16px;
     padding: 0 16px;
+    line-height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .servicesPage {
+    padding: 0 16px;
+  }
+  
+  .heroSection {
+    min-height: 320px;
+    padding: 50px 0 30px;
+  }
+  
+  .heroContent {
+    padding: 0 16px;
+  }
+  
+  .mainTitle,
+  .gradientText span {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .heroParagraph {
+    font-size: 15px;
+    line-height: 24px;
   }
 }

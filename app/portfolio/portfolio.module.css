@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: #0F0F0F;
   padding-bottom: 0;
+  padding-top: 140px;
 }
 
 /* Header Section */
@@ -16,7 +17,7 @@
   min-height: 420px;
   overflow: hidden;
   margin-bottom: 0;
-  margin-top: 60px;
+  margin-top: 0;
 }
 
 .heroImageWrapper {
@@ -379,5 +380,54 @@
 
   .portfolioGrid {
     padding: 32px 24px 64px;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    padding: 40px 16px;
+    min-height: 280px;
+  }
+  
+  .heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  
+  .subtitle {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  
+  .filterSection {
+    padding: 20px 16px 0;
+  }
+  
+  .filterButtons {
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .filterBtn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .portfolioGrid,
+  .gridContainer {
+    padding: 24px 16px 48px;
+  }
+  
+  .albumCard,
+  .workThumb {
+    height: 280px;
+  }
+  
+  .albumName {
+    font-size: 18px;
+  }
+  
+  .albumCount {
+    font-size: 12px;
   }
 }
