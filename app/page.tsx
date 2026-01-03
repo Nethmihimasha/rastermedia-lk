@@ -724,14 +724,14 @@ const styles: Record<string, CSSProperties> = {
   heroHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
     fontWeight: 700,
-    fontSize: '77.712px',
+    fontSize: '75px',
     lineHeight: '85px',
     letterSpacing: '-1.9428px',
     marginBottom: '30px',
   },
   heroLine1: {
     color: '#FFFFFF',
-    marginBottom: '24px',
+    marginBottom: '22px',
   },
   heroLine2: {
     background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)',
