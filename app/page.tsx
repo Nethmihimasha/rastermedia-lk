@@ -665,7 +665,7 @@ const styles: Record<string, CSSProperties> = {
     position: 'relative',
     width: '100%',
     height: '100vh',
-    minHeight: '681.6px',
+    minHeight: '600px',
     overflow: 'hidden',
   },
 
@@ -728,7 +728,6 @@ const styles: Record<string, CSSProperties> = {
     lineHeight: '85px',
     letterSpacing: '-1.9428px',
     marginBottom: '30px',
-    marginTop: '300px',
   },
   heroLine1: {
     color: '#FFFFFF',
@@ -842,7 +841,7 @@ const styles: Record<string, CSSProperties> = {
   },
   statsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
     gap: '80px',
   },
   statItem: {
@@ -865,7 +864,7 @@ const styles: Record<string, CSSProperties> = {
   },
   portfolioGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
     gap: '24px',
     marginBottom: '48px',
   },
@@ -1022,7 +1021,7 @@ const styles: Record<string, CSSProperties> = {
     width: '100%',
   },
   testimonialSlide: {
-    flex: '0 0 33.3333%',
+    flex: `0 0 ${100 / 3}%`,
     boxSizing: 'border-box',
     padding: '0 12px',
     transition: 'transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease',
@@ -1059,10 +1058,10 @@ const styles: Record<string, CSSProperties> = {
     transition: 'transform 0.18s ease, box-shadow 0.18s ease',
   },
   testimonialArrowLeft: {
-    left: '-56px',
+    left: '-24px',
   },
   testimonialArrowRight: {
-    right: '-56px',
+    right: '-24px',
   },
   testimonialCard: {
     padding: '18px',
@@ -1120,7 +1119,7 @@ const styles: Record<string, CSSProperties> = {
   ctaSection: {
     position: 'relative',
     margin: '0 48px 128px',
-    padding: '128px 208px',
+    padding: '80px 48px',
     background: 'rgba(37, 37, 37, 0.6)',
     border: '0.8px solid rgba(93, 205, 219, 0.1)',
     textAlign: 'center',

@@ -21,13 +21,13 @@
 .heroSection {
   position: relative;
   width: 100%;
-  height: 70vh;
-  min-height: 500px;
+  height: min(68vh, 720px);
+  min-height: 460px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 80px;
+  margin-bottom: 56px;
 }
 
 .heroImageWrapper {
@@ -110,8 +110,8 @@
 .positionsSection {
   width: 100%;
   max-width: 1400px;
-  padding: 80px 48px;
-  margin: 0 auto;
+  padding: 64px 48px;
+  margin: 0 auto 48px;
 }
 
 .positionsHeader {
@@ -152,7 +152,7 @@
 /* Job Listings */
 .jobListings {
   max-width: 1400px;
-  margin: 0 auto;
+  margin: 32px auto 0;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -244,7 +244,7 @@
 .modelSection {
   width: 100%;
   max-width: 1400px;
-  padding: 80px 48px;
+  padding: 56px 48px;
   margin: 0 auto;
 }
 
@@ -626,8 +626,15 @@
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+  .heroSection {
+    height: auto;
+    min-height: 420px;
+    margin-bottom: 48px;
+  }
+
   .modelSection {
-    padding: 96px 48px;
+    padding: 52px 32px;
+    margin-bottom: 56px;
   }
 
   .modelContainer {
@@ -642,13 +649,33 @@
   .modalBodyGrid {
     grid-template-columns: 1fr;
   }
+
+  .positionsSection {
+    padding: 56px 32px;
+    margin-bottom: 44px;
+  }
+
+  .positionsHeader {
+    margin-bottom: 48px;
+  }
 }
 
 @media (max-width: 768px) {
+  .heroSection {
+    height: auto;
+    min-height: unset;
+    padding: 72px 24px 48px;
+    margin-bottom: 36px;
+  }
+
   .joinOur,
   .creativeTeam {
     font-size: 48px;
     line-height: 56px;
+  }
+
+  .heroContent {
+    padding: 0 24px;
   }
 
   .heading2 {
@@ -664,6 +691,20 @@
     padding: 24px;
     max-height: 94vh;
     overflow-y: auto;
+  }
+
+  .positionsSection {
+    padding: 44px 24px;
+    margin-bottom: 36px;
+  }
+
+  .positionsHeader {
+    margin-bottom: 36px;
+  }
+
+  .modelSection {
+    padding: 44px 24px;
+    margin-bottom: 44px;
   }
   
 
@@ -765,7 +806,10 @@
 }
 @media (max-width: 480px) {
   .heroSection {
-    min-height: 350px;
+    height: auto;
+    min-height: 0;
+    padding: 56px 16px 32px;
+    margin-bottom: 28px;
   }
   
   .heroContent {
@@ -790,6 +834,20 @@
   
   .careersPage {
     padding: 0 16px;
+  }
+
+  .positionsSection {
+    padding: 40px 16px;
+    margin-bottom: 32px;
+  }
+
+  .positionsHeader {
+    margin-bottom: 28px;
+  }
+
+  .modelSection {
+    padding: 40px 16px;
+    margin-bottom: 40px;
   }
   
   .modalContainer {

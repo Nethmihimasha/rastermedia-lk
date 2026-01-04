@@ -102,8 +102,8 @@
 .toggleButton {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 28px 32px;
+  gap: 16px;
+  padding: 20px 24px;
   background: rgba(37, 37, 37, 0.5);
   border: 2px solid rgba(93, 205, 219, 0.2);
   cursor: pointer;
@@ -122,8 +122,8 @@
 }
 
 .toggleIcon {
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   color: #6B6B6B;
   transition: color 0.3s ease;
   flex-shrink: 0;
@@ -143,10 +143,9 @@
 
 .toggleTitle {
   font-family: 'Erbaum', 'Cousine', monospace;
-  font-size: 22px;
+  font-size: 18px;
   color: #FFFFFF;
   transition: color 0.3s ease;
-  font-family: 'Erbaum', 'Cousine', monospace;
 }
 
 .toggleButton.active .toggleTitle {
@@ -154,7 +153,7 @@
 }
 
 .toggleDesc {
-  font-size: 14px;
+  font-size: 13px;
   color: #6B6B6B;
 }
 
@@ -166,7 +165,7 @@
 .durationSelector {
   background: rgba(37, 37, 37, 0.3);
   border: 1px solid rgba(93, 205, 219, 0.1);
-  padding: 40px;
+  padding: 32px;
   margin-bottom: 60px;
 }
 
@@ -198,71 +197,51 @@
 
 .durationOption {
   position: relative;
-  padding: 28px 24px;
-  background: rgba(20, 20, 20, 0.6);
-  border: 2px solid rgba(93, 205, 219, 0.15);
+  padding: 24px 20px;
+  background: rgba(20, 20, 20, 0.8);
+  border: 1px solid rgba(93, 205, 219, 0.2);
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-}
-
-.durationOption::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #5DCDDB 0%, #7DD8E5 100%);
-  transform: scaleX(0);
-  transition: transform 0.4s ease;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .durationOption:hover {
-  transform: translateY(-4px);
   border-color: rgba(93, 205, 219, 0.4);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
 }
 
 .durationOption.active {
   border-color: #5DCDDB;
-  background: rgba(93, 205, 219, 0.05);
-  box-shadow: 0 0 40px rgba(93, 205, 219, 0.2);
-}
-
-.durationOption.active::before {
-  transform: scaleX(1);
+  background: rgba(93, 205, 219, 0.08);
 }
 
 .popularPill {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 4px 12px;
-  background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  background: #5DCDDB;
   color: #000000;
-  font-size: 10px;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  font-weight: 600;
 }
 
 .durationHours {
-  font-size: 48px;
+  font-size: 40px;
   color: #FFFFFF;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   line-height: 1;
-  transition: color 0.4s ease;
-}
-
-.durationOption.active .durationHours {
-  color: #5DCDDB;
+  font-family: 'Erbaum', 'Cousine', monospace;
 }
 
 .durationPrice {
   display: flex;
   align-items: baseline;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .currency {
@@ -278,15 +257,18 @@
 .priceBar {
   width: 100%;
   height: 4px;
-  background: rgba(93, 205, 219, 0.1);
+  background: rgba(93, 205, 219, 0.2);
+  margin-top: 12px;
+  position: relative;
   overflow: hidden;
-  margin-top: 8px;
 }
 
 .priceBarFill {
   height: 100%;
-  background: linear-gradient(90deg, #5DCDDB 0%, #7DD8E5 100%);
-  box-shadow: 0 0 10px rgba(93, 205, 219, 0.5);
+  background: #5DCDDB;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 /* Featured Package */
@@ -305,6 +287,7 @@
 
 .packageImageWrapper {
   position: relative;
+  width: 100%;
   height: 100%;
   min-height: 600px;
   overflow: hidden;
@@ -314,6 +297,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   font-family: 'Erbaum', 'Cousine', monospace;
 }
@@ -323,9 +307,9 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(15, 15, 15, 0.3) 0%,
-    rgba(15, 15, 15, 0.7) 70%,
-    rgba(15, 15, 15, 0.95) 100%
+    rgba(15, 15, 15, 0.1) 0%,
+    rgba(15, 15, 15, 0.4) 70%,
+    rgba(15, 15, 15, 0.7) 100%
   );
 }
 
@@ -424,10 +408,11 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   background: rgba(20, 20, 20, 0.5);
   border: 1px solid rgba(93, 205, 219, 0.1);
   transition: all 0.3s ease;
+  min-height: 50px;
 }
 
 .equipmentItem:hover {
@@ -440,12 +425,16 @@
   height: 20px;
   color: #5DCDDB;
   flex-shrink: 0;
+  display: block;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .equipmentName {
   font-size: 14px;
   color: #FFFFFF;
-  line-height: 1.4;
+  line-height: 1.5;
+  flex: 1;
 }
 
 /* Book Now Button */
@@ -453,20 +442,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 20px 40px;
+  gap: 10px;
+  padding: 16px 32px;
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
   border: none;
   color: #000000;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 8px 24px rgba(93, 205, 219, 0.3);
+  box-shadow: 0 6px 20px rgba(93, 205, 219, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .bookNowButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(93, 205, 219, 0.5);
+  box-shadow: 0 8px 28px rgba(93, 205, 219, 0.5);
 }
 
 .bookNowButton svg {
@@ -771,20 +762,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 18px 36px;
+  gap: 10px;
+  padding: 15px 30px;
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
   border: none;
   color: #000000;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 8px;
+  letter-spacing: 0.3px;
 }
 
 .submitButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(93, 205, 219, 0.4);
+  box-shadow: 0 8px 28px rgba(93, 205, 219, 0.4);
 }
 
 .submitButton svg {
@@ -816,6 +809,18 @@
   .packageVisual {
     grid-template-columns: 400px 1fr;
   }
+  
+  .packageInfo {
+    padding: 40px 32px;
+  }
+  
+  .packageTitle {
+    font-size: 36px;
+  }
+  
+  .priceAmount {
+    font-size: 40px;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -824,11 +829,31 @@
   }
 
   .packageImageWrapper {
-    min-height: 400px;
+    min-height: 350px;
+    order: 1;
+    width: 100%;
+  }
+  
+  .packageInfo {
+    order: 2;
+    padding: 32px 28px;
   }
 
   .equipmentGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+  }
+  
+  .packageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .packagePriceBlock {
+    text-align: left;
+  }
+  
+  .mainPrice {
+    justify-content: flex-start;
   }
 }
 
@@ -869,6 +894,11 @@
 
   .durationOptions {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .durationOption {
+    padding: 28px 24px;
   }
 
   .durationTitle {
@@ -876,15 +906,22 @@
   }
 
   .packageInfo {
-    padding: 32px 24px;
+    padding: 28px 20px;
   }
 
   .packageHeader {
     flex-direction: column;
+    gap: 16px;
+    padding-bottom: 20px;
   }
 
   .packageTitle {
-    font-size: 32px;
+    font-size: 28px;
+    line-height: 1.3;
+  }
+  
+  .packageSubtitle {
+    font-size: 14px;
   }
 
   .packagePriceBlock {
@@ -893,6 +930,51 @@
 
   .mainPrice {
     justify-content: flex-start;
+  }
+  
+  .priceAmount {
+    font-size: 36px;
+  }
+  
+  .extraHourPrice {
+    font-size: 13px;
+  }
+  
+  .equipmentHeading {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .equipmentGrid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+  
+  .equipmentItem {
+    padding: 14px 16px;
+    min-height: 52px;
+    align-items: center;
+    justify-content: flex-start;
+    background: rgba(20, 20, 20, 0.7);
+  }
+  
+  .equipmentIcon {
+    width: 20px;
+    height: 20px;
+    color: #5DCDDB;
+    opacity: 1;
+  }
+  
+  .equipmentName {
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+  }
+  
+  .bookNowButton {
+    width: 100%;
+    padding: 18px 28px;
+    font-size: 14px;
   }
 
   .comparisonGrid {
@@ -934,13 +1016,48 @@
   .heroSubtitle {
     font-size: 16px;
   }
+  
+  .durationSelector {
+    padding: 20px;
+  }
 
   .durationHours {
     font-size: 36px;
   }
 
   .amount {
-    font-size: 20px;
+    font-size: 22px;
+  }
+  
+  .priceBar {
+    height: 5px;
+    margin-top: 14px;
+  }
+  
+  .packageImageWrapper {
+    min-height: 300px;
+    max-height: 400px;
+    width: 100%;
+  }
+  
+  .packageInfo {
+    padding: 24px 16px;
+  }
+  
+  .packageTitle {
+    font-size: 24px;
+  }
+  
+  .priceAmount {
+    font-size: 32px;
+  }
+  
+  .equipmentSection {
+    gap: 20px;
+  }
+  
+  .bookNowButton {
+    padding: 16px 24px;
   }
 
   .packageTitle {

@@ -282,15 +282,7 @@ export default function StudioBookingPage() {
                   <motion.div
                     key={duration}
                     className={`${styles.durationOption} ${selectedDuration === duration ? styles.active : ''}`}
-                    onClick={() => {
-                      setSelectedDuration(duration);
-                      // scroll the featured package into view after selection
-                      setTimeout(() => {
-                        try {
-                          featuredRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        } catch (e) {}
-                      }, 80);
-                    }}
+                    onClick={() => setSelectedDuration(duration)}
                     whileHover={{ y: -4 }}
                     whileTap={{ scale: 0.98 }}
                   >

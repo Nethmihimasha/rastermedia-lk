@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'motion/react';
 import Image from 'next/image';
 import styles from './portfolio.module.css';
@@ -17,7 +17,6 @@ const portfolioItems = [
   { id: 8, category: 'Projects', album: 'Identity Systems', title: 'Brand Identity System', client: 'StartUp Inc.', image: '/portfolio8.jpg' },
   { id: 9, category: 'Digital', album: 'Social', title: 'Social Media Campaign', client: 'Lifestyle Brand', image: '/portfolio9.jpg' },
   { id: 10, category: 'Design', album: 'Packaging', title: 'Packaging Design Series', client: 'Gourmet Goods', image: '/portfolio10.jpg' },
-  // Additional sample items for albums
   { id: 11, category: 'Photos', album: 'Christmas', title: 'Holiday Lights', client: 'Local Shop', image: '/portfolio3.jpg' },
   { id: 12, category: 'Photos', album: 'Fashion', title: 'Runway Series', client: 'Vogue Magazine', image: '/portfolio5.jpg' },
 ];
@@ -32,49 +31,59 @@ export default function Portfolio() {
   const [isWorkOpen, setIsWorkOpen] = useState(false);
   const [activeWork, setActiveWork] = useState(null);
 
-  const filteredItems = portfolioItems.filter((item) => item.category === activeCategory);
+  const albums = useMemo(() => {
+    const filtered = portfolioItems.filter((item) => item.category === activeCategory);
 
-  // For Photos category, use explicit album list with provided counts and company names
-  let albums = []; 
-  if (activeCategory === 'Photos') {
-    const photoAlbums = [
-      { num: 1, name: 'Basilur Autumn Tea', company: 'Basilur', slug: 'basilur-autumn-tea', count: 2 },
-      { num: 2, name: 'Basilur Corporate Gift Shoot', company: 'Basilur', slug: 'basilur-corporate-gift', count: 4 },
-      { num: 3, name: 'Basilur Christmas Shoot', company: 'Basilur', slug: 'basilur-christmas', count: 2 },
-      { num: 4, name: 'Basilur Island of Tea Shoot', company: 'Basilur', slug: 'basilur-island-of-tea', count: 2 },
-      { num: 5, name: 'Basilur Spring Shoot', company: 'Basilur', slug: 'basilur-spring', count: 4 },
-      { num: 6, name: 'Martex Corporate Shoot', company: 'Martex', slug: 'martex-corporate', count: 7 },
-      { num: 7, name: 'Tripson Product Shoot', company: 'Tripson', slug: 'tripson-product', count: 2 },
-      { num: 8, name: 'Winter Christmas Shoot', company: 'Winter Collection', slug: 'winter-christmas', count: 7 },
-      { num: 9, name: 'Winter Classic Shoot', company: 'Winter Collection', slug: 'winter-classic', count: 10 },
-      { num: 10, name: 'Winter Studio Shoots', company: 'Winter Collection', slug: 'winter-studio', count: 5 },
-    ];
+    if (activeCategory === 'Photos') {
+      const photoAlbums = [
+        { num: 1, name: 'Basilur Autumn Tea', company: 'Basilur', slug: 'basilur-autumn-tea', count: 2 },
+        { num: 2, name: 'Basilur Corporate Gift Shoot', company: 'Basilur', slug: 'basilur-corporate-gift', count: 4 },
+        { num: 3, name: 'Basilur Christmas Shoot', company: 'Basilur', slug: 'basilur-christmas', count: 2 },
+        { num: 4, name: 'Basilur Island of Tea Shoot', company: 'Basilur', slug: 'basilur-island-of-tea', count: 2 },
+        { num: 5, name: 'Basilur Spring Shoot', company: 'Basilur', slug: 'basilur-spring', count: 4 },
+        { num: 6, name: 'Martex Corporate Shoot', company: 'Martex', slug: 'martex-corporate', count: 7 },
+        { num: 7, name: 'Tripson Product Shoot', company: 'Tripson', slug: 'tripson-product', count: 2 },
+        { num: 8, name: 'Winter Christmas Shoot', company: 'Winter Collection', slug: 'winter-christmas', count: 7 },
+        { num: 9, name: 'Winter Classic Shoot', company: 'Winter Collection', slug: 'winter-classic', count: 10 },
+        { num: 10, name: 'Winter Studio Shoots', company: 'Winter Collection', slug: 'winter-studio', count: 5 },
+      ];
 
-    albums = photoAlbums.map((a) => {
-      const name = a.name;
-      const slugSource = a.slug || name;
-      const slug = String(slugSource).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
-      const items = Array.from({ length: a.count }).map((_, ci) => ({
-        id: `photos-${a.num}-${ci + 1}`,
-        category: 'Photos',
-        album: name,
-        title: `${name} ${ci + 1}`, 
-        client: a.company || '',
-        // Use public images placed under /public/images following naming convention
-        image: `/images/album${String(a.num).padStart(2, '0')}-${slug}-${String(ci + 1).padStart(2,'0')}.jpg`,
-      }));
-      return { name, items, number: a.num, company: a.company, slug };
+      return photoAlbums.map((a) => {
+        const name = a.name;
+        const slugSource = a.slug || name;
+        const slug = String(slugSource).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+        const items = Array.from({ length: a.count }).map((_, ci) => ({
+          id: `photos-${a.num}-${ci + 1}`,
+          category: 'Photos',
+          album: name,
+          title: `${name} ${ci + 1}`, 
+          client: a.company || '',
+          // Use public images placed under /public/images following naming convention
+          image: `/images/album${String(a.num).padStart(2, '0')}-${slug}-${String(ci + 1).padStart(2,'0')}.jpg`,
+        }));
+        return { name, items, number: a.num, company: a.company, slug };
+      });
+    }
+
+    const fallbackByCategory = {
+      Videos: '/images/portfoliopic1.jpg',
+      Design: '/images/portfoliopic2.jpg',
+      Projects: '/images/portfoliopic3.jpg',
+      Digital: '/images/portfoliopic2.jpg',
+    };
+
+    return filtered.map((item, idx) => {
+      const name = item.album || item.title;
+      const slug = String(name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+      const image = item.image || fallbackByCategory[item.category] || `/images/portfoliopic${(idx % 3) + 1}.jpg`;
+      return {
+        name,
+        company: item.client || '',
+        slug,
+        items: [{ ...item, image }],
+      };
     });
-  } else {
-    // Group filtered items into albums
-    const albumsMap = filteredItems.reduce((acc, item) => {
-      const key = item.album || item.title; 
-      if (!acc[key]) acc[key] = { name: key, items: [] };
-      acc[key].items.push(item);
-      return acc;
-    }, {});
-    albums = Object.values(albumsMap);
-  }
+  }, [activeCategory]);
 
   // If `album` query param is present, open that album on load
   useEffect(() => {
@@ -92,7 +101,7 @@ export default function Portfolio() {
   }, []);
 
   const { ref: filterRef, isInView: filterInView } = useScrollAnimation();
-  const { ref: gridRef, isInView: gridInView } = useScrollAnimation();
+  const { ref: gridRef } = useScrollAnimation();
 
   return (
     <div className={styles.portfolioPage}>
@@ -143,19 +152,20 @@ export default function Portfolio() {
 
       {/* Portfolio Grid / Albums or Album Items (drill-in) */}
       {!isAlbumOpen && (
-        <section className={styles.portfolioGrid} ref={gridRef}>
-          <motion.div 
-            className={styles.gridContainer}
-            initial="hidden"
-            animate={gridInView ? "visible" : "hidden"}
-            variants={staggerContainerVariants}
-          >
-            {albums.map((album) => (
-              <motion.div key={album.name} variants={staggerItemVariants}>
-                <AlbumCard album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
-              </motion.div>
-            ))}
-          </motion.div>
+        <section className={styles.portfolioGrid} ref={gridRef} key={activeCategory}>
+          {albums.length === 0 ? (
+            <div style={{color:'#A0A0A0', textAlign:'center', padding:'48px 0', fontFamily: 'Cousine, monospace'}}>
+              No work in this category yet.
+            </div>
+          ) : (
+            <div className={styles.gridContainer}>
+              {albums.map((album) => (
+                <div key={album.name}>
+                  <AlbumCard album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
+                </div>
+              ))}
+            </div>
+          )}
         </section>
       )}
 
