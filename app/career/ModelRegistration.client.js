@@ -295,7 +295,7 @@ export default function ModelRegistrationPage({ onSuccess, compact = false, embe
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+94 77 000 0000"
                     className={styles.textInput}
                     required
                   />

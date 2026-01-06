@@ -59,13 +59,13 @@ export default function Footer() {
                 <span style={styles.icon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display: 'block'}} focusable="false" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013 5.18 2 2 0 015 3h3a2 2 0 012 1.72c.12 1.05.37 2.08.74 3.06a2 2 0 01-.45 2.11l-1.2 1.2a16 16 0 006 6l1.2-1.2a2 2 0 012.11-.45c.98.37 2.01.62 3.06.74A2 2 0 0122 16.92z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
                 </span>
-                <a href="tel:+94770303250" style={styles.footerLink} className="footer-link footer-contact-link">+94 77 030 3250</a>
+                <a href="https://wa.me/94770303250" target="_blank" rel="noopener noreferrer" style={styles.footerLink} className="footer-link footer-contact-link">+94 77 030 3250</a>
               </li>
               <li style={styles.contactItem}>
                 <span style={styles.icon} aria-hidden="true">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display: 'block'}} focusable="false" aria-hidden="true"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>
                 </span>
-                <span style={styles.footerLink} className="footer-link footer-contact-link">Wattala Mabola</span>
+                <span style={styles.footerLink} className="footer-link footer-contact-link">132 A /2/1, Old Negombo Road, Wattala</span>
               </li>
             </ul>
           </div>
@@ -73,6 +73,17 @@ export default function Footer() {
 
         <div style={styles.footerBottom}>
           <p style={styles.copyright}>© 2025 Raster Media. All rights reserved.</p>
+          <div style={styles.socialLinks}>
+            <a href="https://www.instagram.com/raster_media_?igsh=bnExcThrZ2MyNHJi" target="_blank" rel="noopener noreferrer" style={styles.socialLink} aria-label="Instagram">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/share/17Gn6EseZz/" target="_blank" rel="noopener noreferrer" style={styles.socialLink} aria-label="Facebook">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" strokeWidth="2"/></svg>
+            </a>
+            <a href="https://maps.app.goo.gl/wmYxbsQkfGkFBZXT6" target="_blank" rel="noopener noreferrer" style={styles.socialLink} aria-label="Maps">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M21 10c0 6-9 12-9 12S3 16 3 10a9 9 0 1118 0z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="12" cy="10" r="2.5" fill="currentColor"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

@@ -28,7 +28,6 @@ export default function ContactPage() {
     });
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -46,7 +45,7 @@ export default function ContactPage() {
       const data = await res.json();
 
       if (res.ok) {
-        setMessage('Message sent successfully! We\'ll get back to you soon.');
+        setMessage("Message sent successfully! We'll get back to you soon.");
         // Reset form
         setFormData({
           fullName: '',
@@ -114,7 +113,7 @@ export default function ContactPage() {
             variants={staggerContainerVariants}
             style={{ display: 'contents' }}
           >
-            {/* Left Column */}
+                <div className={styles.studioMapWrapper} style={{ position: 'relative', overflow: 'hidden', minHeight: 280 }}>
             <motion.div className={styles.leftColumn} variants={staggerItemVariants}>
               {/* Contact Information */}
               <div className={styles.contactInfoCard}>
@@ -128,8 +127,8 @@ export default function ContactPage() {
                   </div>
                   <div className={styles.contactDetails}>
                     <p className={styles.label}>Email</p>
-                    <a href="mailto:hello@rastermedia.com" className={styles.link}>
-                      hello@rastermedia.com
+                    <a href="mailto:rastermedia.lk@gmail.com" className={styles.link}>
+                      rastermedia.lk@gmail.com
                     </a>
                   </div>
                 </div>
@@ -141,8 +140,8 @@ export default function ContactPage() {
                   </div>
                   <div className={styles.contactDetails}>
                     <p className={styles.label}>Phone</p>
-                    <a href="tel:+15551234567" className={styles.link}>
-                      +1 (555) 123-4567
+                    <a href="https://wa.me/94770303250" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                      +94 77 030 3250
                     </a>
                   </div>
                 </div>
@@ -155,37 +154,34 @@ export default function ContactPage() {
                   <div className={styles.contactDetails}>
                     <p className={styles.label}>Office</p>
                     <div className={styles.address}>
-                      <p>123 Creative Street</p>
-                      <p>New York, NY 10001</p>
-                      <p>United States</p>
+                      <p>132 A /2/1, Old Negombo Road</p>
+                      <p>Wattala</p>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Social Media */}
-              <div className={styles.socialSection}>
-                <h3 className={styles.socialTitle}>Follow Us</h3>
-                <div className={styles.socialLinks}>
-                  <a href="#" className={styles.socialLink}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="2"/>
-                      <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
-                      <circle cx="18" cy="6" r="1" fill="currentColor"/>
-                    </svg>
-                  </a>
-                  <a href="#" className={styles.socialLink}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                  </a>
-                  <a href="#" className={styles.socialLink}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" stroke="currentColor" strokeWidth="2"/>
-                    </svg>
-                  </a>
+                <div className={styles.socialSection}>
+                  <h3 className={styles.socialTitle}>Follow Us</h3>
+                  <div className={styles.socialLinks}>
+                    <a href="https://www.instagram.com/raster_media_?igsh=bnExcThrZ2MyNHJi" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Instagram">
+                      {/* Instagram icon */}
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" strokeWidth="2"/><circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+                    </a>
+                    <a href="https://www.facebook.com/share/17Gn6EseZz/" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="Facebook">
+                      {/* Facebook icon */}
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" stroke="currentColor" strokeWidth="2"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@raster_media?si=mDS9jD73X8z2yX4s" target="_blank" rel="noopener noreferrer" className={styles.socialLink} aria-label="YouTube">
+                      {/* Clearer YouTube icon: rounded rectangle with play triangle */}
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="5" width="20" height="14" rx="3" fill="currentColor" />
+                        <path d="M10 9l5 3-5 3V9z" fill="#ffffff" />
+                      </svg>
+                    </a>
+                  </div>
                 </div>
-              </div>
             </div>
 
             {/* Quick Actions */}
@@ -197,17 +193,19 @@ export default function ContactPage() {
               </div>
               <h2 className={styles.cardTitle}>Quick Actions</h2>
               <div className={styles.actionsList}>
-                <a href="#" className={styles.actionLink}>
+                <a href="https://wa.me/94770303250" target="_blank" rel="noopener noreferrer" className={styles.actionLink}>
                   <MessageCircle size={20} className={styles.icon} />
                   <span>WhatsApp</span>
                 </a>
-                <a href="mailto:hello@rastermedia.com" className={styles.actionLink}>
+                <a href="mailto:rastermedia.lk@gmail.com" className={styles.actionLink}>
                   <Mail size={20} className={styles.icon} />
                   <span>Email Us</span>
                 </a>
               </div>
             </div>
           </motion.div>
+
+          </div>
 
           {/* Right Column - Contact Form */}
           <motion.div className={styles.formCard} variants={staggerItemVariants}>
@@ -257,7 +255,7 @@ export default function ContactPage() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+1 (555) 000-0000"
+                    placeholder="+94 77 000 0000"
                     className={styles.formInput}
                   />
                 </div>
@@ -348,7 +346,7 @@ export default function ContactPage() {
               )}
             </form>
           </motion.div>
-          </motion.div>
+        </motion.div>
         </section>
 
         {/* Visit Studio Section */}
@@ -358,15 +356,30 @@ export default function ContactPage() {
             animate={studioInView ? "visible" : "hidden"}
             variants={scrollAnimationVariants}
           >
-            <div className={styles.studioContent}>
-              <MapPin size={48} className={styles.studioIcon} />
-              <h2 className={styles.studioTitle}>Visit Our Studio</h2>
-              <p className={styles.studioAddress}>
-                123 Creative Street, New York, NY 10001
-              </p>
-              <a href="#" className={styles.mapsLink}>
-                Open in Google Maps →
-              </a>
+            <div className={styles.studioMapWrapper} style={{ position: 'relative', overflow: 'hidden', minHeight: 280 }}>
+              <iframe
+                title="Raster Media Studio Map"
+                src="https://www.google.com/maps?q=132%20A%20%2F2%2F1%2C%20Old%20Negombo%20Road%2C%20Wattala&z=17&output=embed"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  border: 0,
+                  opacity: 1
+                }}
+                loading="lazy"
+              />
+
+              {/* Invisible overlay link: captures clicks and opens Google Maps in a new tab */}
+              <a
+                href="https://maps.app.goo.gl/wmYxbsQkfGkFBZXT6"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Raster Media Studio in Google Maps"
+                style={{ position: 'absolute', inset: 0, zIndex: 2, display: 'block' }}
+              />
             </div>
           </motion.div>
         </section>

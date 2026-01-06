@@ -420,7 +420,13 @@ function TestimonialsSection() {
     return 3;
   }
 
-  const [visible, setVisible] = useState(getVisible);
+  // Use a server-safe default for initial render to avoid hydration
+  // mismatches, then update on the client after mount.
+  const [visible, setVisible] = useState(3);
+
+  useEffect(() => {
+    setVisible(getVisible());
+  }, []);
   const slideWidth = 100 / visible; // percent
 
   // build cloned list for seamless infinite scrolling

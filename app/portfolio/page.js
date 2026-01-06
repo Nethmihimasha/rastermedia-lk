@@ -33,6 +33,22 @@ export default function Portfolio() {
 
   const albums = useMemo(() => {
     const filtered = portfolioItems.filter((item) => item.category === activeCategory);
+    if (activeCategory === 'Design') {
+      // Create a single 'Designs' collection of 15 image cards.
+      const designs = Array.from({ length: 15 }).map((_, i) => {
+        const idx = i + 1;
+        return {
+          id: `design-${String(idx).padStart(2, '0')}`,
+          category: 'Design',
+          album: 'Designs',
+          title: `Design ${idx}`,
+          client: 'Raster Media',
+          image: `/images/design-${String(idx).padStart(2, '0')}.jpg`,
+        };
+      });
+
+      return [{ name: 'Designs', items: designs, number: 0, company: '', slug: 'designs' }];
+    }
 
     if (activeCategory === 'Photos') {
       const photoAlbums = [
@@ -159,11 +175,18 @@ export default function Portfolio() {
             </div>
           ) : (
             <div className={styles.gridContainer}>
-              {albums.map((album) => (
-                <div key={album.name}>
-                  <AlbumCard album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
-                </div>
-              ))}
+              {activeCategory === 'Design' ? (
+                // Render the 15 design cards directly for Design category
+                albums[0].items.map((item) => (
+                  <WorkCard key={item.id} {...item} showText={true} onOpen={() => { setActiveWork(item); setIsWorkOpen(true); }} />
+                ))
+              ) : (
+                albums.map((album) => (
+                  <div key={album.name}>
+                    <AlbumCard album={album} onOpen={() => { setActiveAlbum(album); setIsAlbumOpen(true); }} />
+                  </div>
+                ))
+              )}
             </div>
           )}
         </section>
@@ -180,7 +203,12 @@ export default function Portfolio() {
           </div>
           <div className={styles.gridContainer} style={{marginTop:20}}>
             {activeAlbum.items.map((item) => (
-              <WorkCard key={item.id} {...item} showText={false} onOpen={() => { setActiveWork(item); setIsWorkOpen(true); }} />
+              <WorkCard
+                key={item.id}
+                {...item}
+                showText={activeAlbum.slug === 'designs'}
+                onOpen={() => { setActiveWork(item); setIsWorkOpen(true); }}
+              />
             ))}
           </div>
         </section>
@@ -255,9 +283,9 @@ function WorkCard({ id, title, client, image, videoUrl, onOpen, showText = true 
         <>
           <div className={styles.portfolioGradient} style={{ opacity: isHovered ? 0.85 : 0.6, transition: 'opacity 0.3s ease' }}></div>
           <div className={styles.portfolioContent} style={{ transform: isHovered ? 'translateY(-8px)' : 'translateY(0)', transition: 'transform 0.4s ease' }}>
-            <div className={styles.portfolioCategory} style={{ color: isHovered ? '#7DD8E5' : '#5DCDDB', transition: 'color 0.3s ease' }}>{videoUrl ? 'Video' : 'Photo'}</div>
-            <h3 className={styles.portfolioTitle}>{title}</h3>
-            <p className={styles.portfolioClient}>{client}</p>
+            {/* For designs we show name and company using album styles (same size as photo album text) */}
+            <div className={styles.albumName} style={{ marginBottom: 6 }}>{title}</div>
+            <div className={styles.albumCompany}>{client}</div>
           </div>
         </>
       )}
