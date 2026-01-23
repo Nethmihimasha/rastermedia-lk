@@ -21,7 +21,7 @@ const portfolioItems = [
   { id: 12, category: 'Photos', album: 'Fashion', title: 'Runway Series', client: 'Vogue Magazine', image: '/portfolio5.jpg' },
 ];
 
-const categories = ['Photos', 'Videos', 'Design', 'Projects', 'Digital'];
+const categories = ['Photos', 'Videos', 'Designs', 'Projects', 'Digitals'];
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
