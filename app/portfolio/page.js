@@ -31,34 +31,61 @@ export default function Portfolio() {
   const [isWorkOpen, setIsWorkOpen] = useState(false);
   const [activeWork, setActiveWork] = useState(null);
 
+  // Video cards state: 7 thumbnails saved as /images/video_1.jpg ... /images/video_7.jpg
+  const [videoCards, setVideoCards] = useState(() => [
+    { id: 'video-01', category: 'Videos', album: 'Videos', title: 'Martex Visuals', client: 'Martex MFG (Pvt) Ltd', image: '/images/video_1.jpg', videoUrl: 'https://www.youtube.com/watch?embeds_referring_euri=https%3A%2F%2Fpasindusahan.com%2F&source_ve_path=Mjg2NjQsMTY0NTAz&v=MsoBTxHMw18&feature=youtu.be' },
+    { id: 'video-02', category: 'Videos', album: 'Videos', title: 'Outdoor Shoot', client: 'Winter Collection', image: '/images/video_2.jpg', videoUrl: 'https://www.youtube.com/shorts/WhNaqAWp66k' },
+    { id: 'video-03', category: 'Videos', album: 'Videos', title: 'Dance Moves', client: 'Winter Collection', image: '/images/video_3.jpg', videoUrl: 'https://www.youtube.com/watch?v=Aw4NQHstMxM' },
+    { id: 'video-04', category: 'Videos', album: 'Videos', title: 'Commercial Shoot', client: 'Winter Collection', image: '/images/video_4.jpg', videoUrl: 'https://www.youtube.com/watch?v=L7Gml5dMPWI' },
+    { id: 'video-05', category: 'Videos', album: 'Videos', title: 'Christmas Video', client: 'Winter Collection', image: '/images/video_5.jpg', videoUrl: 'https://youtube.com/shorts/CR4Q56tmyDU?feature=share' },
+    { id: 'video-06', category: 'Videos', album: 'Videos', title: 'Studio Shoot 1', client: 'Winter Collection', image: '/images/video_6.jpg', videoUrl: 'https://www.youtube.com/shorts/xNJEw8xTqc8' },
+    { id: 'video-07', category: 'Videos', album: 'Videos', title: 'Studio Shoot 2', client: 'Winter Collection', image: '/images/video_7.jpg', videoUrl: 'https://youtube.com/shorts/aOfP_mBvUHM?feature=share' },
+  ]);
+
+  // handler to update a video's title (editable in UI)
+  const handleUpdateVideoTitle = (id, newTitle) => {
+    setVideoCards((prev) => prev.map((v) => (v.id === id ? { ...v, title: newTitle } : v)));
+  };
+
+  // handler to update a video's company/client (editable in UI)
+  const handleUpdateVideoClient = (id, newClient) => {
+    setVideoCards((prev) => prev.map((v) => (v.id === id ? { ...v, client: newClient } : v)));
+  };
+
   const albums = useMemo(() => {
     const filtered = portfolioItems.filter((item) => item.category === activeCategory);
     if (activeCategory === 'Design') {
-      // Create a single 'Designs' collection of 15 image cards.
-      const designs = Array.from({ length: 15 }).map((_, i) => {
-        const idx = i + 1;
-        return {
-          id: `design-${String(idx).padStart(2, '0')}`,
-          category: 'Design',
-          album: 'Designs',
-          title: `Design ${idx}`,
-          client: 'Raster Media',
-          image: `/images/design-${String(idx).padStart(2, '0')}.jpg`,
-        };
-      });
+      // Use a fixed list of 15 distinct design cards (titles + image paths)
+      const designs = [
+        { id: 'design-01', category: 'Design', album: 'Designs', title: 'Kingsleaf – Product Leaflet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_1.jpg' },
+        { id: 'design-02', category: 'Design', album: 'Designs', title: 'Basilur – Christmas Sample Card Design', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_2.jpg' },
+        { id: 'design-03', category: 'Design', album: 'Designs', title: 'Golden Legacy – Booklet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_3.jpg' },
+        { id: 'design-04', category: 'Design', album: 'Designs', title: 'Artisan Range – Booklet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_4.jpg' },
+        { id: 'design-05', category: 'Design', album: 'Designs', title: 'Golden Harvest – Booklet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_5.jpg' },
+        { id: 'design-06', category: 'Design', album: 'Designs', title: 'Tea of the Year – Booklet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_6.jpg' },
+        { id: 'design-07', category: 'Design', album: 'Designs', title: 'Basilur – Gondola Design', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_7.jpg' },
+        { id: 'design-08', category: 'Design', album: 'Designs', title: 'Golden Needles – Product Cover', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_8.jpg' },
+        { id: 'design-09', category: 'Design', album: 'Designs', title: 'Rise of the Dragon', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_9.jpg' },
+        { id: 'design-10', category: 'Design', album: 'Designs', title: 'Fadna Hasthi – Product Cover', client: 'Fadna Tea (Pvt) Ltd', image: '/images/design_10.jpg' },
+        { id: 'design-11', category: 'Design', album: 'Designs', title: 'Tipson – Sample Card Design', client: 'Tipson Tea Sri Lanka', image: '/images/design_11.jpg' },
+        { id: 'design-12', category: 'Design', album: 'Designs', title: 'Tipson Tea – Product Leaflet', client: 'Tipson Tea Sri Lanka', image: '/images/design_12.jpg' },
+        { id: 'design-13', category: 'Design', album: 'Designs', title: 'Gap – Magazine Cover', client: 'Martex MFG (Pvt) Ltd', image: '/images/design_13.jpg' },
+        { id: 'design-14', category: 'Design', album: 'Designs', title: 'Organsia – Product Box Design', client: 'Organsia', image: '/images/design_14.jpg' },
+        { id: 'design-15', category: 'Design', album: 'Designs', title: 'Basilur Tea – Product Leaflet', client: 'Basilur Tea Exports (Pvt) Ltd', image: '/images/design_15.jpg' },
+      ];
 
       return [{ name: 'Designs', items: designs, number: 0, company: '', slug: 'designs' }];
     }
 
     if (activeCategory === 'Photos') {
       const photoAlbums = [
-        { num: 1, name: 'Basilur Autumn Tea', company: 'Basilur', slug: 'basilur-autumn-tea', count: 2 },
-        { num: 2, name: 'Basilur Corporate Gift Shoot', company: 'Basilur', slug: 'basilur-corporate-gift', count: 4 },
-        { num: 3, name: 'Basilur Christmas Shoot', company: 'Basilur', slug: 'basilur-christmas', count: 2 },
-        { num: 4, name: 'Basilur Island of Tea Shoot', company: 'Basilur', slug: 'basilur-island-of-tea', count: 2 },
-        { num: 5, name: 'Basilur Spring Shoot', company: 'Basilur', slug: 'basilur-spring', count: 4 },
-        { num: 6, name: 'Martex Corporate Shoot', company: 'Martex', slug: 'martex-corporate', count: 7 },
-        { num: 7, name: 'Tripson Product Shoot', company: 'Tripson', slug: 'tripson-product', count: 2 },
+        { num: 1, name: 'Basilur Autumn Tea', company: 'Basilur Tea Exports (Pvt) Ltd', slug: 'basilur-autumn-tea', count: 2 },
+        { num: 2, name: 'Basilur Corporate Gift Shoot', company: 'Basilur Tea Exports (Pvt) Ltd', slug: 'basilur-corporate-gift', count: 4 },
+        { num: 3, name: 'Basilur Christmas Shoot', company: 'Basilur Tea Exports (Pvt) Ltd', slug: 'basilur-christmas', count: 2 },
+        { num: 4, name: 'Basilur Island of Tea Shoot', company: 'Basilur Tea Exports (Pvt) Ltd', slug: 'basilur-island-of-tea', count: 2 },
+        { num: 5, name: 'Basilur Spring Shoot', company: 'Basilur Tea Exports (Pvt) Ltd', slug: 'basilur-spring', count: 4 },
+        { num: 6, name: 'Martex Corporate Shoot', company: 'Martex MFG (Pvt) Ltd', slug: 'martex-corporate', count: 7 },
+        { num: 7, name: 'Tripson Product Shoot', company: 'Tipson', slug: 'tripson-product', count: 2 },
         { num: 8, name: 'Winter Christmas Shoot', company: 'Winter Collection', slug: 'winter-christmas', count: 7 },
         { num: 9, name: 'Winter Classic Shoot', company: 'Winter Collection', slug: 'winter-classic', count: 10 },
         { num: 10, name: 'Winter Studio Shoots', company: 'Winter Collection', slug: 'winter-studio', count: 5 },
@@ -79,6 +106,11 @@ export default function Portfolio() {
         }));
         return { name, items, number: a.num, company: a.company, slug };
       });
+    }
+
+    if (activeCategory === 'Videos') {
+      // Return the videoCards state as a single 'Videos' album
+      return [{ name: 'Videos', items: videoCards, number: 0, company: '', slug: 'videos' }];
     }
 
     const fallbackByCategory = {
@@ -118,6 +150,7 @@ export default function Portfolio() {
 
   const { ref: filterRef, isInView: filterInView } = useScrollAnimation();
   const { ref: gridRef } = useScrollAnimation();
+ 
 
   return (
     <div className={styles.portfolioPage}>
@@ -175,10 +208,24 @@ export default function Portfolio() {
             </div>
           ) : (
             <div className={styles.gridContainer}>
-              {activeCategory === 'Design' ? (
-                // Render the 15 design cards directly for Design category
+              {(activeCategory === 'Design' || activeCategory === 'Videos') ? (
+                // Render the design or video cards directly
                 albums[0].items.map((item) => (
-                  <WorkCard key={item.id} {...item} showText={true} onOpen={() => { setActiveWork(item); setIsWorkOpen(true); }} />
+                  <WorkCard
+                    key={item.id}
+                    {...item}
+                    showText={true}
+                    editable={activeCategory === 'Videos'}
+                    onTitleChange={(newTitle) => { if (activeCategory === 'Videos') handleUpdateVideoTitle(item.id, newTitle); }}
+                    onOpen={() => {
+                      if (activeCategory === 'Videos' && item.videoUrl) {
+                        // open video link in new tab
+                        if (typeof window !== 'undefined') window.open(item.videoUrl, '_blank');
+                        return;
+                      }
+                      setActiveWork(item); setIsWorkOpen(true);
+                    }}
+                  />
                 ))
               ) : (
                 albums.map((album) => (
@@ -262,7 +309,7 @@ function AlbumCard({ album, onOpen }) {
   );
 }
 
-function WorkCard({ id, title, client, image, videoUrl, onOpen, showText = true }) {
+function WorkCard({ id, title, client, image, videoUrl, onOpen, showText = true, editable = false, onTitleChange }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -278,13 +325,27 @@ function WorkCard({ id, title, client, image, videoUrl, onOpen, showText = true 
         style={{ transform: isHovered ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.5s ease' }}
       >
         {image ? <img src={image} alt={title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/portfoliopic1.jpg'; }} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} /> : null}
+        {videoUrl ? <div className={styles.videoBadge}>▶</div> : null}
       </div>
       {showText && (
         <>
           <div className={styles.portfolioGradient} style={{ opacity: isHovered ? 0.85 : 0.6, transition: 'opacity 0.3s ease' }}></div>
           <div className={styles.portfolioContent} style={{ transform: isHovered ? 'translateY(-8px)' : 'translateY(0)', transition: 'transform 0.4s ease' }}>
             {/* For designs we show name and company using album styles (same size as photo album text) */}
-            <div className={styles.albumName} style={{ marginBottom: 6 }}>{title}</div>
+            <div className={styles.albumName} style={{ marginBottom: 6 }}>
+              {editable ? (
+                <div
+                  contentEditable
+                  suppressContentEditableWarning
+                  onClick={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.currentTarget.blur(); } }}
+                  onBlur={(e) => { const text = e.currentTarget.innerText.trim(); onTitleChange && onTitleChange(text); }}
+                  style={{ outline: 'none', cursor: 'text' }}
+                >{title}</div>
+              ) : (
+                title
+              )}
+            </div>
             <div className={styles.albumCompany}>{client}</div>
           </div>
         </>
@@ -297,14 +358,19 @@ function WorkModal({ work, onClose }) {
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
       <div className={styles.modalContent} onClick={(e)=>e.stopPropagation()}>
-        <button className={styles.modalClose} onClick={onClose}>×</button>
+        <button
+          type="button"
+          className={styles.modalClose}
+          onClick={(e) => { e.stopPropagation(); onClose && onClose(); }}
+          aria-label="Close modal"
+        >×</button>
         {work.videoUrl ? (
           <div style={{position:'relative', width:'100%', paddingTop:'56.25%'}}>
             <iframe src={work.videoUrl} title={work.title} style={{position:'absolute', top:0,left:0,width:'100%',height:'100%'}} frameBorder="0" allowFullScreen />
           </div>
         ) : (
-          <div style={{position:'relative', width:'100%', height:'80vh'}}>
-            {work.image ? <img src={work.image} alt={work.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/portfoliopic1.jpg'; }} style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }} /> : null}
+          <div className={styles.modalImageWrapper}>
+            {work.image ? <img src={work.image} alt={work.title} onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = '/images/portfoliopic1.jpg'; }} /> : null}
           </div>
         )}
       </div>

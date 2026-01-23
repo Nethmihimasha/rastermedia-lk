@@ -199,19 +199,26 @@
   inset: 0;
   background: rgba(0,0,0,0.85);
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* keep modal below top nav */
   justify-content: center;
   z-index: 9999;
-  padding: 24px;
+  padding-top: 72px; /* offset for nav */
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-bottom: 24px;
 }
 .modalContent {
-  background: #0f0f0f;
+  background: transparent; /* no background, just the image */
   max-width: 1100px;
   width: 100%;
   max-height: 90vh;
-  overflow: auto;
-  padding: 20px;
-  border: 0.8px solid rgba(93,205,219,0.06);
+  overflow: visible;
+  padding: 8px;
+  border: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modalClose {
   position: absolute;
@@ -225,6 +232,26 @@
   border-radius: 50%;
   font-size: 20px;
   cursor: pointer;
+  z-index: 10002; /* ensure button is above modal content and overlays */
+  pointer-events: auto;
+}
+
+/* Modal image wrapper centers and constrains the image, and shows a subtle cut mark */
+.modalImageWrapper {
+  width: 100%;
+  max-width: 1040px;
+  height: calc(100vh - 160px); /* reduced so image won't be hidden by nav */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.modalImageWrapper img {
+  max-width: calc(100vw - 96px);
+  max-height: calc(100vh - 200px);
+  object-fit: contain;
+  display: block;
+  width: auto;
 }
 
 /* Portfolio Grid */
@@ -268,6 +295,25 @@
 
 .portfolioCard:hover .portfolioImage {
   transform: scale(1.05);
+}
+
+/* Play badge for video thumbnails */
+.videoBadge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .portfolioGradient {

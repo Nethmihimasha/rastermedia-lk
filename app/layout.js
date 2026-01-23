@@ -8,6 +8,11 @@ import MobileMenu from './components/MobileMenu.client';
 export const metadata = {
   title: 'Raster Media - Pixel Perfect Creative Solutions',
   description: 'Modern, pixel-sharp campaigns for brands that want to stand out',
+  icons: {
+    icon: '/monogram.png',
+    shortcut: '/monogram.png',
+    apple: '/monogram.png'
+  }
 };
 
 import CleanBodyAttributes from './components/CleanBodyAttributes.client';
@@ -31,6 +36,8 @@ export default function RootLayout({ children }) {
           crossOrigin="anonymous"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/monogram.png" />
+        <link rel="shortcut icon" href="/monogram.png" />
         <style>{`
           .hero-heading { font-family: 'Erbaum', 'Cousine', monospace !important; }
           .btn { font-family: 'Erbaum', 'Cousine', monospace !important; }
