@@ -30,7 +30,7 @@
 
 
 .heroHeading {
-  font-size: 51.808px;
+  font-size: 50px;
   font-weight: 700;
   line-height: 60px;
   margin-bottom: 32px;
@@ -39,7 +39,7 @@
 }
 
 .heroDescription {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
   max-width: 1400px;
@@ -92,7 +92,7 @@
 } 
 
 .storyTitle {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 43px;
   letter-spacing: -0.5px;
@@ -102,7 +102,7 @@
 }
 
 .storyText {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 32px;
   color: #A0A0A0;
   margin-bottom: 22px;
@@ -178,7 +178,7 @@
 }
 
 .mvTitle {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 600;
   line-height: 43px;
   color: #FFFFFF;
@@ -187,7 +187,7 @@
 }
 
 .mvText {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
 }
@@ -203,7 +203,7 @@
 }
 
 .sectionTitle {
-  font-size: 51.808px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 60px;
   letter-spacing: -0.51808px;
@@ -212,7 +212,7 @@
 }
 
 .sectionSubtitle {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
   max-width: 1400px;
@@ -253,7 +253,7 @@
 }
 
 .valueTitle {
-  font-size: 36px;
+  font-size: 30px;
   font-weight: 600;
   line-height: 43px;
   color: #FFFFFF;
@@ -262,7 +262,7 @@
 }
 
 .valueText {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
 }
@@ -273,7 +273,7 @@
 }
 
 .btsTitle {
-  font-size: 51.808px;
+  font-size: 40px;
   font-weight: 700;
   line-height: 60px;
   letter-spacing: -0.51808px;
@@ -398,7 +398,7 @@
 }
 
 .btsTitle {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
   margin: 0;
   color: #fff;
@@ -441,7 +441,7 @@
 
 .techTitle {
   text-align: center;
-  font-size: 51.808px;
+  font-size: 40px;
   font-weight: 700;
   color: #FFFFFF;
   margin-bottom: 8px;
@@ -450,7 +450,7 @@
 
 .techSubtitle {
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   color: #A0A0A0;
   margin-bottom: 32px;
   font-family: 'Erbaum', 'Cousine', monospace;
@@ -491,7 +491,7 @@
 }
 
 .groupTitle {
-  font-size: 18px;
+  font-size: 15px;
   color: #FFFFFF;
   font-family: 'Erbaum', 'Cousine', monospace;
 }
@@ -556,7 +556,7 @@
   background: rgba(37, 37, 37, 0.6);
   border: 0.8px solid rgba(93, 205, 219, 0.06);
   white-space: nowrap;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   color: #A0A0A0;
   border-radius: 4px;

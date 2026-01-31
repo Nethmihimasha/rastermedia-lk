@@ -730,8 +730,8 @@ const styles: Record<string, CSSProperties> = {
   heroHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
     fontWeight: 700,
-    fontSize: '75px',
-    lineHeight: '85px',
+    fontSize: '50px',
+    lineHeight: '50px',
     letterSpacing: '-1.9428px',
     marginBottom: '30px',
   },
@@ -747,7 +747,7 @@ const styles: Record<string, CSSProperties> = {
   },
   heroDescription: {
     fontFamily: 'Cousine, monospace',
-    fontSize: '20px',
+    fontSize: '15px',
     lineHeight: '28px',
     letterSpacing: '1px',
     color: 'rgba(255, 255, 255, 0.8)',
@@ -780,7 +780,7 @@ const styles: Record<string, CSSProperties> = {
   },
   sectionTitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: '51.808px',
+    fontSize: '40px',
     fontWeight: 700,
     lineHeight: '60px',
     letterSpacing: '-0.51808px',
@@ -789,7 +789,7 @@ const styles: Record<string, CSSProperties> = {
   },
   sectionSubtitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: '18px',
+    fontSize: '15px',
     lineHeight: '31px',
     color: '#A0A0A0',
     maxWidth: '1800px',
@@ -822,14 +822,14 @@ const styles: Record<string, CSSProperties> = {
   },
   serviceTitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: '36px',
-    fontWeight: 600,
+    fontSize: '20px',
+    fontWeight: 500,
     lineHeight: '43px',
     color: '#FFFFFF',
     marginBottom: '16px',
   },
   serviceDescription: {
-    fontSize: '14px',
+    fontSize: '15px',
     lineHeight: '23px',
     color: '#A0A0A0',
   },
@@ -842,7 +842,7 @@ const styles: Record<string, CSSProperties> = {
     transition: 'width 0.3s',
   },
   statsSection: {
-    padding: '128px 0',
+    padding: '100px 0',
     background: 'linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1A1A1A 50%, rgba(0, 0, 0, 0) 100%)',
   },
   statsGrid: {
@@ -855,7 +855,7 @@ const styles: Record<string, CSSProperties> = {
   },
   statValue: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: '64px',
+    fontSize: '55px',
     fontWeight: 700,
     lineHeight: '72px',
     marginBottom: '16px',
@@ -940,7 +940,7 @@ const styles: Record<string, CSSProperties> = {
   },
   portfolioTitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: 'var(--card-title-size)',
+    fontSize: '20px',
     fontWeight: 600,
     lineHeight: '43px',
     color: '#FFFFFF',
@@ -957,11 +957,11 @@ const styles: Record<string, CSSProperties> = {
   },
 
   brandsSection: {
-    padding: '128px 0',
+    padding: '100px 0',
   },
   brandsTitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: 'var(--section-title-size)',
+    fontSize: '40px',
     fontWeight: 600,
     lineHeight: '43px',
     textAlign: 'center',
@@ -979,7 +979,7 @@ const styles: Record<string, CSSProperties> = {
   },
   brandItem: {
     fontFamily: 'Cousine, monospace',
-    fontSize: '32px',
+    fontSize: '25px',
     lineHeight: '48px',
     letterSpacing: '1.6px',
     color: 'rgba(255, 255, 255, 0.3)',
@@ -1084,7 +1084,7 @@ const styles: Record<string, CSSProperties> = {
     color: '#5DCDDB',
   },
   testimonialQuote: {
-    fontSize: 'var(--body-size)',
+    fontSize: '15px',
     fontStyle: 'normal',
     lineHeight: '26px',
     color: '#A0A0A0',
@@ -1112,13 +1112,13 @@ const styles: Record<string, CSSProperties> = {
     display: 'block',
   },
   authorName: {
-    fontSize: '16px',
+    fontSize: '13px',
     fontWeight: 600,
     lineHeight: '22px',
     color: '#FFFFFF',
   },
   authorRole: {
-    fontSize: '14px',
+    fontSize: '12px',
     lineHeight: '20px',
     color: '#6B6B6B',
   },
@@ -1136,7 +1136,7 @@ const styles: Record<string, CSSProperties> = {
   },
   ctaHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: 'var(--section-title-size)',
+    fontSize: '40px',
     fontWeight: 700,
     lineHeight: '60px',
     letterSpacing: '-0.51808px',
@@ -1144,7 +1144,7 @@ const styles: Record<string, CSSProperties> = {
     color: '#FFFFFF',
   },
   ctaDescription: {
-    fontSize: 'var(--body-size)',
+    fontSize: '15px',
     lineHeight: '28px',
     color: '#A0A0A0',
     marginBottom: '40px',
@@ -1153,7 +1153,7 @@ const styles: Record<string, CSSProperties> = {
     padding: '17.6px 32px',
     background: 'linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%)',
     border: 'none',
-    fontSize: '18px',
+    fontSize: '15px',
     lineHeight: '28px',
     color: '#FFFFFF',
     cursor: 'pointer',

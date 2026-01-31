@@ -75,7 +75,7 @@
 .joinOur {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 51.808px;
+  font-size: 50px;
   line-height: 60px;
   letter-spacing: -0.51808px;
   color: #FFFFFF;
@@ -88,7 +88,7 @@
 .creativeTeam {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 51.808px;
+  font-size: 50px;
   line-height: 60px;
   letter-spacing: -0.51808px;
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
@@ -99,8 +99,8 @@
 
 .heroParagraph {
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 15px;
+  line-height: 20px;
   color: #A0A0A0;
   max-width: 1400px;
   margin: 0 auto;
@@ -122,7 +122,7 @@
 .heading2 {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 51.808px;
+  font-size: 40px;
   line-height: 60px;
   letter-spacing: -0.51808px;
   color: #FFFFFF;
@@ -143,7 +143,7 @@
 
 .positionsSubtext {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
   margin-top: 16px;
@@ -181,7 +181,7 @@
 
 .jobTitle {
   font-weight: 600;
-  font-size: 36px;
+  font-size: 30px;
   line-height: 43px;
   color: #FFFFFF;
   margin: 0;
@@ -189,7 +189,7 @@
 
 .jobCategory {
   font-weight: 400;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 20px;
   color: #5DCDDB;
 }
@@ -234,7 +234,7 @@
 
 .jobExcerpt {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   color: #A0A0A0;
   margin: 0;
@@ -284,7 +284,7 @@
 
 .modelHeading {
   font-weight: 700;
-  font-size: 51.808px;
+  font-size: 40px;
   line-height: 60px;
   letter-spacing: -0.51808px;
   margin: 0;
@@ -299,7 +299,7 @@
 
 .modelParagraph {
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   color: #A0A0A0;
   margin: 0;
@@ -336,9 +336,9 @@
 .modelButton {
   background: linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%);
   border: none;
-  padding: 17.6px 32px;
+  padding: 10px 20px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 24px;
   color: #FFFFFF;
   cursor: pointer;

@@ -56,7 +56,7 @@
 .heading {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 700;
-  font-size: 51.808px;
+  font-size: 50px;
   line-height: 60px;
   letter-spacing: -0.51808px;
   color: #FFFFFF;
@@ -73,7 +73,7 @@
 .subtitle {
   font-family: 'Erbaum', 'Cousine', monospace;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 31px;
   text-align: center;
   color: #A0A0A0;
@@ -98,7 +98,7 @@
   padding: 12px 24px;
   font-family: 'Cousine', monospace;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 24px;
   text-align: center;
   color: #A0A0A0;
