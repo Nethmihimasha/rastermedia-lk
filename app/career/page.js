@@ -163,9 +163,9 @@
                   <div className={styles.modalBodyGrid}>
                     <div className={styles.modalDetails}>
                       <div className={styles.jobDetailsTop}>
-                        <div className={styles.jobDetail}><span>New York, NY</span></div>
+                        <div className={styles.jobDetail}><span>Wattala, Sri Lanka</span></div>
                         <div className={styles.jobDetail}><span>Full-time</span></div>
-                        <div className={styles.jobDetail}><span>$35k - $45k</span></div>
+                        <div className={styles.jobDetail}><span>LKR35k - LKR45k</span></div>
                       </div>
 
                       <h4 className={styles.sectionHeading}>Responsibilities</h4>
@@ -328,7 +328,7 @@
                     <svg className={styles.icon} viewBox="0 0 16 16">
                       <path d="M8 2a3 3 0 100 6 3 3 0 000-6zM4 11a3 3 0 00-3 3v1h14v-1a3 3 0 00-3-3H4z" />
                     </svg>
-                    <span>New York, NY</span>
+                    <span>Wattala,Sri Lanka</span>
                   </div>
                   <div className={styles.jobDetail}>
                     <svg className={styles.icon} viewBox="0 0 16 16">
@@ -340,7 +340,7 @@
                     <svg className={styles.icon} viewBox="0 0 16 16">
                       <path d="M2 4h12v8H2z" />
                     </svg>
-                    <span>$35k - $45k</span>
+                    <span>LKR35k - LKR45k</span>
                   </div>
                 </div>
                 <p className={styles.jobExcerpt}>
