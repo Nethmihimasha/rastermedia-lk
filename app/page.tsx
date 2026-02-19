@@ -613,7 +613,7 @@ function CTASection() {
         <p style={styles.ctaDescription} className="cta-description-home">
           Let us collaborate and bring your vision to life with pixel-perfect precision.
         </p>
-        <Link href="/contact" className="btn btn--home animate-shimmer cta-button-home">Start Your Project</Link>
+        <Link href="/contact" className="btn btn--home  cta-button-home">Start Your Project</Link>
       </div>
     </section>
   );
