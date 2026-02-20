@@ -26,20 +26,18 @@ function HeroSection() {
     <section style={styles.hero}>
       <div style={styles.heroVideo}>
         <iframe
-          width="100%"
-          height="100%"
+          className="hero-video-iframe"
           src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&loop=1&playlist=OmHLohPk6b0&controls=0&rel=0&modestbranding=1"
           title="Hero Video"
           frameBorder="0"
           allow="autoplay; encrypted-media"
-          style={styles.iframe}
         />
       </div>
       <div style={styles.heroOverlay}></div>
       <div style={styles.heroGrid}></div>
-      
-      
-      
+
+
+
       <div style={styles.heroContent} className="hero-content">
         <h1 style={styles.heroHeading} className="hero-heading">
           <div style={styles.heroLine1}>Responsible <span style={styles.gradientText}>Creativity</span></div>
@@ -161,7 +159,7 @@ function ServiceCard({ icon, title, description, hasPattern }: { icon: React.Rea
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
+    <div
       style={{
         ...styles.serviceCard,
         transform: isHovered ? 'translateY(-8px)' : 'translateY(0)',
@@ -174,14 +172,14 @@ function ServiceCard({ icon, title, description, hasPattern }: { icon: React.Rea
       <h3 style={styles.serviceTitle}>{title}</h3>
       <p style={styles.serviceDescription}>{description}</p>
       {hasPattern && (
-        <PixelPattern 
-          style={{ 
+        <PixelPattern
+          style={{
             position: 'absolute',
-            top: '24px', 
+            top: '24px',
             right: '24px',
             opacity: 0.3
-          }} 
-          size="small" 
+          }}
+          size="small"
         />
       )}
       <div style={{
@@ -198,29 +196,29 @@ function useCountUp(end: string | number, duration: number = 2000, startCounting
 
   useEffect(() => {
     if (!startCounting) return;
-    
+
     const startTime = Date.now();
     const endValue = typeof end === 'string' ? parseInt(end.replace(/\D/g, '')) : Number(end);
-    
+
     const timer = setInterval(() => {
       const now = Date.now();
       const progress = Math.min((now - startTime) / duration, 1);
-      
+
       // Easing function for smooth animation
       const easeOutQuart = 1 - Math.pow(1 - progress, 4);
       const currentCount = Math.floor(easeOutQuart * endValue);
-      
+
       setCount(currentCount);
-      
+
       if (progress === 1) {
         clearInterval(timer);
         setCount(endValue);
       }
     }, 16); // ~60fps
-    
+
     return () => clearInterval(timer);
   }, [end, duration, startCounting]);
-  
+
   return count;
 }
 
@@ -262,9 +260,9 @@ function StatsSection() {
       <div style={styles.container}>
         <div style={styles.statsGrid} className="stats-grid">
           {stats.map((stat, index) => (
-            <StatItem 
-              key={index} 
-              {...stat} 
+            <StatItem
+              key={index}
+              {...stat}
               startCounting={isVisible}
             />
           ))}
@@ -279,7 +277,7 @@ function StatItem({ value, suffix, label, startCounting }: { value: string | num
 
   return (
     <div style={styles.statItem}>
-      <div style={{...styles.statValue, ...styles.gradientText}}>
+      <div style={{ ...styles.statValue, ...styles.gradientText }}>
         {count}{suffix}
       </div>
       <div style={styles.statLabel}>{label}</div>
@@ -391,7 +389,7 @@ function PortfolioCard({ category, title, client, image, albumSlug }: { category
 
 function BrandsSection() {
   const brands = ['WINTER COLLECTION', 'MARTEX', 'VILLA JAY', 'CLASSIC JACKET', 'BASILUR'];
-  
+
   return (
     <section style={styles.brandsSection}>
       <div style={styles.container}>
@@ -505,7 +503,7 @@ function TestimonialsSection() {
   return (
     <section style={styles.testimonialsSection}>
       <div style={styles.container}>
-          <div style={styles.sectionHeader}>
+        <div style={styles.sectionHeader}>
           <h2 style={styles.sectionTitle}>
             Client <span style={styles.gradientText}>Testimonials</span>
           </h2>
@@ -530,33 +528,33 @@ function TestimonialsSection() {
             ‹
           </button>
 
-<div style={styles.testimonialsViewport}>
-          <div
-            ref={trackRef}
-            onTransitionEnd={handleTransitionEnd}
-            style={{
-              ...styles.testimonialsTrack,
-              transform: `translateX(-${index * slideWidth}%)`,
-              transition: isAnimating ? 'transform 600ms cubic-bezier(0.2,0.8,0.2,1)' : 'none',
-            }}
-          >
-            {items.map((testimonial, i) => {
-              const isCenter = i === centerIndex;
-              return (
-                <div
-                  key={`${testimonial.name}-${i}`}
-                  style={{
-                    ...styles.testimonialSlide,
-                    flex: `0 0 ${slideWidth}%`,
-                    ...(isCenter ? styles.testimonialActive : styles.testimonialInactive),
-                  }}
-                  aria-hidden={!isCenter && (i < index || i > index + visible - 1)}
-                >
-                  <TestimonialCard {...testimonial} />
-                </div>
-              );
-            })}
-          </div>
+          <div style={styles.testimonialsViewport}>
+            <div
+              ref={trackRef}
+              onTransitionEnd={handleTransitionEnd}
+              style={{
+                ...styles.testimonialsTrack,
+                transform: `translateX(-${index * slideWidth}%)`,
+                transition: isAnimating ? 'transform 600ms cubic-bezier(0.2,0.8,0.2,1)' : 'none',
+              }}
+            >
+              {items.map((testimonial, i) => {
+                const isCenter = i === centerIndex;
+                return (
+                  <div
+                    key={`${testimonial.name}-${i}`}
+                    style={{
+                      ...styles.testimonialSlide,
+                      flex: `0 0 ${slideWidth}%`,
+                      ...(isCenter ? styles.testimonialActive : styles.testimonialInactive),
+                    }}
+                    aria-hidden={!isCenter && (i < index || i > index + visible - 1)}
+                  >
+                    <TestimonialCard {...testimonial} />
+                  </div>
+                );
+              })}
+            </div>
           </div>
 
           <button
@@ -573,16 +571,16 @@ function TestimonialsSection() {
 }
 
 function TestimonialCard({ quote, name, role, rating, time }: { quote: string; name: string; role?: string; rating?: number; time?: string }) {
-  const initials = (name || '').split(' ').map(n => n[0]).slice(0,2).join('');
+  const initials = (name || '').split(' ').map(n => n[0]).slice(0, 2).join('');
 
   return (
     <div style={styles.testimonialCard}>
       <div style={styles.quoteIcon}>❝</div>
       <p style={styles.testimonialQuote}>{quote}</p>
 
-      <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', gap:12}}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
         <div style={styles.testimonialAuthor}>
-          <div style={{...styles.authorAvatar, display:'flex', alignItems:'center', justifyContent:'center', fontSize:16, fontWeight:600, color:'#000'}}>
+          <div style={{ ...styles.authorAvatar, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 600, color: '#000' }}>
             {initials}
           </div>
           <div>
@@ -591,13 +589,13 @@ function TestimonialCard({ quote, name, role, rating, time }: { quote: string; n
           </div>
         </div>
 
-        <div style={{textAlign:'right'}}>
-          <div style={{color:'#5DCDDB', fontSize:16, marginBottom:6}}>{'★'.repeat(rating || 5)}</div>
-          {time ? <div style={{fontSize:12, color:'#6B6B6B'}}>{time}</div> : null}
+        <div style={{ textAlign: 'right' }}>
+          <div style={{ color: '#5DCDDB', fontSize: 16, marginBottom: 6 }}>{'★'.repeat(rating || 5)}</div>
+          {time ? <div style={{ fontSize: 12, color: '#6B6B6B' }}>{time}</div> : null}
         </div>
       </div>
 
-      
+
     </div>
   );
 }
@@ -639,8 +637,8 @@ function PixelPattern({ style, size = 'small' }: { style?: React.CSSProperties; 
       }}
     >
       {Array.from({ length: totalPixels }).map((_, i) => (
-        <div 
-          key={i} 
+        <div
+          key={i}
           style={{
             width: `${config.pixelSize}px`,
             height: `${config.pixelSize}px`,

@@ -16,6 +16,7 @@ export const metadata = {
 };
 
 import CleanBodyAttributes from './components/CleanBodyAttributes.client';
+import GoToTop from './components/GoToTop.client';
 
 export default function RootLayout({ children }) {
   return (
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
         <Header />
         <main style={styles.main}>{children}</main>
         <Footer />
+        <GoToTop />
       </body>
     </html>
   );
@@ -70,15 +72,15 @@ function Header() {
           </div>
         </Link>
         <nav style={styles.nav} className="nav desktop-nav">
-  <Link href="/" style={styles.navLink} className="nav-link">Home</Link>
-  <Link href="/about_us" style={styles.navLink} className="nav-link">About</Link>
-  <Link href="/services" style={styles.navLink} className="nav-link">Services</Link>
-  <Link href="/portfolio" style={styles.navLink} className="nav-link">Portfolio</Link>
-  <Link href="/career" style={styles.navLink} className="nav-link">Career</Link>
-  <Link href="/studio" style={styles.navLink} className="nav-link">Studio</Link>
-  <Link href="/contact" style={styles.navLink} className="nav-link">Contact</Link>
-  
-</nav>
+          <Link href="/" style={styles.navLink} className="nav-link">Home</Link>
+          <Link href="/about_us" style={styles.navLink} className="nav-link">About</Link>
+          <Link href="/services" style={styles.navLink} className="nav-link">Services</Link>
+          <Link href="/portfolio" style={styles.navLink} className="nav-link">Portfolio</Link>
+          <Link href="/career" style={styles.navLink} className="nav-link">Career</Link>
+          <Link href="/studio" style={styles.navLink} className="nav-link">Studio</Link>
+          <Link href="/contact" style={styles.navLink} className="nav-link">Contact</Link>
+
+        </nav>
         <NavLinkActive />
         <Link href="/contact" style={styles.ctaButton} className="desktop-cta" aria-label="Get Started - Contact Us">Get Started</Link>
         <MobileMenu />

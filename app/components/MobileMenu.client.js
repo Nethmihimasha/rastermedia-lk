@@ -82,111 +82,11 @@ export default function MobileMenu() {
           >
             Contact
           </Link>
-          <Link href="/contact" className="mobile-menu-cta btn" onClick={closeMenu}>
+          <Link href="/contact" className="mobile-menu-cta" onClick={closeMenu}>
             Get Started
           </Link>
         </nav>
       </div>
-
-      <style jsx>{`
-        .mobile-menu-toggle {
-          display: none;
-          background: transparent;
-          border: none;
-          padding: 8px;
-          cursor: pointer;
-          z-index: 10001;
-          position: relative;
-        }
-
-        @media (max-width: 900px) {
-          .mobile-menu-toggle {
-            display: block;
-          }
-        }
-
-        .hamburger {
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-          width: 28px;
-          height: 22px;
-          position: relative;
-        }
-
-        .hamburger span {
-          display: block;
-          width: 100%;
-          height: 3px;
-          background: #5DCDDB;
-          transition: all 0.3s ease;
-          border-radius: 2px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-          transform: rotate(45deg) translateY(10px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-          opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-          transform: rotate(-45deg) translateY(-10px);
-        }
-
-        .mobile-menu-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100vh;
-          background: rgba(15, 15, 15, 0.98);
-          backdrop-filter: blur(10px);
-          z-index: 10000;
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.3s ease, visibility 0.3s ease;
-        }
-
-        .mobile-menu-overlay.active {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        .mobile-menu-nav {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          gap: 24px;
-          padding: 20px;
-        }
-
-        .mobile-menu-link {
-          color: #A0A0A0;
-          text-decoration: none;
-          font-size: 24px;
-          font-weight: 700;
-          transition: color 0.3s ease;
-          position: relative;
-        }
-
-        .mobile-menu-link.active {
-          color: #5DCDDB;
-        }
-
-        .mobile-menu-link:hover {
-          color: #FFFFFF;
-        }
-
-        .mobile-menu-cta {
-          margin-top: 20px;
-          padding: 14px 36px;
-          font-size: 16px;
-        }
-      `}</style>
     </>
   );
 }
