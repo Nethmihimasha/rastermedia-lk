@@ -234,15 +234,28 @@ export default function ContactPage() {
                 </button>
 
                 {message && (
-                  <div style={{
-                      padding: '16px', marginTop: '16px', borderRadius: '4px',
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    style={{
+                      padding: '24px', 
+                      marginTop: '24px', 
+                      borderRadius: '8px',
                       background: message.includes('success') ? 'rgba(93, 205, 219, 0.1)' : 'rgba(255, 0, 0, 0.1)',
                       border: `1px solid ${message.includes('success') ? '#5DCDDB' : '#ff0000'}`,
-                      color: message.includes('success') ? '#5DCDDB' : '#ff6b6b',
-                      fontFamily: "'Cousine', monospace", fontSize: '14px',
-                    }}>
-                    {message}
-                  </div>
+                      textAlign: 'center'
+                    }}
+                  >
+                    {message.includes('success') ? (
+                      <div>
+                        <div style={{ fontSize: '40px', marginBottom: '12px' }}>📨</div>
+                        <h3 style={{ color: '#5DCDDB', fontSize: '20px', marginBottom: '8px', fontFamily: 'Erbaum, sans-serif' }}>Message Received!</h3>
+                        <p style={{ color: '#A0A0A0', fontSize: '14px', margin: 0 }}>Check your inbox for a confirmation email. We&apos;ll be in touch soon.</p>
+                      </div>
+                    ) : (
+                      <p style={{ color: '#ff6b6b', fontSize: '14px', margin: 0 }}>{message}</p>
+                    )}
+                  </motion.div>
                 )}
               </form>
             </motion.div>

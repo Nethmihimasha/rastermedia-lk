@@ -559,31 +559,51 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
           </div>
         </div>
 
-        {submitStatus === 'success' && <div style={styles.successMsg}><Check size={24} /><div><strong>Request received!</strong><p>We will confirm availability shortly.</p></div></div>}
-        {submitStatus === 'error' && <div style={styles.errorMsg}><X size={24} /><div><strong>Failed</strong><p>Please try again or contact us.</p></div></div>}
+        {submitStatus === 'success' ? (
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ padding: '60px 20px', textAlign: 'center' }}
+          >
+            <div style={{ fontSize: '64px', marginBottom: '24px' }}>✨</div>
+            <h2 style={{ color: '#5DCDDB', fontSize: '32px', marginBottom: '12px', fontFamily: 'Erbaum, sans-serif' }}>Booking Received!</h2>
+            <p style={{ color: '#A0A0A0', fontSize: '16px', marginBottom: '32px' }}>
+              We&apos;ve sent a confirmation email to your inbox.<br />
+              Our team will review your request and confirm availability shortly.
+            </p>
+            <button 
+              onClick={onClose}
+              style={{ ...styles.submitBtn, background: 'transparent', border: '1px solid #5DCDDB', color: '#5DCDDB' }}
+            >
+              Close Window
+            </button>
+          </motion.div>
+        ) : (
+          <form style={styles.bookingForm} onSubmit={handleSubmit}>
+            <div style={styles.formRow} className="studio-form-row">
+              <div style={styles.formGroup}><label style={styles.label}><User size={16} style={{color: '#5DCDDB'}} />Full Name</label><input type="text" name="name" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} style={styles.input} placeholder="John Doe" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Mail size={16} style={{color: '#5DCDDB'}} />Email</label><input type="email" name="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} style={styles.input} placeholder="john@example.com" required /></div>
+            </div>
+            <div style={styles.formRow} className="studio-form-row">
+              <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />Phone</label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Calendar size={16} style={{color: '#5DCDDB'}} />Date</label><input type="date" name="date" value={formData.date} onChange={(e)=>setFormData({...formData, date: e.target.value})} style={styles.input} min={new Date().toISOString().split('T')[0]} required /></div>
+            </div>
+            <div style={styles.formRow} className="studio-form-row">
+              <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Time</label><select name="time" value={formData.time} onChange={(e)=>setFormData({...formData, time: e.target.value})} style={styles.select} required><option value="">Select time</option><option value="9:00 AM">9:00 AM</option><option value="10:00 AM">10:00 AM</option><option value="11:00 AM">11:00 AM</option><option value="1:00 PM">1:00 PM</option><option value="3:00 PM">3:00 PM</option></select></div>
+              <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Extra Hours</label><select name="additionalHours" value={formData.additionalHours} onChange={(e)=>setFormData({...formData, additionalHours: e.target.value})} style={styles.select}><option value="0">None</option><option value="1">+1 Hr</option><option value="2">+2 Hrs</option></select></div>
+            </div>
+            <div style={styles.formGroup}><label style={styles.label}><MessageSquare size={16} style={{color: '#5DCDDB'}} />Notes</label><textarea name="notes" value={formData.notes} onChange={(e)=>setFormData({...formData, notes: e.target.value})} style={styles.textarea} placeholder="Special requirements?" /></div>
 
-        <form style={styles.bookingForm} onSubmit={handleSubmit}>
-          <div style={styles.formRow} className="studio-form-row">
-            <div style={styles.formGroup}><label style={styles.label}><User size={16} style={{color: '#5DCDDB'}} />Full Name</label><input type="text" name="name" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} style={styles.input} placeholder="John Doe" required /></div>
-            <div style={styles.formGroup}><label style={styles.label}><Mail size={16} style={{color: '#5DCDDB'}} />Email</label><input type="email" name="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} style={styles.input} placeholder="john@example.com" required /></div>
-          </div>
-          <div style={styles.formRow} className="studio-form-row">
-            <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />Phone</label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
-            <div style={styles.formGroup}><label style={styles.label}><Calendar size={16} style={{color: '#5DCDDB'}} />Date</label><input type="date" name="date" value={formData.date} onChange={(e)=>setFormData({...formData, date: e.target.value})} style={styles.input} min={new Date().toISOString().split('T')[0]} required /></div>
-          </div>
-          <div style={styles.formRow} className="studio-form-row">
-            <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Time</label><select name="time" value={formData.time} onChange={(e)=>setFormData({...formData, time: e.target.value})} style={styles.select} required><option value="">Select time</option><option value="9:00 AM">9:00 AM</option><option value="10:00 AM">10:00 AM</option><option value="11:00 AM">11:00 AM</option><option value="1:00 PM">1:00 PM</option><option value="3:00 PM">3:00 PM</option></select></div>
-            <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Extra Hours</label><select name="additionalHours" value={formData.additionalHours} onChange={(e)=>setFormData({...formData, additionalHours: e.target.value})} style={styles.select}><option value="0">None</option><option value="1">+1 Hr</option><option value="2">+2 Hrs</option></select></div>
-          </div>
-          <div style={styles.formGroup}><label style={styles.label}><MessageSquare size={16} style={{color: '#5DCDDB'}} />Notes</label><textarea name="notes" value={formData.notes} onChange={(e)=>setFormData({...formData, notes: e.target.value})} style={styles.textarea} placeholder="Special requirements?" /></div>
+            {submitStatus === 'error' && <div style={styles.errorMsg}><X size={24} /><div><strong>Failed</strong><p>Please try again or contact us.</p></div></div>}
 
-          <div style={styles.priceSummary}>
-            <div style={styles.summaryRow}><span>Base Package ({selectedDuration})</span><span>LKR {currentPackage.price.toLocaleString()}</span></div>
-            <div style={{...styles.summaryRow, borderTop: '1px solid rgba(93, 205, 219, 0.2)', paddingTop: '12px', marginTop: '12px'}}><span style={{fontSize: '18px', color: '#FFFFFF'}}>Total</span><span style={{fontSize: '24px', color: '#5DCDDB'}}>LKR {totalPrice.toLocaleString()}</span></div>
-          </div>
+            <div style={styles.priceSummary}>
+              <div style={styles.summaryRow}><span>Base Package ({selectedDuration})</span><span>LKR {currentPackage.price.toLocaleString()}</span></div>
+              <div style={{...styles.summaryRow, borderTop: '1px solid rgba(93, 205, 219, 0.2)', paddingTop: '12px', marginTop: '12px'}}><span style={{fontSize: '18px', color: '#FFFFFF'}}>Total</span><span style={{fontSize: '24px', color: '#5DCDDB'}}>LKR {totalPrice.toLocaleString()}</span></div>
+            </div>
 
-          <button type="submit" style={styles.submitBtn} disabled={isSubmitting} className="studio-book-btn">{isSubmitting ? 'Submitting...' : 'Confirm Booking'}</button>
-        </form>
+            <button type="submit" style={styles.submitBtn} disabled={isSubmitting} className="studio-book-btn">{isSubmitting ? 'Submitting...' : 'Confirm Booking'}</button>
+          </form>
+        )}
       </motion.div>
     </motion.div>
   );

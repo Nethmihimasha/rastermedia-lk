@@ -128,7 +128,6 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
       setLoading(false);
 
       if (res.ok) {
-        setMessage('Model registration submitted successfully!');
         setFormData({
           fullName: '', age: '', email: '', phone: '', height: '',
           country: '', gender: '', portfolioLink: '', instagram: '',
@@ -137,7 +136,8 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
         setSelectedCategories([]);
         setSelectedLanguages([]);
         setUploadedFiles([]);
-        if (onSuccess) setTimeout(onSuccess, 1200);
+        setMessage('success:Model registration submitted successfully!');
+        if (onSuccess) setTimeout(onSuccess, 3000);
       } else {
         setMessage(data.error || 'Submission failed. Please try again later.');
       }
@@ -321,11 +321,31 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
               </div>
             </div>
 
-            {message && <div style={messageStyle(message)}>{message}</div>}
-
-            <div style={modelStyles.submitContainer}>
-              <button type="submit" style={modelStyles.submitButton} disabled={loading}>{loading ? 'Submitting...' : 'Submit Application'}</button>
-            </div>
+            {message && message.includes('success') ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                style={{
+                  padding: '40px', 
+                  borderRadius: '16px',
+                  background: 'rgba(93, 205, 219, 0.1)',
+                  border: '1px solid #5DCDDB',
+                  textAlign: 'center',
+                  gridColumn: '1 / -1'
+                }}
+              >
+                <div style={{ fontSize: '48px', marginBottom: '16px' }}>✨</div>
+                <h3 style={{ color: '#5DCDDB', fontSize: '24px', marginBottom: '8px', fontFamily: 'Erbaum, sans-serif' }}>Registration Received!</h3>
+                <p style={{ color: '#A0A0A0', fontSize: '15px', margin: 0 }}>Check your inbox for a confirmation email. We&apos;ll be in touch if your profile matches our needs.</p>
+              </motion.div>
+            ) : (
+              <>
+                {message && <div style={messageStyle(message)}>{message}</div>}
+                <div style={modelStyles.submitContainer}>
+                  <button type="submit" style={modelStyles.submitButton} disabled={loading}>{loading ? 'Submitting...' : 'Submit Application'}</button>
+                </div>
+              </>
+            )}
           </form>
         )}
       </div>
@@ -413,13 +433,13 @@ export default function CareersPage() {
       setUploadInProgress(false);
 
       if (res.ok) {
-        setMessage("Application submitted successfully! We'll contact you soon.");
+        setMessage("success:Application submitted successfully! We'll contact you soon.");
         form.reset();
         setResumeName('');
         setTimeout(() => {
           closeModal();
           setMessage('');
-        }, 1800);
+        }, 3000);
       } else {
         setMessage(data.error || 'Submission failed. Please try again later.');
       }
@@ -554,11 +574,31 @@ export default function CareersPage() {
                           {uploadInProgress && <div style={{fontSize: '12px', color: '#5DCDDB'}}>Uploading…</div>}
                         </div>
                       </label>
-                      <textarea name="cover" placeholder="Cover letter (optional)" style={careerStyles.modalTextarea}></textarea>
-                      <button type="submit" style={careerStyles.modalSubmit} disabled={isSubmitting}>
-                        {isSubmitting ? 'Submitting...' : 'Submit Application'}
-                      </button>
-                      {message && <div style={messageStyle(message)}>{message}</div>}
+                      {message && message.includes('success') ? (
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          style={{
+                            padding: '32px 20px', 
+                            borderRadius: '12px',
+                            background: 'rgba(93, 205, 219, 0.1)',
+                            border: '1px solid #5DCDDB',
+                            textAlign: 'center'
+                          }}
+                        >
+                          <div style={{ fontSize: '40px', marginBottom: '16px' }}>📩</div>
+                          <h3 style={{ color: '#5DCDDB', fontSize: '20px', marginBottom: '8px', fontFamily: 'Erbaum, sans-serif' }}>Application Received!</h3>
+                          <p style={{ color: '#A0A0A0', fontSize: '14px', margin: 0 }}>We&apos;ve sent a confirmation email to your inbox. Good luck!</p>
+                        </motion.div>
+                      ) : (
+                        <>
+                          <textarea name="cover" placeholder="Cover letter (optional)" style={careerStyles.modalTextarea}></textarea>
+                          <button type="submit" style={careerStyles.modalSubmit} disabled={isSubmitting}>
+                            {isSubmitting ? 'Submitting...' : 'Submit Application'}
+                          </button>
+                          {message && <div style={messageStyle(message)}>{message}</div>}
+                        </>
+                      )}
                     </form>
                   </div>
                 </div>

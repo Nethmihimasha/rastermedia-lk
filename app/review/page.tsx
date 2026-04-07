@@ -21,6 +21,7 @@ export default function ReviewsPage() {
   });
   const [recentReviews, setRecentReviews] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     fetch('/api/reviews')
@@ -50,7 +51,7 @@ export default function ReviewsPage() {
       });
 
       if (res.ok) {
-        alert('Thank you for your review! It will be visible after admin approval.');
+        setSubmitted(true);
         setFormData({ name: '', email: '', review: '' });
         setRating(0);
       } else {
@@ -105,103 +106,132 @@ export default function ReviewsPage() {
             <motion.div style={styles.formColumn} variants={staggerItemVariants} className="review-form-col">
               <div style={styles.formCard}>
                 <div style={styles.formHeader}>
-                  <h2 style={styles.formTitle}>Leave Your Review</h2>
-                  <p style={styles.formSubtitle}>Share your experience with us</p>
+                  <h2 style={styles.formTitle}>{submitted ? "Thank You!" : "Leave Your Review"}</h2>
+                  <p style={styles.formSubtitle}>{submitted ? "Your feedback is being processed." : "Share your experience with us"}</p>
                 </div>
 
-                <form onSubmit={handleSubmit} style={styles.form}>
-                  <div style={styles.formGroup}>
-                    <label style={styles.label}>How was your experience?</label>
-                    <div style={styles.starRating}>
-                      {[1, 2, 3, 4, 5].map((star) => (
-                        <button
-                          key={star}
-                          type="button"
-                          className={`star-button ${(star <= (hoveredRating || rating)) ? 'active' : ''}`}
-                          style={{
-                            ...styles.star,
-                            ...(star <= (hoveredRating || rating) ? styles.starActive : {})
-                          }}
-                          onClick={() => setRating(star)}
-                          onMouseEnter={() => setHoveredRating(star)}
-                          onMouseLeave={() => setHoveredRating(0)}
-                        >
-                          ★
-                        </button>
-                      ))}
+                {submitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    style={{
+                      textAlign: 'center', 
+                      padding: '40px 20px',
+                      background: 'rgba(93, 205, 219, 0.05)',
+                      border: '1px solid rgba(93, 205, 219, 0.2)',
+                      borderRadius: '8px'
+                    }}
+                  >
+                    <div style={{ fontSize: '64px', marginBottom: '24px' }}>✨</div>
+                    <h3 style={{ color: '#5DCDDB', fontSize: '24px', marginBottom: '16px', fontFamily: 'Erbaum, sans-serif' }}>Review Submitted!</h3>
+                    <p style={{ color: '#A0A0A0', lineHeight: '1.6', marginBottom: '24px' }}>
+                      Thank you for sharing your thoughts. Your review will be visible on our homepage as soon as it is verified by our team.
+                    </p>
+                    <div style={{ padding: '16px', background: 'rgba(93, 205, 219, 0.1)', borderRadius: '4px', fontSize: '14px', color: '#FFF' }}>
+                      Check your inbox for a confirmation email.
                     </div>
-                    {rating > 0 && (
-                      <div style={styles.ratingText}>
-                        {rating === 5 && "Excellent!"}
-                        {rating === 4 && "Great!"}
-                        {rating === 3 && "Good"}
-                        {rating === 2 && "Fair"}
-                        {rating === 1 && "Poor"}
+                    <button 
+                      onClick={() => setSubmitted(false)}
+                      style={{ ...styles.submitButton, width: 'auto', padding: '12px 24px', margin: '32px auto 0' }}
+                    >
+                      Write Another
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} style={styles.form}>
+                    <div style={styles.formGroup}>
+                      <label style={styles.label}>How was your experience?</label>
+                      <div style={styles.starRating}>
+                        {[1, 2, 3, 4, 5].map((star) => (
+                          <button
+                            key={star}
+                            type="button"
+                            className={`star-button ${(star <= (hoveredRating || rating)) ? 'active' : ''}`}
+                            style={{
+                              ...styles.star,
+                              ...(star <= (hoveredRating || rating) ? styles.starActive : {})
+                            }}
+                            onClick={() => setRating(star)}
+                            onMouseEnter={() => setHoveredRating(star)}
+                            onMouseLeave={() => setHoveredRating(0)}
+                          >
+                            ★
+                          </button>
+                        ))}
                       </div>
-                    )}
-                  </div>
+                      {rating > 0 && (
+                        <div style={styles.ratingText}>
+                          {rating === 5 && "Excellent!"}
+                          {rating === 4 && "Great!"}
+                          {rating === 3 && "Good"}
+                          {rating === 2 && "Fair"}
+                          {rating === 1 && "Poor"}
+                        </div>
+                      )}
+                    </div>
 
-                  <div style={styles.formRow} className="review-form-row">
+                    <div style={styles.formRow} className="review-form-row">
+                      <div style={styles.formGroup}>
+                        <label style={styles.label}>Your Name *</label>
+                        <input
+                          type="text"
+                          style={styles.input}
+                          placeholder="John Doe"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          required
+                          className="review-input"
+                        />
+                      </div>
+                      <div style={styles.formGroup}>
+                        <label style={styles.label}>Email Address *</label>
+                        <input
+                          type="email"
+                          style={styles.input}
+                          placeholder="john@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          required
+                          className="review-input"
+                        />
+                      </div>
+                    </div>
+
                     <div style={styles.formGroup}>
-                      <label style={styles.label}>Your Name *</label>
-                      <input
-                        type="text"
-                        style={styles.input}
-                        placeholder="John Doe"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      <label style={styles.label}>Your Review *</label>
+                      <textarea
+                        style={styles.textarea}
+                        placeholder="Tell us about your experience working with us..."
+                        rows={5}
+                        value={formData.review}
+                        onChange={(e) => setFormData({ ...formData, review: e.target.value })}
                         required
                         className="review-input"
-                      />
+                      ></textarea>
+                      <div style={styles.charCount}>
+                        {formData.review.length} characters {formData.review.length >= 50 && "✓"}
+                      </div>
                     </div>
-                    <div style={styles.formGroup}>
-                      <label style={styles.label}>Email Address *</label>
-                      <input
-                        type="email"
-                        style={styles.input}
-                        placeholder="john@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        required
-                        className="review-input"
-                      />
-                    </div>
-                  </div>
 
-                  <div style={styles.formGroup}>
-                    <label style={styles.label}>Your Review *</label>
-                    <textarea
-                      style={styles.textarea}
-                      placeholder="Tell us about your experience working with us..."
-                      rows={5}
-                      value={formData.review}
-                      onChange={(e) => setFormData({ ...formData, review: e.target.value })}
-                      required
-                      className="review-input"
-                    ></textarea>
-                    <div style={styles.charCount}>
-                      {formData.review.length} characters {formData.review.length >= 50 && "✓"}
-                    </div>
-                  </div>
+                    <button 
+                       type="submit" 
+                       style={{
+                         ...styles.submitButton,
+                         opacity: isSubmitting ? 0.7 : 1,
+                         cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                       }} 
+                       className="review-submit-btn"
+                       disabled={isSubmitting}
+                     >
+                      <span>{isSubmitting ? 'Submitting...' : 'Submit Review'}</span>
+                      <span style={styles.buttonIcon} className="btn-icon">→</span>
+                    </button>
 
-                  <button 
-                     type="submit" 
-                     style={{
-                       ...styles.submitButton,
-                       opacity: isSubmitting ? 0.7 : 1,
-                       cursor: isSubmitting ? 'not-allowed' : 'pointer'
-                     }} 
-                     className="review-submit-btn"
-                     disabled={isSubmitting}
-                   >
-                    <span>{isSubmitting ? 'Submitting...' : 'Submit Review'}</span>
-                    <span style={styles.buttonIcon} className="btn-icon">→</span>
-                  </button>
-
-                  <p style={styles.formNote}>
-                    Your review will be visible on our website after approval
-                  </p>
-                </form>
+                    <p style={styles.formNote}>
+                      Your review will be visible on our website after approval
+                    </p>
+                  </form>
+                )}
               </div>
             </motion.div>
 

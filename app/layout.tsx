@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import MobileMenu from './components/MobileMenu';
 import CleanBodyAttributes from './components/CleanBodyAttributes';
 import GoToTop from './components/GoToTop';
+import SessionWrapper from './components/SessionWrapper';
 
 export const metadata: Metadata = {
   title: 'Raster Media - Pixel Perfect Creative Solutions',
@@ -48,7 +49,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning>
         <CleanBodyAttributes />
         <Header />
-        <main style={styles.main}>{children}</main>
+        <SessionWrapper>
+          <main style={styles.main}>{children}</main>
+        </SessionWrapper>
         <Footer />
         <GoToTop />
       </body>
