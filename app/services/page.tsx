@@ -80,7 +80,6 @@ export default function ServicesPage() {
           enableBorderGlow={true}
           enableTilt={false}
           enableMagnetism={false}
-          clickEffect={false}
           particleCount={0}
           glowColor={'93, 205, 219'}
         />
