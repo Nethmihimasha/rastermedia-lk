@@ -28,6 +28,7 @@ type MagicBentoItem = {
   title: string;
   description: string;
   features?: string[];
+  backgroundImage?: string;
 };
 
 type MagicBentoProps = {
@@ -338,7 +339,21 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
             padding: 32px;
             align-items: start;
             position: relative;
-            z-index: 2;
+            z-index: 5;
+            background: linear-gradient(to bottom, rgba(15, 15, 15, 0.4) 0%, rgba(15, 15, 15, 0.8) 100%);
+          }
+          .card-bg-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            z-index: 1;
+          }
+          .card:hover .card-bg-image {
+            transform: scale(1.1);
+            opacity: 0.5;
           }
           .card-content-left {
             display: flex;
@@ -455,6 +470,12 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
             
             const CardContent = () => (
               <div className="card-grid">
+                {service.backgroundImage && (
+                  <div 
+                    className="card-bg-image" 
+                    style={{ backgroundImage: `url(${service.backgroundImage})` }}
+                  />
+                )}
                 <div className="card-content-left">
                   <div className="card-icon-num">
                     <div className="icon-box">
