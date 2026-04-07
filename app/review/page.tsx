@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import type { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 import { reviews } from '../../src/data/reviews';
@@ -19,14 +19,51 @@ export default function ReviewsPage() {
     email: '',
     review: ''
   });
+  const [recentReviews, setRecentReviews] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    fetch('/api/reviews')
+      .then(res => res.json())
+      .then(data => setRecentReviews(data))
+      .catch(err => console.error('Error fetching reviews:', err));
+  }, []);
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ ...formData, rating });
-    alert('Thank you for your review! We appreciate your feedback.');
+    if (rating === 0) {
+      alert('Please select a star rating');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          text: formData.review,
+          rating: rating
+        })
+      });
+
+      if (res.ok) {
+        alert('Thank you for your review! It will be visible after admin approval.');
+        setFormData({ name: '', email: '', review: '' });
+        setRating(0);
+      } else {
+        alert('Failed to submit review. Please try again.');
+      }
+    } catch (err) {
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
-  const recentReviews = reviews;
+  const displayReviews = recentReviews.length > 0 ? recentReviews : reviews;
 
   const ratingDistribution = [
     { stars: 5, count: 435, percentage: 87 },
@@ -147,8 +184,17 @@ export default function ReviewsPage() {
                     </div>
                   </div>
 
-                  <button type="submit" style={styles.submitButton} className="review-submit-btn">
-                    <span>Submit Review</span>
+                  <button 
+                     type="submit" 
+                     style={{
+                       ...styles.submitButton,
+                       opacity: isSubmitting ? 0.7 : 1,
+                       cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                     }} 
+                     className="review-submit-btn"
+                     disabled={isSubmitting}
+                   >
+                    <span>{isSubmitting ? 'Submitting...' : 'Submit Review'}</span>
                     <span style={styles.buttonIcon} className="btn-icon">→</span>
                   </button>
 
@@ -223,12 +269,12 @@ export default function ReviewsPage() {
             </p>
           </div>
           <motion.div style={styles.reviewsGrid} variants={staggerContainerVariants} className="reviews-grid">
-            {recentReviews.map((review, index) => (
+            {displayReviews.map((review: any, index: number) => (
               <motion.div key={index} style={styles.reviewCard} variants={staggerItemVariants} className="review-card-hover">
                 <div style={styles.reviewHeader}>
-                  <div style={styles.reviewAvatar}>{(review.author || '').split(' ').map(n=>n[0]).slice(0,2).join('')}</div>
+                  <div style={styles.reviewAvatar}>{(review.name || review.author || '').split(' ').map((n: string)=>n[0]).slice(0,2).join('')}</div>
                   <div style={styles.reviewInfo}>
-                    <div style={styles.reviewAuthor}>{review.author}</div>
+                    <div style={styles.reviewAuthor}>{review.name || review.author}</div>
                     <div style={styles.reviewTime}>{review.time}</div>
                   </div>
                 </div>

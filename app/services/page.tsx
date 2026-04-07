@@ -17,42 +17,48 @@ const services = [
     icon: <Camera size={28} strokeWidth={1.5} />,
     title: 'Photography & Video Production',
     description: 'Cinematic photography and video for brands, fashion, products, and corporate projects from start to finish.',
-    features: ['Product Photography', 'Commercial Shoots', 'Fashion & Editorial']
+    features: ['Product Photography', 'Commercial Shoots', 'Fashion & Editorial'],
+    backgroundImage: '/images/video_1.jpg'
   },
   {
     number: '02',
     icon: <Palette size={28} strokeWidth={1.5} />,
     title: 'Brand Strategy & Identity',
     description: 'We provide clarity and direction for brands with well-crafted messaging and visual systems.',
-    features: ['Brand Strategy', 'Visual Identity', 'Messaging']
+    features: ['Brand Strategy', 'Visual Identity', 'Messaging'],
+    backgroundImage: '/images/design_3.jpg'
   },
   {
     number: '03',
     icon: <Target size={28} strokeWidth={1.5} />,
     title: 'Studio Space',
     description: 'A professional studio for photography, video, content production, and podcasts, ensuring high-quality results.',
-    features: ['Studio Hire', 'Equipment', 'Production Support']
+    features: ['Studio Hire', 'Equipment', 'Production Support'],
+    backgroundImage: '/images/album10-winter-studio-01.jpg'
   },
   {
     number: '04',
     icon: <PenTool size={28} strokeWidth={1.5} />,
     title: 'Design',
     description: 'From logos to complete brand systems, we create designs with care, precision, and purpose.',
-    features: ['Logo Design', 'Brand Systems', 'UI/UX']
+    features: ['Logo Design', 'Brand Systems', 'UI/UX'],
+    backgroundImage: '/images/design_1.jpg'
   },
   {
     number: '05',
     icon: <TrendingUp size={28} strokeWidth={1.5} />,
     title: 'Social Media Management',
     description: 'Managing social media with creative content to engage, grow, and maintain brand presence.',
-    features: ['Content Creation', 'Community Management', 'Analytics']
+    features: ['Content Creation', 'Community Management', 'Analytics'],
+    backgroundImage: '/images/design_5.jpg'
   },
   {
     number: '06',
     icon: <Video size={28} strokeWidth={1.5} />,
     title: 'Website Design & Development',
     description: 'Premium websites built for seamless performance, usability, and a strong brand presence.',
-    features: ['Web Design', 'Development', 'Performance']
+    features: ['Web Design', 'Development', 'Performance'],
+    backgroundImage: '/images/design_9.jpg'
   }
 ];
 

@@ -37,12 +37,18 @@ export default function ContactPage() {
     setMessage('');
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/inquiries', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          whatsapp: formData.phone,
+          message: `Company: ${formData.company}\nProject Type: ${formData.projectType}\nMessage: ${formData.message}`,
+          type: 'contact'
+        }),
       });
 
       const data = await res.json();

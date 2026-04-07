@@ -8,14 +8,31 @@ import { useRouter } from 'next/navigation';
 import { reviews } from '../src/data/reviews';
 
 export default function HomePage() {
+  const [featuredProjects, setFeaturedProjects] = useState([]);
+  const [verifiedReviews, setVerifiedReviews] = useState([]);
+
+  useEffect(() => {
+    // Fetch featured projects
+    fetch('/api/projects')
+      .then(res => res.json())
+      .then(data => setFeaturedProjects(data.slice(0, 3))) // Top 3
+      .catch(err => console.error('Error fetching projects:', err));
+
+    // Fetch verified reviews
+    fetch('/api/reviews')
+      .then(res => res.json())
+      .then(data => setVerifiedReviews(data))
+      .catch(err => console.error('Error fetching reviews:', err));
+  }, []);
+
   return (
     <div style={styles.page}>
       <HeroSection />
       <ServicesSection />
       <StatsSection />
-      <FeaturedWorkSection />
+      <FeaturedWorkSection projects={featuredProjects} />
       <BrandsSection />
-      <TestimonialsSection />
+      <TestimonialsSection reviews={verifiedReviews} />
       <CTASection />
     </div>
   );
@@ -23,18 +40,19 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section style={styles.hero}>
-      <div style={styles.heroVideo}>
+    <section style={styles.hero} className="hero-section-container">
+      <div style={styles.heroVideo} className="hero-video-wrapper">
+        <div className="hero-video-overlay"></div>
         <iframe
           className="hero-video-iframe"
-          src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&loop=1&playlist=OmHLohPk6b0&controls=0&rel=0&modestbranding=1"
+          src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&loop=1&playlist=OmHLohPk6b0&controls=0&rel=0&modestbranding=1&enablejsapi=1"
           title="Hero Video"
           frameBorder="0"
-          allow="autoplay; encrypted-media"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowFullScreen
         />
       </div>
-      <div style={styles.heroOverlay}></div>
-      <div style={styles.heroGrid}></div>
+      <div style={styles.heroGrid} className="hero-grid-overlay"></div>
 
 
 
@@ -47,8 +65,8 @@ function HeroSection() {
           We build modern, pixel-sharp campaigns for brands that want to stand out.
         </p>
         <div style={styles.heroButtons} className="hero-buttons">
-          <Link href="/contact" className="btn btn--home" aria-label="Start a project">START A PROJECT</Link>
-          <Link href="/studio" className="btn btn--home" aria-label="Book studio space">BOOK STUDIO SPACE</Link>
+          <Link href="/contact" className="btn btn--home" aria-label="Start a project">START PROJECT</Link>
+          <Link href="/studio" className="btn btn--home" aria-label="Book studio space">BOOK STUDIO</Link>
         </div>
         <div style={styles.heroDots}>
           {[0, 1, 2, 3, 4].map((i) => (
@@ -285,9 +303,8 @@ function StatItem({ value, suffix, label, startCounting }: { value: string | num
   );
 }
 
-function FeaturedWorkSection() {
-
-  const projects = [
+function FeaturedWorkSection({ projects: liveProjects }: { projects: any[] }) {
+  const defaultProjects = [
     {
       title: 'Winter Christmas Shoot',
       client: 'Winter Collection',
@@ -311,6 +328,8 @@ function FeaturedWorkSection() {
     },
   ];
 
+  const displayProjects = liveProjects.length > 0 ? liveProjects : defaultProjects;
+
   return (
     <section style={styles.section}>
       <div style={styles.container}>
@@ -323,7 +342,7 @@ function FeaturedWorkSection() {
           </p>
         </div>
         <div style={styles.portfolioGrid} className="portfolio-grid">
-          {projects.map((project, index) => (
+          {displayProjects.map((project, index) => (
             <PortfolioCard key={index} {...project} />
           ))}
         </div>
@@ -406,9 +425,11 @@ function BrandsSection() {
   );
 }
 
-function TestimonialsSection() {
+function TestimonialsSection({ reviews: liveReviews }: { reviews: any[] }) {
   // Carousel showing 3 testimonials at a time, with cloned edges for seamless looping
-  const testimonials = (reviews as any[]).map((r: any) => ({ quote: r.text, name: r.author, role: r.role || 'Client', rating: r.rating || 5, time: r.time || '', avatar: r.avatar || '' }));
+  const testimonials = liveReviews.length > 0 
+    ? liveReviews.map((r: any) => ({ quote: r.text, name: r.name, role: r.role || 'Client', rating: r.rating || 5, time: r.time || '', avatar: r.avatar || '' }))
+    : (reviews as any[]).map((r: any) => ({ quote: r.text, name: r.author, role: r.role || 'Client', rating: r.rating || 5, time: r.time || '', avatar: r.avatar || '' }));
 
   function getVisible() {
     if (typeof window === 'undefined') return 3;

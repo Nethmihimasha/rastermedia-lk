@@ -523,18 +523,16 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/booking', {
+      const response = await fetch('/api/inquiries', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          fullName: formData.name,
+          name: formData.name,
           email: formData.email,
-          phone: formData.phone,
-          packageType: packageType === 'backdrop' ? 'Seamless Backdrop' : 'Podcast / Interior',
-          preferredDate: formData.date,
-          preferredTime: formData.time,
-          additionalHours: parseInt(formData.additionalHours),
-          additionalNotes: formData.notes,
+          whatsapp: formData.phone,
+          message: `Package: ${packageType === 'backdrop' ? 'Seamless Backdrop' : 'Podcast / Interior'} - ${selectedDuration}\nDate: ${formData.date}\nTime: ${formData.time}\nExtra Hours: ${formData.additionalHours}\nNotes: ${formData.notes}`,
+          type: 'booking',
+          time: formData.time,
         }),
       });
       if (response.ok) {
