@@ -175,9 +175,10 @@ export default function Portfolio() {
       </section>
 
       {/* Filter Buttons */}
-      <section style={styles.filterSection} ref={filterRef}>
+      <section style={styles.filterSection} ref={filterRef} className="portfolio-filter-section">
         <motion.div
           style={styles.filterButtons}
+          className="portfolio-filter-buttons"
           initial="hidden"
           animate={filterInView ? "visible" : "hidden"}
           variants={staggerContainerVariants}
@@ -189,7 +190,7 @@ export default function Portfolio() {
                 ...styles.filterBtn,
                 ...(activeCategory === category ? styles.filterBtnActive : {})
               }}
-              className={`filter-btn-hover ${activeCategory === category ? 'active' : ''}`}
+              className={`filter-btn-hover portfolio-filter-btn ${activeCategory === category ? 'active' : ''}`}
               onClick={() => { setActiveCategory(category); setIsAlbumOpen(false); setActiveAlbum(null); }}
               variants={staggerItemVariants}
             >
@@ -201,7 +202,7 @@ export default function Portfolio() {
 
       {/* Portfolio Grid */}
       {!isAlbumOpen && (
-        <section style={styles.portfolioGrid} ref={gridRef} key={activeCategory}>
+        <section style={styles.portfolioGrid} ref={gridRef} key={activeCategory} className="portfolio-grid-section">
           {albums.length === 0 ? (
             <div style={{color:'#A0A0A0', textAlign:'center', padding:'48px 0', fontFamily: 'Cousine, monospace'}}>
               No work in this category yet.
@@ -277,9 +278,19 @@ export default function Portfolio() {
         
         @media (max-width: 1024px) {
           .portfolio-grid-container { grid-template-columns: repeat(2, 1fr) !important; }
+          .portfolio-hero { min-height: 400px !important; padding: 60px 24px !important; }
+          .portfolio-filter-section { padding: 24px !important; }
+          .portfolio-grid-section { padding: 40px 24px !important; }
         }
         @media (max-width: 768px) {
           .portfolio-grid-container { grid-template-columns: 1fr !important; }
+          .portfolio-filter-buttons { flex-wrap: wrap; justify-content: center; gap: 12px !important; }
+          .portfolio-filter-btn { padding: 10px 18px !important; font-size: 14px !important; }
+          .portfolio-grid-section { padding: 32px 20px !important; }
+        }
+        @media (max-width: 480px) {
+          .portfolio-hero { min-height: 320px !important; padding: 40px 16px !important; }
+          .portfolio-grid-section { padding: 24px 12px !important; }
         }
       `}</style>
     </div>
@@ -402,7 +413,7 @@ function WorkModal({ work, onClose }: { work: PortfolioItem, onClose: () => void
 
 const styles: Record<string, CSSProperties> = {
   portfolioPage: { minHeight: '100vh', background: '#0F0F0F', paddingTop: '140px' },
-  header: { position: 'relative', padding: '80px 48px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '420px', overflow: 'hidden' },
+  header: { position: 'relative', padding: '80px 48px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh', overflow: 'hidden' },
   heroImageWrapper: { position: 'absolute', inset: 0, zIndex: 0, background: '#0F0F0F' },
   heroImageOverlay: { position: 'absolute', inset: 0, background: 'transparent' },
   headerContent: { position: 'relative', zIndex: 2, maxWidth: '1400px', textAlign: 'center' },
@@ -413,7 +424,7 @@ const styles: Record<string, CSSProperties> = {
   filterButtons: { display: 'flex', gap: '16px', alignItems: 'center' },
   filterBtn: { padding: '12px 24px', fontFamily: 'Cousine, monospace', fontSize: '15px', color: '#A0A0A0', background: 'rgba(37, 37, 37, 0.6)', border: '0.8px solid rgba(93, 205, 219, 0.1)', cursor: 'pointer', transition: 'all 0.3s ease' },
   filterBtnActive: { background: 'linear-gradient(180deg, #5DCDDB 0%, #7DD8E5 100%)', color: '#FFFFFF', border: 'none' },
-  portfolioGrid: { padding: '80px 48px' },
+  portfolioGrid: { padding: '48px' },
   gridContainer: { maxWidth: '1400px', margin: '0 auto' },
   albumCard: { background: '#151515', border: '0.8px solid rgba(93,205,219,0.06)', height: '400px', overflow: 'hidden', cursor: 'pointer', position: 'relative', transition: 'all 0.45s cubic-bezier(.16,.84,.44,1)' },
   albumThumb: { position: 'relative', height: '100%', background: '#1a1a1a', overflow: 'hidden' },

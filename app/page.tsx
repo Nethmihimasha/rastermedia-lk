@@ -673,7 +673,7 @@ function PixelPattern({ style, size = 'small' }: { style?: React.CSSProperties; 
 
 const styles: Record<string, CSSProperties> = {
   page: {
-    paddingTop: '72px',
+    paddingTop: 0,
   },
   container: {
     maxWidth: '1800px',
@@ -688,10 +688,14 @@ const styles: Record<string, CSSProperties> = {
   },
   hero: {
     position: 'relative',
-    width: '100%',
+    width: '100vw',
+    marginLeft: 'calc(50% - 50vw)',
     height: '100vh',
-    minHeight: '600px',
+    minHeight: '100vh',
     overflow: 'hidden',
+    backgroundColor: '#000000',
+    marginTop: 0,
+    display: 'block',
   },
 
   heroVideo: {
@@ -738,13 +742,14 @@ const styles: Record<string, CSSProperties> = {
     zIndex: 4,
     maxWidth: '1800px',
     margin: '0 auto',
-    padding: '40px 48px',
+    padding: '20px',
     textAlign: 'center',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
+    boxSizing: 'border-box',
   },
   heroHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
@@ -994,7 +999,7 @@ const styles: Record<string, CSSProperties> = {
   brandsTrack: {
     display: 'flex',
     gap: '64px',
-    animation: 'slideLeft 30s linear infinite',
+    animation: 'slideLeft 15s linear infinite',
   },
   brandItem: {
     fontFamily: 'Cousine, monospace',

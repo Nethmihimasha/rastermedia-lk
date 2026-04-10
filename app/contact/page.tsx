@@ -189,11 +189,11 @@ export default function ContactPage() {
               <form style={styles.form} onSubmit={handleSubmit}>
                 <div style={styles.formRow} className="contact-form-row">
                   <div style={styles.formGroup}>
-                    <label htmlFor="fullName" style={styles.formLabel}>Full Name *</label>
+                    <label htmlFor="fullName" style={styles.formLabel}>Full Name<span className="required-star">*</span></label>
                     <input type="text" id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="John Doe" style={styles.formInput} required />
                   </div>
                   <div style={styles.formGroup}>
-                    <label htmlFor="email" style={styles.formLabel}>Email Address *</label>
+                    <label htmlFor="email" style={styles.formLabel}>Email Address<span className="required-star">*</span></label>
                     <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} placeholder="john@example.com" style={styles.formInput} required />
                   </div>
                 </div>
@@ -210,7 +210,7 @@ export default function ContactPage() {
                 </div>
 
                 <div style={styles.formGroup}>
-                  <label htmlFor="projectType" style={styles.formLabel}>Project Type *</label>
+                  <label htmlFor="projectType" style={styles.formLabel}>Project Type<span className="required-star">*</span></label>
                   <select id="projectType" name="projectType" value={formData.projectType} onChange={handleChange} style={styles.formSelect} required>
                     <option value="">Select a project type</option>
                     <option value="branding">Branding</option>
@@ -223,7 +223,7 @@ export default function ContactPage() {
                 </div>
 
                 <div style={styles.formGroup}>
-                  <label htmlFor="message" style={styles.formLabel}>Message *</label>
+                  <label htmlFor="message" style={styles.formLabel}>Message<span className="required-star">*</span></label>
                   <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={6} placeholder="Tell us about your project..." style={styles.formTextarea} required></textarea>
                 </div>
 
@@ -312,24 +312,26 @@ export default function ContactPage() {
         .contact-submit-btn:hover { transform: translateY(-2px); opacity: 0.95; }
 
         @media (max-width: 1024px) {
-          .contact-hero { height: auto !important; min-height: 500px !important; margin-bottom: 80px !important; }
-          .contact-main-section { grid-template-columns: 1fr !important; }
+          .contact-hero { height: auto !important; min-height: 400px !important; margin-bottom: 48px !important; }
+          .contact-main-section { grid-template-columns: 1fr !important; gap: 32px !important; padding: 0 24px !important; }
           .contact-form-row { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 768px) {
-          .contact-main-title { font-size: 40px !important; line-height: 48px !important; }
-          .contact-gradient-text span { font-size: 40px !important; line-height: 48px !important; }
-          .contact-container { padding: 0 24px !important; }
-          .contact-main-section { padding: 0 !important; }
+          .contact-main-title { font-size: 32px !important; line-height: 40px !important; }
+          .contact-gradient-text span { font-size: 32px !important; line-height: 40px !important; }
+          .contact-container { padding: 0 !important; }
+          .contact-main-section { padding: 0 16px !important; }
+          .contact-form-card { padding: 32px 24px !important; }
         }
 
         @media (max-width: 480px) {
           .contact-main-title { font-size: 28px !important; line-height: 36px !important; }
           .contact-gradient-text span { font-size: 28px !important; line-height: 36px !important; }
-          .contact-hero-p { font-size: 16px !important; }
+          .contact-hero-p { font-size: 15px !important; }
           .contact-card-title, .contact-form-title { font-size: 28px !important; }
-          .contact-submit-btn { width: 100% !important; }
+          .contact-submit-btn { width: 100% !important; height: 50px !important; }
+          .contact-hero { min-height: 320px !important; }
         }
       `}</style>
     </div>

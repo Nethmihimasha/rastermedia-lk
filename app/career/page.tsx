@@ -95,11 +95,11 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
         languages: selectedLanguages,
       };
 
-      if (!payload.fullName || !payload.email || !payload.instagramHandle || selectedCategories.length === 0 || selectedLanguages.length === 0) {
-        setMessage('Please fill in all required fields');
-        setLoading(false);
-        return;
-      }
+        if (!payload.fullName || !payload.email || !payload.instagramHandle || selectedCategories.length === 0 || selectedLanguages.length === 0 || !payload.phone || !payload.age || !payload.height || !payload.country || !payload.gender) {
+          setMessage('Please fill in all required fields');
+          setLoading(false);
+          return;
+        }
 
       let photoUrls = [];
       if (uploadedFiles && uploadedFiles.length > 0) {
@@ -194,34 +194,34 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
               <div style={modelStyles.formGrid}>
                 <div style={modelStyles.formRow}>
                   <div style={modelStyles.inputGroup}>
-                    <label style={modelStyles.label}>Full Name *</label>
+                    <label style={modelStyles.label}>Full Name<span className="required-star">*</span></label>
                     <input type="text" name="fullName" value={formData.fullName} onChange={handleInputChange} placeholder="Enter your full name" style={modelStyles.textInput} required />
                   </div>
                   <div style={modelStyles.inputGroup}>
-                    <label style={modelStyles.label}>Age *</label>
+                    <label style={modelStyles.label}>Age<span className="required-star">*</span></label>
                     <input type="number" name="age" value={formData.age} onChange={handleInputChange} placeholder="Your age" style={modelStyles.textInput} required />
                   </div>
                 </div>
                 <div style={modelStyles.formRow}>
                   <div style={modelStyles.inputGroup}>
-                    <label style={modelStyles.label}>Email *</label>
+                    <label style={modelStyles.label}>Email<span className="required-star">*</span></label>
                     <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="your@email.com" style={modelStyles.textInput} required />
                   </div>
                   <div style={modelStyles.inputGroup}>
-                    <label style={modelStyles.label}>Phone *</label>
+                    <label style={modelStyles.label}>Phone<span className="required-star">*</span></label>
                     <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} placeholder="+94 77 000 0000" style={modelStyles.textInput} required />
                   </div>
                 </div>
                 <div style={modelStyles.inputGroup}>
-                  <label style={modelStyles.label}>Height *</label>
+                  <label style={modelStyles.label}>Height<span className="required-star">*</span></label>
                   <input type="text" name="height" value={formData.height} onChange={handleInputChange} placeholder={`e.g., 5'9" or 175cm`} style={modelStyles.textInput} required />
                 </div>
                 <div style={modelStyles.inputGroup}>
-                  <label style={modelStyles.label}>Country *</label>
+                  <label style={modelStyles.label}>Country<span className="required-star">*</span></label>
                   <input type="text" name="country" value={formData.country} onChange={handleInputChange} placeholder="Your country" style={modelStyles.textInput} required />
                 </div>
                 <div style={modelStyles.inputGroup}>
-                  <label style={modelStyles.label}>Gender *</label>
+                  <label style={modelStyles.label}>Gender<span className="required-star">*</span></label>
                   <select name="gender" value={formData.gender} onChange={handleInputChange} style={modelStyles.selectInput} required>
                     <option value="">Select gender</option>
                     <option value="male">Male</option>
@@ -250,7 +250,7 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
               </div>
               <div style={modelStyles.formGrid}>
                 <div style={modelStyles.inputGroup}>
-                  <label style={modelStyles.label}>Instagram Handle *</label>
+                  <label style={modelStyles.label}>Instagram Handle<span className="required-star">*</span></label>
                   <input type="text" name="instagram" value={formData.instagram} onChange={handleInputChange} placeholder="@yourusername" style={modelStyles.textInput} required />
                 </div>
                 <div style={modelStyles.inputGroup}>
@@ -289,7 +289,7 @@ function ModelRegistrationPage({ onSuccess, compact = false, embedded = false }:
 
             {/* Photos */}
             <div style={modelStyles.formContainer}>
-              <h3 style={modelStyles.heading3}>Portfolio Photos *</h3>
+              <h3 style={modelStyles.heading3}>Portfolio Photos<span className="required-star">*</span></h3>
               <label style={modelStyles.uploadBox}>
                 <input type="file" multiple accept="image/*" onChange={handleFileUpload} style={modelStyles.hiddenFileInput} required />
                 <svg style={modelStyles.uploadIcon} viewBox="0 0 48 48" fill="none">
@@ -528,11 +528,11 @@ export default function CareersPage() {
                     <p style={careerStyles.modalSubtitle}>Apply for this Position</p>
                     <form style={careerStyles.modalForm} onSubmit={handleSubmit}>
                       <div style={careerStyles.modalRow}>
-                        <input name="name" placeholder="Full Name" style={careerStyles.modalInput} required />
-                        <input name="email" type="email" placeholder="Email Address" style={careerStyles.modalInput} required />
+                        <div style={careerStyles.modalField}><input name="name" placeholder="Full Name *" style={careerStyles.modalInput} required /></div>
+                        <div style={careerStyles.modalField}><input name="email" type="email" placeholder="Email Address *" style={careerStyles.modalInput} required /></div>
                       </div>
                       <div style={careerStyles.modalRow}>
-                        <input name="phone" placeholder="Phone Number *" style={careerStyles.modalInput} required />
+                        <div style={careerStyles.modalField}><input name="phone" placeholder="Phone Number *" style={careerStyles.modalInput} required /></div>
                       </div>
                       <label style={careerStyles.uploadBox}>
                         <div style={careerStyles.uploadIconPlaceholder}></div>
@@ -702,7 +702,7 @@ export default function CareersPage() {
                 Apply as a Model
               </button>
             </div>
-            <div style={careerStyles.modelImage}>
+            <div style={careerStyles.modelImage} className="career-model-promo-image">
               <Image
                 src="/images/cover-photo-default.jpg"
                 alt="Model hero"
@@ -722,16 +722,22 @@ export default function CareersPage() {
         .career-modal-container { background: rgba(15, 15, 16, 0.95) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; box-shadow: 0 20px 50px rgba(0,0,0,0.8) !important; }
         
         @media (max-width: 1024px) {
-          .career-hero { height: auto !important; min-height: 420px !important; margin-bottom: 48px !important; }
-          .career-section { padding: 52px 32px !important; }
+          .career-hero { height: auto !important; min-height: 400px !important; margin-bottom: 48px !important; }
+          .career-section { padding: 40px 24px !important; }
           .career-model-promo { flex-direction: column !important; padding: 32px !important; }
           .career-modal-grid { grid-template-columns: 1fr !important; }
+          .career-model-promo-image { width: 100% !important; height: 350px !important; order: -1; }
         }
 
         @media (max-width: 768px) {
-          .career-h1 span { font-size: 40px !important; line-height: 50px !important; }
-          .career-section { padding: 40px 20px !important; }
+          .career-h1 span { font-size: 32px !important; line-height: 42px !important; }
+          .career-section { padding: 32px 20px !important; }
           .career-modal-container { padding: 24px !important; width: 95% !important; margin: 0 auto; }
+          .career-model-promo-image { height: 280px !important; }
+        }
+        @media (max-width: 480px) {
+          .career-hero { min-height: 320px !important; padding: 40px 16px !important; }
+          .career-section { padding: 24px 12px !important; }
         }
       `}</style>
     </div>
@@ -754,7 +760,7 @@ const messageStyle = (msg: string): CSSProperties => ({
 const careerStyles: Record<string, CSSProperties> = {
   app: { display: 'flex', flexDirection: 'column', width: '100%', minHeight: '100vh', color: '#FFFFFF', fontFamily: "'Cousine', monospace" },
   careersPage: { width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: '140px' },
-  heroSection: { position: 'relative', width: '100%', height: '620px', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: '56px' },
+  heroSection: { position: 'relative', width: '100%', height: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: '56px' },
   heroImageWrapper: { position: 'absolute', inset: 0, zIndex: 0 },
   heroImage: { width: '100%', height: '100%', objectFit: 'cover' },
   heroImageOverlay: { position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%)' },
@@ -837,7 +843,7 @@ const modelStyles: Record<string, CSSProperties> = {
   textArea: { background: 'rgba(255,255,255,0.05)', border: '1px solid #333', borderRadius: '8px', padding: '12px', color: '#fff', resize: 'vertical' },
   buttonGrid: { display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' },
   categoryButton: { background: 'rgba(255,255,255,0.05)', border: '1px solid #333', borderRadius: '10px', padding: '12px', color: '#A0A0A0', cursor: 'pointer' },
-  categoryButtonActive: { background: 'rgba(93,205,219,0.2)', borderColor: '#5DCDDB', color: '#fff' },
+  categoryButtonActive: { background: 'rgba(93,205,219,0.2)', border: '1px solid #5DCDDB', color: '#fff' },
   uploadBox: { border: '2px dashed #444', borderRadius: '10px', padding: '40px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', cursor: 'pointer' },
   uploadIcon: { width: '48px', height: '48px' },
   uploadTitle: { fontSize: '14px', color: '#fff', marginTop: '10px' },

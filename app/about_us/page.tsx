@@ -61,41 +61,43 @@ export default function AboutPage() {
 
         @media (max-width: 1024px) {
           .about-page { padding-top: 100px !important; }
-          .about-hero-heading { font-size: 44px !important; line-height: 52px !important; }
-          .about-hero { padding: 60px 32px !important; }
-          .about-story-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-          .about-story-image { width: 100% !important; height: 400px !important; }
-          .about-mv-grid, .about-values-grid, .about-bts-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
-          .about-mv-card { padding: 36px !important; }
+          .about-hero-heading { font-size: 40px !important; line-height: 48px !important; }
+          .about-hero { padding: 40px 24px !important; }
+          .about-story-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .about-story-image { width: 100% !important; height: 350px !important; }
+          .about-mv-grid, .about-values-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+          .about-bts-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+          .about-mv-card { padding: 32px !important; }
           .about-tech-ribbon::before, .about-tech-ribbon::after { width: 64px !important; }
-          .about-section-padding { padding: 60px 32px !important; }
+          .about-section-padding { padding: 40px 24px !important; }
         }
 
         @media (max-width: 768px) {
-          .about-page { padding-top: 90px !important; }
-          .about-hero-heading { font-size: 36px !important; line-height: 44px !important; }
-          .about-hero-description { font-size: 16px !important; line-height: 26px !important; }
-          .about-hero { padding: 50px 24px !important; }
-          .about-section-padding { padding: 50px 24px !important; }
-          .about-section-title, .about-bts-title { font-size: 32px !important; line-height: 40px !important; margin-bottom: 20px !important; }
-          .about-value-title, .about-mv-title { font-size: 26px !important; line-height: 34px !important; }
-          .about-mv-card, .about-value-card { padding: 28px !important; min-height: auto !important; }
-          .about-story-image { height: 300px !important; }
-          .about-story-grid { gap: 32px !important; }
-          .about-mv-grid, .about-values-grid { gap: 20px !important; }
+          .about-page { padding-top: 80px !important; }
+          .about-hero-heading { font-size: 32px !important; line-height: 40px !important; }
+          .about-hero-description { font-size: 15px !important; line-height: 24px !important; }
+          .about-hero { padding: 32px 20px !important; }
+          .about-section-padding { padding: 32px 20px !important; }
+          .about-section-title, .about-bts-title { font-size: 28px !important; line-height: 36px !important; margin-bottom: 16px !important; }
+          .about-value-title, .about-mv-title { font-size: 24px !important; line-height: 32px !important; }
+          .about-mv-card, .about-value-card { padding: 24px !important; min-height: auto !important; }
+          .about-story-image { height: 260px !important; }
+          .about-story-grid { gap: 24px !important; }
+          .about-mv-grid, .about-values-grid { gap: 16px !important; }
+          .about-bts-grid { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 480px) {
-          .about-page { padding-top: 80px !important; }
-          .about-hero { padding: 40px 16px !important; }
-          .about-hero-heading { font-size: 28px !important; line-height: 36px !important; }
-          .about-hero-description { font-size: 15px !important; line-height: 24px !important; }
-          .about-section-padding { padding: 40px 16px !important; }
-          .about-section-title, .about-bts-title { font-size: 28px !important; line-height: 36px !important; }
-          .about-value-title, .about-mv-title, .about-story-title { font-size: 22px !important; line-height: 30px !important; }
-          .about-mv-card, .about-value-card { padding: 20px !important; }
-          .about-story-text, .about-mv-text, .about-value-text { font-size: 15px !important; line-height: 24px !important; }
-          .about-story-image { height: 250px !important; }
+          .about-page { padding-top: 72px !important; }
+          .about-hero { padding: 24px 12px !important; }
+          .about-hero-heading { font-size: 26px !important; line-height: 34px !important; }
+          .about-hero-description { font-size: 14px !important; line-height: 22px !important; }
+          .about-section-padding { padding: 24px 12px !important; }
+          .about-section-title, .about-bts-title { font-size: 26px !important; line-height: 34px !important; }
+          .about-value-title, .about-mv-title, .about-story-title { font-size: 20px !important; line-height: 28px !important; }
+          .about-mv-card, .about-value-card { padding: 18px !important; }
+          .about-story-text, .about-mv-text, .about-value-text { font-size: 14px !important; line-height: 22px !important; }
+          .about-story-image { height: 220px !important; }
         }
       `}</style>
     </div>
@@ -321,70 +323,34 @@ function BehindTheScenesSection() {
           Behind <span className="gradient-text">The Scenes</span>
         </h2>
         <div style={styles.btsGrid} className="about-bts-grid">
-          <button
-            type="button"
-            onClick={() => setOpenVideo('lSGSBUobk2U')}
-            style={styles.btsCard}
-            className="bts-card-effect"
-            aria-label="Play YouTube Short lSGSBUobk2U"
-          >
-            <div style={{ ...styles.btsImage, backgroundImage: `url('https://i.ytimg.com/vi/lSGSBUobk2U/hqdefault.jpg')` }}>
-              <div style={styles.playOverlay} className="play-overlay-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                  <path d="M22 16v32l28-16z" fill="#fff" />
-                </svg>
+          {[
+            { id: 'lSGSBUobk2U', title: 'Behind the Scenes 1' },
+            { id: 'n5y-MjIwUh0', title: 'Behind the Scenes 2' },
+            { id: 'xNJEw8xTqc8', title: 'Behind the Scenes 3' },
+            { id: 'Aw4NQHstMxM', title: 'Behind the Scenes 4' }
+          ].map((video) => (
+            <button
+              key={video.id}
+              type="button"
+              onClick={() => setOpenVideo(video.id)}
+              style={styles.btsCard}
+              className="bts-card-effect"
+              aria-label={`Play YouTube Video ${video.title}`}
+            >
+              <div style={{ ...styles.btsImage, backgroundImage: `url('https://i.ytimg.com/vi/${video.id}/hqdefault.jpg')` }}>
+                <div style={styles.playOverlay} className="play-overlay-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                    <path d="M22 16v32l28-16z" fill="#fff" />
+                  </svg>
+                </div>
               </div>
-            </div>
-            <div style={styles.btsGradient}></div>
-            <div style={styles.btsContent}>
-              <div style={styles.btsCategory}>Video</div>
-              <h3 style={styles.btsTitleMini}>Shorts: Behind the Scenes</h3>
-            </div>
-          </button>
-
-          <a
-            href="https://www.youtube.com/shorts/n5y-MjIwUh0"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open YouTube Short n5y-MjIwUh0"
-            style={styles.btsCard}
-            className="bts-card-effect"
-          >
-            <div style={{ ...styles.btsImage, backgroundImage: `url('https://i.ytimg.com/vi/n5y-MjIwUh0/hqdefault.jpg')` }}>
-              <div style={styles.playOverlay} className="play-overlay-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                  <path d="M22 16v32l28-16z" fill="#fff" />
-                </svg>
+              <div style={styles.btsGradient}></div>
+              <div style={styles.btsContent}>
+                <div style={styles.btsCategory}>Production</div>
+                <h3 style={styles.btsTitleMini}>{video.title}</h3>
               </div>
-            </div>
-            <div style={styles.btsGradient}></div>
-            <div style={styles.btsContent}>
-              <div style={styles.btsCategory}>Video</div>
-              <h3 style={styles.btsTitleMini}>Shorts: Behind the Scenes (1)</h3>
-            </div>
-          </a>
-
-          <a
-            href="https://www.youtube.com/shorts/xNJEw8xTqc8"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open YouTube Short xNJEw8xTqc8"
-            style={styles.btsCard}
-            className="bts-card-effect"
-          >
-            <div style={{ ...styles.btsImage, backgroundImage: `url('https://i.ytimg.com/vi/xNJEw8xTqc8/hqdefault.jpg')` }}>
-              <div style={styles.playOverlay} className="play-overlay-icon" aria-hidden="true">
-                <svg viewBox="0 0 64 64" width="32" height="32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                  <path d="M22 16v32l28-16z" fill="#fff" />
-                </svg>
-              </div>
-            </div>
-            <div style={styles.btsGradient}></div>
-            <div style={styles.btsContent}>
-              <div style={styles.btsCategory}>Video</div>
-              <h3 style={styles.btsTitleMini}>Shorts: Behind the Scenes (2)</h3>
-            </div>
-          </a>
+            </button>
+          ))}
         </div>
       </div>
       
@@ -672,14 +638,14 @@ const styles: Record<string, CSSProperties> = {
     maxWidth: '1400px',
     margin: '0 auto',
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gap: '24px',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '16px',
   },
   btsCard: {
     display: 'block',
     position: 'relative',
     width: '100%',
-    height: '432px',
+    aspectRatio: '9/16',
     background: '#252525',
     overflow: 'hidden',
     cursor: 'pointer',

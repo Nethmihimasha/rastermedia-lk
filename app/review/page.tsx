@@ -80,9 +80,9 @@ export default function ReviewsPage() {
   return (
     <div style={styles.page}>
       {/* Hero Section */}
-      <section style={styles.hero}>
+      <section style={styles.hero} className="review-hero">
         <div style={styles.heroContent}>
-          <h1 style={styles.heroTitle}>
+          <h1 style={styles.heroTitle} className="review-title">
             SHARE YOUR
             <br />
             <span style={styles.gradientText}>EXPERIENCE.</span>
@@ -94,7 +94,7 @@ export default function ReviewsPage() {
       </section>
 
       {/* Main Content Section */}
-      <section style={styles.mainSection} ref={mainRef}>
+      <section style={styles.mainSection} ref={mainRef} className="review-main-section">
         <motion.div
           style={styles.container}
           initial="hidden"
@@ -104,7 +104,7 @@ export default function ReviewsPage() {
           <motion.div style={styles.contentGrid} variants={staggerItemVariants}>
             {/* Left Column - Review Form */}
             <motion.div style={styles.formColumn} variants={staggerItemVariants} className="review-form-col">
-              <div style={styles.formCard}>
+              <div style={styles.formCard} className="review-card-padding">
                 <div style={styles.formHeader}>
                   <h2 style={styles.formTitle}>{submitted ? "Thank You!" : "Leave Your Review"}</h2>
                   <p style={styles.formSubtitle}>{submitted ? "Your feedback is being processed." : "Share your experience with us"}</p>
@@ -140,7 +140,7 @@ export default function ReviewsPage() {
                 ) : (
                   <form onSubmit={handleSubmit} style={styles.form}>
                     <div style={styles.formGroup}>
-                      <label style={styles.label}>How was your experience?</label>
+                      <label style={styles.label}>How was your experience?<span className="required-star">*</span></label>
                       <div style={styles.starRating}>
                         {[1, 2, 3, 4, 5].map((star) => (
                           <button
@@ -172,7 +172,7 @@ export default function ReviewsPage() {
 
                     <div style={styles.formRow} className="review-form-row">
                       <div style={styles.formGroup}>
-                        <label style={styles.label}>Your Name *</label>
+                        <label style={styles.label}>Your Name<span className="required-star">*</span></label>
                         <input
                           type="text"
                           style={styles.input}
@@ -184,7 +184,7 @@ export default function ReviewsPage() {
                         />
                       </div>
                       <div style={styles.formGroup}>
-                        <label style={styles.label}>Email Address *</label>
+                        <label style={styles.label}>Email Address<span className="required-star">*</span></label>
                         <input
                           type="email"
                           style={styles.input}
@@ -198,7 +198,7 @@ export default function ReviewsPage() {
                     </div>
 
                     <div style={styles.formGroup}>
-                      <label style={styles.label}>Your Review *</label>
+                      <label style={styles.label}>Your Review<span className="required-star">*</span></label>
                       <textarea
                         style={styles.textarea}
                         placeholder="Tell us about your experience working with us..."
@@ -333,15 +333,23 @@ export default function ReviewsPage() {
         .review-card-hover { transition: all 0.3s ease; }
         .review-card-hover:hover { transform: translateY(-5px); border-color: rgba(93, 205, 219, 0.4) !important; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1024px) {
           .reviews-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .review-hero { min-height: 400px !important; padding: 60px 24px !important; }
         }
         @media (max-width: 900px) {
           .review-form-row { grid-template-columns: 1fr !important; }
           .reviews-grid { grid-template-columns: 1fr !important; }
+          .review-main-section { padding: 40px 24px !important; }
         }
         @media (max-width: 768px) {
           .review-form-col { margin-bottom: 24px; }
+          .review-title { font-size: 32px !important; line-height: 42px !important; }
+          .review-card-padding { padding: 32px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          .review-hero { min-height: 320px !important; padding: 40px 16px !important; }
+          .review-main-section { padding: 24px 12px !important; }
         }
       `}</style>
     </div>
@@ -350,7 +358,7 @@ export default function ReviewsPage() {
 
 const styles: Record<string, CSSProperties> = {
   page: { padding: '140px 0 0', minHeight: '100vh', backgroundColor: '#0F0F0F', position: 'relative' },
-  hero: { position: 'relative', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '80px 48px' },
+  hero: { position: 'relative', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '80px 48px', minHeight: '60vh' },
   heroContent: { position: 'relative', zIndex: 3, maxWidth: '900px', textAlign: 'center' },
   heroTitle: { fontFamily: 'Erbaum, Cousine, monospace', fontSize: '51.808px', fontWeight: 700, lineHeight: '60px', letterSpacing: '-0.51808px', marginBottom: '24px', color: '#FFFFFF' },
   gradientText: { background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' },

@@ -141,6 +141,16 @@ body,
   padding: 0 48px;
 }
 
+.required-star {
+  color: #ff4d4d;
+  margin-left: 4px;
+}
+
+select option {
+  background-color: #1A1A1A !important;
+  color: #FFFFFF !important;
+}
+
 .gradient-text {
   background: linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%);
   -webkit-background-clip: text;
@@ -353,7 +363,7 @@ body,
 
 @media (max-width: 900px) {
   .container {
-    padding: 0 24px !important;
+    padding: 0 16px !important;
   }
 
   /* Hide desktop navigation on mobile */
@@ -381,20 +391,82 @@ body,
   }
 
   /* Hero section mobile adjustments */
-  [class*='hero'] {
-    min-height: 500px !important;
-    height: auto !important;
+  .hero-section-container {
+    height: 100vh !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    position: relative !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
   }
 
-  [class*='heroVideo'],
-  [class*='hero-video'] {
-    min-height: 500px !important;
+  /* Video wrapper must stay absolute to be background */
+  .hero-video-wrapper {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    z-index: 0 !important;
+    min-height: 100vh !important;
+  }
+
+  .hero-grid-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+  }
+
+  .hero-content {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 100px 20px 40px !important; /* Force padding-top to sit below header */
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important;
+    min-height: 100vh !important;
+  }
+}
+
+/* Consolidate all mobile hero heading rules */
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: clamp(26px, 8vw, 38px) !important;
+    line-height: 1.1 !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .hero-description {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin-bottom: 30px !important;
+    padding: 0 10px !important;
+  }
+
+  /* Force Hero Container to ALWAYS be 100vh on mobile */
+  .hero-section-container,
+  [class*='hero-section-container'],
+  section[style*='height: 100vh'] {
+    height: 100vh !important;
+    height: 100svh !important; /* Short viewport for mobile browsers */
+    min-height: 100vh !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
   }
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 0 16px !important;
+    padding: 0 12px !important;
   }
 
   .header-container {
@@ -404,37 +476,10 @@ body,
   header .nav {
     gap: 12px;
   }
-
-  .hero-heading {
-    font-size: clamp(24px, 9vw, 40px) !important;
-    line-height: 1.2 !important;
-    letter-spacing: -1px !important;
-  }
-
-  .hero-buttons {
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  /* Hero section specific */
-  .heroContent,
-  [class*='heroContent'],
+  
+  /* Additional hero content protection */
   [class*='hero-content'] {
-    padding: 20px 16px !important;
-  }
-
-  .heroDescription,
-  [class*='heroDescription'],
-  [class*='hero-description'] {
-    font-size: 15px !important;
-    line-height: 1.6 !important;
-    margin-bottom: 20px !important;
+     padding-top: 100px !important;
   }
 }
 

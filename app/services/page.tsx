@@ -78,7 +78,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <div style={{ padding: '40px 24px' }}>
+      <div className="bento-container-wrap">
         <MagicBento
           items={services}
           enableStars={false}
@@ -93,30 +93,34 @@ export default function ServicesPage() {
 
       <style>{`
         @media (max-width: 1024px) {
-          .services-page-wrap { padding: 0 32px !important; }
-          .services-hero { min-height: 380px !important; margin-top: 20px !important; }
+          .services-page-wrap { padding: 0 !important; }
+          .services-hero { min-height: 400px !important; }
           .services-hero-content { padding: 0 32px !important; }
-          .services-hero-content h1, .services-hero-content span { font-size: 44px !important; line-height: 52px !important; }
+          .services-hero-content h1 { font-size: 40px !important; line-height: 48px !important; }
+          .bento-container-wrap { padding: 40px 24px !important; }
         }
         @media (max-width: 768px) {
-          .services-page-wrap { padding: 0 24px !important; }
+          .services-page-wrap { padding: 0 !important; }
           .services-hero { min-height: 350px !important; padding: 60px 0 40px !important; }
-          .services-hero-content { padding: 0 24px !important; }
-          .services-hero-content h1, .services-hero-content span { font-size: 36px !important; line-height: 44px !important; }
+          .services-hero-content { padding: 0 20px !important; }
+          .services-hero-content h1 { font-size: 32px !important; line-height: 40px !important; }
+          .bento-container-wrap { padding: 24px 0 !important; }
         }
         @media (max-width: 480px) {
-          .services-page-wrap { padding: 0 16px !important; }
-          .services-hero { min-height: 320px !important; padding: 50px 0 30px !important; }
+          .services-page-wrap { padding: 0 !important; }
+          .services-hero { min-height: 320px !important; padding: 40px 0 30px !important; }
           .services-hero-content { padding: 0 16px !important; }
-          .services-hero-content h1, .services-hero-content span { font-size: 28px !important; line-height: 36px !important; }
+          .services-hero-content h1 { font-size: 28px !important; line-height: 36px !important; }
+          .bento-container-wrap { padding: 16px 0 !important; }
         }
+        .bento-container-wrap { padding: 60px 24px; }
       `}</style>
     </div>
   );
 }
 
 const styles: Record<string, CSSProperties> = {
-  servicesPage: { width: '100%', maxWidth: '1400px', margin: '0 auto', padding: '0 48px 0', display: 'flex', flexDirection: 'column' },
+  servicesPage: { width: '100%', maxWidth: '1400px', margin: '0 auto', padding: '0 48px', display: 'flex', flexDirection: 'column' },
   heroSection: { position: 'relative', textAlign: 'center', width: '100vw', marginLeft: 'calc(50% - 50vw)', height: '60vh', minHeight: '420px', marginBottom: '32px', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: '#0F0F0F' },
   heroImageWrapper: { position: 'absolute', inset: 0, zIndex: 0 },
   heroImageOverlay: { position: 'absolute', inset: 0, background: 'transparent' },

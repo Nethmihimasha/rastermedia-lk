@@ -311,6 +311,7 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
             width: 100%; 
             max-width: 1400px; 
             margin: 0 auto; 
+            padding: 0;
           }
           .card {
             position: relative; background: var(--background-dark);
@@ -318,7 +319,7 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
             border: 1px solid var(--border-color); border-radius: 22px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             overflow: hidden;
-            min-height: 320px;
+            min-height: 300px;
           }
           .card:nth-child(1) { grid-column: span 1; grid-row: span 1; }
           .card:nth-child(2) { grid-column: span 1; grid-row: span 1; }
@@ -399,7 +400,7 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
           .card-desc {
             font-family: 'Cousine', monospace;
             font-size: 13px;
-            line-height: 22px;
+            line-height: 20px;
             color: #A0A0A0;
           }
           .card-learn-more {
@@ -408,8 +409,9 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
           .features-right {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             margin-top: auto;
+            width: 100%;
           }
           .feature-item {
             border-bottom: none;
@@ -435,6 +437,8 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
           @media (max-width: 1024px) {
             .card-responsive {
               grid-template-columns: repeat(2, 1fr);
+              padding: 0;
+              gap: 20px;
             }
             .card:nth-child(1) { grid-column: span 1; grid-row: span 1; }
             .card:nth-child(2) { grid-column: span 1; grid-row: span 1; }
@@ -442,20 +446,55 @@ const MagicBento = ({ items = [], enableStars = false, enableSpotlight = true, e
             .card:nth-child(4) { grid-column: span 1; grid-row: span 1; }
             .card:nth-child(5) { grid-column: span 1; grid-row: span 1; }
             .card:nth-child(6) { grid-column: span 2; grid-row: span 1; }
+            .card {
+              min-height: 240px;
+            }
+            .card-grid {
+              padding: 24px;
+            }
+            .card-title { font-size: 19px; }
           }
           
           @media (max-width: 768px) {
             .card-responsive {
               grid-template-columns: 1fr;
               gap: 16px;
+              padding: 0;
             }
             .card {
               grid-column: span 1 !important;
               grid-row: span 1 !important;
-              min-height: 280px;
+              min-height: 180px;
             }
             .card-grid {
-              padding: 24px;
+              padding: 20px;
+              gap: 12px;
+            }
+            .card-title {
+              font-size: 17px;
+            }
+            .card-desc {
+              font-size: 12px;
+              line-height: 17px;
+            }
+            .icon-box {
+              width: 36px;
+              height: 36px;
+            }
+            .icon-box svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+          @media (max-width: 480px) {
+            .card-grid {
+              padding: 16px;
+            }
+            .card-responsive {
+               gap: 10px;
+            }
+            .card {
+              min-height: 200px;
             }
           }
         `}

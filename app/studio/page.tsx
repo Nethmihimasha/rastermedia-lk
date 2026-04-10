@@ -225,7 +225,7 @@ export default function StudioBookingPage() {
   return (
     <div style={styles.page} className="studio-page-container">
       {/* Hero Section */}
-      <section style={styles.heroSection}>
+      <section style={styles.heroSection} className="studio-hero-section">
         <motion.div 
           style={styles.heroImageWrapper}
           initial={{ opacity: 0, scale: 1.1 }}
@@ -263,7 +263,7 @@ export default function StudioBookingPage() {
       </section>
 
       {/* Package SelectorSection */}
-      <section style={styles.packageSelectorSection} ref={packageRef}>
+      <section style={styles.packageSelectorSection} ref={packageRef} className="studio-section-padding">
         <motion.div
           style={styles.container}
           initial="hidden"
@@ -437,7 +437,7 @@ export default function StudioBookingPage() {
       </section>
 
       {/* Location Section */}
-      <section style={styles.locationSection} ref={locationRef}>
+      <section style={styles.locationSection} ref={locationRef} className="studio-section-padding">
         <motion.div
           style={styles.container}
           initial="hidden"
@@ -485,6 +485,8 @@ export default function StudioBookingPage() {
 
         @media (max-width: 1400px) {
           .studio-duration-options { grid-template-columns: repeat(2, 1fr) !important; }
+          .studio-hero-section { min-height: 400px !important; padding: 60px 24px !important; }
+          .studio-section-padding { padding: 40px 24px !important; }
         }
         @media (max-width: 1024px) {
           .studio-package-visual { grid-template-columns: 1fr !important; }
@@ -496,10 +498,14 @@ export default function StudioBookingPage() {
           .studio-location-card { flex-direction: column; text-align: center; }
           .studio-package-header { flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
           .studio-package-header div:last-child { text-align: left !important; }
+          .studio-section-padding { padding: 32px 20px !important; }
+          .studio-hero-title { font-size: 32px !important; line-height: 40px !important; }
         }
         @media (max-width: 600px) {
           .studio-duration-opt { padding: 12px !important; }
           .studio-duration-hours { font-size: 24px !important; }
+          .studio-hero-section { min-height: 320px !important; padding: 40px 16px !important; }
+          .studio-section-padding { padding: 24px 12px !important; }
         }
       `}</style>
     </div>
@@ -581,15 +587,15 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
         ) : (
           <form style={styles.bookingForm} onSubmit={handleSubmit}>
             <div style={styles.formRow} className="studio-form-row">
-              <div style={styles.formGroup}><label style={styles.label}><User size={16} style={{color: '#5DCDDB'}} />Full Name</label><input type="text" name="name" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} style={styles.input} placeholder="John Doe" required /></div>
-              <div style={styles.formGroup}><label style={styles.label}><Mail size={16} style={{color: '#5DCDDB'}} />Email</label><input type="email" name="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} style={styles.input} placeholder="john@example.com" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><User size={16} style={{color: '#5DCDDB'}} />Full Name<span className="required-star">*</span></label><input type="text" name="name" value={formData.name} onChange={(e)=>setFormData({...formData, name: e.target.value})} style={styles.input} placeholder="John Doe" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Mail size={16} style={{color: '#5DCDDB'}} />Email<span className="required-star">*</span></label><input type="email" name="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} style={styles.input} placeholder="john@example.com" required /></div>
             </div>
             <div style={styles.formRow} className="studio-form-row">
-              <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />Phone</label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
-              <div style={styles.formGroup}><label style={styles.label}><Calendar size={16} style={{color: '#5DCDDB'}} />Date</label><input type="date" name="date" value={formData.date} onChange={(e)=>setFormData({...formData, date: e.target.value})} style={styles.input} min={new Date().toISOString().split('T')[0]} required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />Phone<span className="required-star">*</span></label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Calendar size={16} style={{color: '#5DCDDB'}} />Date<span className="required-star">*</span></label><input type="date" name="date" value={formData.date} onChange={(e)=>setFormData({...formData, date: e.target.value})} style={styles.input} min={new Date().toISOString().split('T')[0]} required /></div>
             </div>
             <div style={styles.formRow} className="studio-form-row">
-              <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Time</label><select name="time" value={formData.time} onChange={(e)=>setFormData({...formData, time: e.target.value})} style={styles.select} required><option value="">Select time</option><option value="9:00 AM">9:00 AM</option><option value="10:00 AM">10:00 AM</option><option value="11:00 AM">11:00 AM</option><option value="1:00 PM">1:00 PM</option><option value="3:00 PM">3:00 PM</option></select></div>
+              <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Time<span className="required-star">*</span></label><input type="text" name="time" value={formData.time} onChange={(e)=>setFormData({...formData, time: e.target.value})} style={styles.input} placeholder="HH:MM AM/PM" required /></div>
               <div style={styles.formGroup}><label style={styles.label}><Clock size={16} style={{color: '#5DCDDB'}} />Extra Hours</label><select name="additionalHours" value={formData.additionalHours} onChange={(e)=>setFormData({...formData, additionalHours: e.target.value})} style={styles.select}><option value="0">None</option><option value="1">+1 Hr</option><option value="2">+2 Hrs</option></select></div>
             </div>
             <div style={styles.formGroup}><label style={styles.label}><MessageSquare size={16} style={{color: '#5DCDDB'}} />Notes</label><textarea name="notes" value={formData.notes} onChange={(e)=>setFormData({...formData, notes: e.target.value})} style={styles.textarea} placeholder="Special requirements?" /></div>
@@ -611,7 +617,7 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
 
 const styles: Record<string, CSSProperties> = {
   page: { minHeight: '100vh', backgroundColor: '#0F0F0F', paddingTop: '140px' },
-  heroSection: { width: '100%', padding: '80px 48px', textAlign: 'center', position: 'relative', overflow: 'hidden', minHeight: '600px', display: 'flex', alignItems: 'center', justifyContent: 'center' },
+  heroSection: { width: '100%', padding: '80px 48px', textAlign: 'center', position: 'relative', overflow: 'hidden', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' },
   heroImageWrapper: { position: 'absolute', inset: 0, zIndex: 0 },
   heroImageOverlay: { position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.75) 50%, rgba(15,15,15,0.85) 100%)' },
   heroContent: { position: 'relative', zIndex: 1, maxWidth: '1400px', margin: '0 auto' },
@@ -622,7 +628,7 @@ const styles: Record<string, CSSProperties> = {
   packageSelectorSection: { padding: '80px 0' },
   packageTypeToggle: { display: 'flex', gap: '10px', marginBottom: '40px', justifyContent: 'center', flexWrap: 'wrap' },
   toggleButton: { display: 'flex', alignItems: 'center', gap: '8px', padding: '8px 18px', background: 'transparent', border: '1px solid rgba(93, 205, 219, 0.2)', borderRadius: '999px', cursor: 'pointer', transition: 'all 0.25s ease' },
-  toggleButtonActive: { borderColor: '#5DCDDB', background: 'rgba(93, 205, 219, 0.08)' },
+  toggleButtonActive: { border: '1px solid #5DCDDB', background: 'rgba(93, 205, 219, 0.08)' },
   toggleContent: { display: 'flex', flexDirection: 'column', textAlign: 'left' },
   toggleTitle: { fontFamily: 'Erbaum, Cousine, monospace', fontSize: '13px', transition: 'color 0.25s ease' },
   durationSection: { },
@@ -631,7 +637,7 @@ const styles: Record<string, CSSProperties> = {
   durationTitle: { fontSize: '22px', color: '#FFFFFF', margin: 0, fontFamily: 'Erbaum, Cousine, monospace' },
   durationOptions: { },
   durationOption: { position: 'relative', padding: '16px 14px', background: 'rgba(20, 20, 20, 0.8)', border: '1px solid rgba(93, 205, 219, 0.2)', cursor: 'pointer', transition: 'all 0.2s ease', display: 'flex', flexDirection: 'column', gap: '6px' },
-  durationOptionActive: { borderColor: '#5DCDDB', background: 'rgba(93, 205, 219, 0.08)' },
+  durationOptionActive: { border: '1px solid #5DCDDB', background: 'rgba(93, 205, 219, 0.08)' },
   popularPill: { position: 'absolute', top: '8px', right: '8px', padding: '3px 8px', background: '#5DCDDB', color: '#000', fontSize: '8px', textTransform: 'uppercase', fontWeight: 600 },
   durationHours: { fontSize: '30px', color: '#FFFFFF', marginBottom: '2px', lineHeight: 1, fontFamily: 'Erbaum, Cousine, monospace' },
   durationPrice: { display: 'flex', alignItems: 'baseline', gap: '6px', marginBottom: '4px' },
