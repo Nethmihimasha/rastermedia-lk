@@ -26,7 +26,11 @@ export default function ReviewsPage() {
   useEffect(() => {
     fetch('/api/reviews')
       .then(res => res.json())
-      .then(data => setRecentReviews(data))
+      .then(data => {
+        if (Array.isArray(data)) {
+          setRecentReviews(data);
+        }
+      })
       .catch(err => console.error('Error fetching reviews:', err));
   }, []);
   
@@ -101,7 +105,7 @@ export default function ReviewsPage() {
           animate={mainInView ? "visible" : "hidden"}
           variants={staggerContainerVariants}
         >
-          <motion.div style={styles.contentGrid} variants={staggerItemVariants}>
+          <motion.div style={styles.contentGrid} variants={staggerItemVariants} className="review-content-grid">
             {/* Left Column - Review Form */}
             <motion.div style={styles.formColumn} variants={staggerItemVariants} className="review-form-col">
               <div style={styles.formCard} className="review-card-padding">
@@ -340,12 +344,13 @@ export default function ReviewsPage() {
         @media (max-width: 900px) {
           .review-form-row { grid-template-columns: 1fr !important; }
           .reviews-grid { grid-template-columns: 1fr !important; }
-          .review-main-section { padding: 40px 24px !important; }
+          .review-main-section { padding: 40px 16px !important; }
+          .review-content-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 768px) {
           .review-form-col { margin-bottom: 24px; }
           .review-title { font-size: 32px !important; line-height: 42px !important; }
-          .review-card-padding { padding: 32px 24px !important; }
+          .review-card-padding { padding: 24px 16px !important; }
         }
         @media (max-width: 480px) {
           .review-hero { min-height: 320px !important; padding: 40px 16px !important; }
@@ -364,8 +369,8 @@ const styles: Record<string, CSSProperties> = {
   gradientText: { background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' },
   heroSubtitle: { fontSize: '18px', lineHeight: '28px', color: '#A0A0A0', maxWidth: '600px', margin: '0 auto' },
   mainSection: { padding: '80px 0', position: 'relative', zIndex: 2 },
-  container: { maxWidth: '1400px', margin: '0 auto', padding: '0 48px' },
-  contentGrid: { display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '48px', alignItems: 'stretch' },
+  container: { maxWidth: '1400px', margin: '0 auto', padding: '0 24px', width: '100%', overflow: 'hidden' },
+  contentGrid: { display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '32px', alignItems: 'stretch' },
   formColumn: { display: 'flex', flexDirection: 'column' },
   formCard: { padding: '48px', background: 'rgba(20, 20, 20, 0.9)', border: '1px solid rgba(93, 205, 219, 0.15)', flex: '1 1 auto' },
   formHeader: { textAlign: 'center', marginBottom: '40px' },

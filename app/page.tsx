@@ -15,13 +15,21 @@ export default function HomePage() {
     // Fetch featured projects
     fetch('/api/projects')
       .then(res => res.json())
-      .then(data => setFeaturedProjects(data.slice(0, 3))) // Top 3
+      .then(data => {
+        if (Array.isArray(data)) {
+          setFeaturedProjects(data.slice(0, 3));
+        }
+      }) // Top 3
       .catch(err => console.error('Error fetching projects:', err));
 
     // Fetch verified reviews
     fetch('/api/reviews')
       .then(res => res.json())
-      .then(data => setVerifiedReviews(data))
+      .then(data => {
+        if (Array.isArray(data)) {
+          setVerifiedReviews(data);
+        }
+      })
       .catch(err => console.error('Error fetching reviews:', err));
   }, []);
 
@@ -43,14 +51,28 @@ function HeroSection() {
     <section style={styles.hero} className="hero-section-container">
       <div style={styles.heroVideo} className="hero-video-wrapper">
         <div className="hero-video-overlay"></div>
-        <iframe
-          className="hero-video-iframe"
-          src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&loop=1&playlist=OmHLohPk6b0&controls=0&rel=0&modestbranding=1&enablejsapi=1"
-          title="Hero Video"
-          frameBorder="0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-          allowFullScreen
-        />
+        {/* 
+          Add your Cloudinary video URL to the src below.
+          The video is already styled to be full-screen (object-fit: cover).
+        */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="hero-video-element"
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            zIndex: 0
+          }}
+          src="https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
+        >
+        </video>
       </div>
       <div style={styles.heroGrid} className="hero-grid-overlay"></div>
 
@@ -58,8 +80,8 @@ function HeroSection() {
 
       <div style={styles.heroContent} className="hero-content">
         <h1 style={styles.heroHeading} className="hero-heading">
-          <div style={styles.heroLine1}>Responsible <span style={styles.gradientText}>Creativity</span></div>
-          <div style={styles.heroLine1}>for Every <span style={styles.gradientText}>Pixel</span></div>
+          <span style={styles.heroLine1}>Responsible <span style={styles.gradientText}>Creativity</span></span>
+          <span style={styles.heroLine1}>for Every <span style={styles.gradientText}>Pixel</span></span>
         </h1>
         <p style={styles.heroDescription}>
           We build modern, pixel-sharp campaigns for brands that want to stand out.
@@ -754,14 +776,18 @@ const styles: Record<string, CSSProperties> = {
   heroHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
     fontWeight: 700,
-    fontSize: '50px',
-    lineHeight: '50px',
-    letterSpacing: '-1.9428px',
-    marginBottom: '30px',
+    fontSize: 'clamp(30px, 8vw, 72px)',
+    lineHeight: '1.05',
+    letterSpacing: '-1.5px',
+    marginBottom: '12px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '2px',
+    color: '#FFFFFF',
   },
   heroLine1: {
-    color: '#FFFFFF',
-    marginBottom: '22px',
+    display: 'block',
+    width: '100%',
   },
   heroLine2: {
     background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)',
@@ -771,17 +797,20 @@ const styles: Record<string, CSSProperties> = {
   },
   heroDescription: {
     fontFamily: 'Cousine, monospace',
-    fontSize: '15px',
-    lineHeight: '28px',
-    letterSpacing: '1px',
+    fontSize: 'clamp(14px, 4vw, 18px)',
+    lineHeight: '1.5',
+    letterSpacing: '0.5px',
     color: 'rgba(255, 255, 255, 0.8)',
-    maxWidth: '1800px',
-    marginBottom: '40px',
+    maxWidth: '800px',
+    marginBottom: 'clamp(20px, 5vw, 32px)',
+    padding: '0 10px',
   },
   heroButtons: {
     display: 'flex',
-    gap: '24px',
-    marginBottom: '60px',
+    gap: 'clamp(10px, 2.5vw, 20px)',
+    marginBottom: 'clamp(30px, 8vw, 50px)',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
 
   heroDots: {
