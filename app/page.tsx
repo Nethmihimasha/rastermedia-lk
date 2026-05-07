@@ -8,8 +8,8 @@ import { useRouter } from 'next/navigation';
 import { reviews } from '../src/data/reviews';
 
 export default function HomePage() {
-  const [featuredProjects, setFeaturedProjects] = useState([]);
-  const [verifiedReviews, setVerifiedReviews] = useState([]);
+  const [featuredProjects, setFeaturedProjects] = useState<any[]>([]);
+  const [verifiedReviews, setVerifiedReviews] = useState<any[]>([]);
 
   useEffect(() => {
     // Fetch featured projects

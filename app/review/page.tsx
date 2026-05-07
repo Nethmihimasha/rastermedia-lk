@@ -19,7 +19,7 @@ export default function ReviewsPage() {
     email: '',
     review: ''
   });
-  const [recentReviews, setRecentReviews] = useState([]);
+  const [recentReviews, setRecentReviews] = useState<any[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
