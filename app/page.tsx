@@ -51,28 +51,14 @@ function HeroSection() {
     <section style={styles.hero} className="hero-section-container">
       <div style={styles.heroVideo} className="hero-video-wrapper">
         <div className="hero-video-overlay"></div>
-        {/* 
-          Add your Cloudinary video URL to the src below.
-          The video is already styled to be full-screen (object-fit: cover).
-        */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video-element"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            zIndex: 0
-          }}
-          src="https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4"
-        >
-        </video>
+        <iframe
+          src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&controls=0&loop=1&playlist=OmHLohPk6b0&modestbranding=1&rel=0"
+          title="Raster Media hero video"
+          allow="autoplay; fullscreen; picture-in-picture"
+          style={styles.iframe}
+          frameBorder="0"
+          allowFullScreen
+        />
       </div>
       <div style={styles.heroGrid} className="hero-grid-overlay"></div>
 
@@ -776,9 +762,9 @@ const styles: Record<string, CSSProperties> = {
   heroHeading: {
     fontFamily: 'Erbaum, Cousine, monospace',
     fontWeight: 700,
-    fontSize: 'clamp(30px, 8vw, 72px)',
-    lineHeight: '1.05',
-    letterSpacing: '-1.5px',
+    fontSize: 'clamp(28px, 6.5vw, 58px)',
+    lineHeight: '1.08',
+    letterSpacing: '-1.2px',
     marginBottom: '12px',
     display: 'flex',
     flexDirection: 'column',

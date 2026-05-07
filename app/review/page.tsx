@@ -365,7 +365,7 @@ const styles: Record<string, CSSProperties> = {
   page: { padding: '140px 0 0', minHeight: '100vh', backgroundColor: '#0F0F0F', position: 'relative' },
   hero: { position: 'relative', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '80px 48px', minHeight: '60vh' },
   heroContent: { position: 'relative', zIndex: 3, maxWidth: '900px', textAlign: 'center' },
-  heroTitle: { fontFamily: 'Erbaum, Cousine, monospace', fontSize: '51.808px', fontWeight: 700, lineHeight: '60px', letterSpacing: '-0.51808px', marginBottom: '24px', color: '#FFFFFF' },
+  heroTitle: { fontFamily: 'Erbaum, Cousine, monospace', fontSize: 'clamp(36px, 5vw, 52px)', fontWeight: 700, lineHeight: '1.1', letterSpacing: '-0.51808px', marginBottom: '24px', color: '#FFFFFF' },
   gradientText: { background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' },
   heroSubtitle: { fontSize: '18px', lineHeight: '28px', color: '#A0A0A0', maxWidth: '600px', margin: '0 auto' },
   mainSection: { padding: '80px 0', position: 'relative', zIndex: 2 },

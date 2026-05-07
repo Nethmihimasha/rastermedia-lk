@@ -621,7 +621,7 @@ const styles: Record<string, CSSProperties> = {
   heroImageWrapper: { position: 'absolute', inset: 0, zIndex: 0 },
   heroImageOverlay: { position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(15,15,15,0.85) 0%, rgba(15,15,15,0.75) 50%, rgba(15,15,15,0.85) 100%)' },
   heroContent: { position: 'relative', zIndex: 1, maxWidth: '1400px', margin: '0 auto' },
-  heroTitle: { fontSize: '51.808px', lineHeight: '60px', letterSpacing: '-0.51808px', color: '#FFFFFF', marginBottom: '24px', fontFamily: 'Erbaum, Cousine, monospace' },
+  heroTitle: { fontSize: 'clamp(36px, 5vw, 52px)', lineHeight: '1.1', letterSpacing: '-0.51808px', color: '#FFFFFF', marginBottom: '24px', fontFamily: 'Erbaum, Cousine, monospace' },
   gradientText: { background: 'linear-gradient(135deg, #5DCDDB 0%, #7DD8E5 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', display: 'inline-block' },
   heroSubtitle: { fontSize: '18px', lineHeight: '28px', color: '#A0A0A0', maxWidth: '700px', margin: '0 auto', fontFamily: 'Erbaum, Cousine, monospace' },
   container: { maxWidth: '1400px', margin: '0 auto', padding: '0 48px' },

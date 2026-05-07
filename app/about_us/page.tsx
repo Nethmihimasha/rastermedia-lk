@@ -451,12 +451,12 @@ const styles: Record<string, CSSProperties> = {
     margin: '0 auto',
   },
   heroHeading: {
-    fontSize: '50px',
+    fontFamily: 'Erbaum, Cousine, monospace',
+    fontSize: 'clamp(36px, 5vw, 52px)',
     fontWeight: 700,
-    lineHeight: '60px',
+    lineHeight: '1.1',
     marginBottom: '32px',
     color: '#FFFFFF',
-    fontFamily: 'Erbaum, Cousine, monospace',
   },
   heroDescription: {
     fontSize: '15px',

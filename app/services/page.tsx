@@ -298,7 +298,7 @@ const styles: Record<string, CSSProperties> = {
   },
   heroTitle: {
     fontFamily: 'Erbaum, Cousine, monospace',
-    fontSize: 'clamp(48px, 6vw, 72px)',
+    fontSize: 'clamp(36px, 5vw, 58px)',
     fontWeight: 700,
     lineHeight: '1.1',
     color: '#FFFFFF',
