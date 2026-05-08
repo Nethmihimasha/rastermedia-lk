@@ -17,10 +17,12 @@ export default function ProjectView() {
     client: '',
     category: 'Commercial',
     image: '',
+    videoUrl: '',
     albumSlug: '',
     featured: true
   });
   const [uploading, setUploading] = useState(false);
+  const [videoUploading, setVideoUploading] = useState(false);
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -67,6 +69,29 @@ export default function ProjectView() {
     }
   };
 
+  const handleVideoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setVideoUploading(true);
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('folder', 'raster-media/portfolio');
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: fd,
+      });
+      const data = await res.json();
+      setFormData({ ...formData, videoUrl: data.url });
+    } catch (err) {
+      alert('Video upload failed');
+    } finally {
+      setVideoUploading(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -77,7 +102,7 @@ export default function ProjectView() {
       });
       if (res.ok) {
         setIsAdding(false);
-        setFormData({ title: '', client: '', category: 'Commercial', image: '', albumSlug: '', featured: true });
+        setFormData({ title: '', client: '', category: 'Commercial', image: '', videoUrl: '', albumSlug: '', featured: true });
         fetchProjects();
       }
     } catch (err) {
@@ -138,8 +163,14 @@ export default function ProjectView() {
               {formData.image && <p style={styles.uploadSuccess}>✓ Image uploaded</p>}
               {uploading && <p style={styles.uploading}>Uploading...</p>}
             </div>
+            <div style={styles.inputGroup}>
+              <label style={styles.label}>Project Video (optional)</label>
+              <input type="file" accept="video/*" onChange={handleVideoUpload} disabled={videoUploading} />
+              {formData.videoUrl && <p style={styles.uploadSuccess}>✓ Video uploaded</p>}
+              {videoUploading && <p style={styles.uploading}>Uploading...</p>}
+            </div>
           </div>
-          <button type="submit" style={styles.btnSubmit} disabled={uploading}>Save Project</button>
+          <button type="submit" style={styles.btnSubmit} disabled={uploading || videoUploading}>Save Project</button>
         </form>
       )}
 

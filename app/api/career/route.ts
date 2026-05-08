@@ -5,11 +5,17 @@ export const dynamic = 'force-dynamic';
 import dbConnect from '../../../src/lib/mongodb';
 import CareerApplication from '../../../src/models/CareerApplication';
 import { Resend } from 'resend';
+import { getAdminSession } from '../../../src/lib/adminAuth';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function GET() {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     await dbConnect();
     const applications = await CareerApplication.find({}).sort({ createdAt: -1 });
     return NextResponse.json(applications);
@@ -25,8 +31,8 @@ export async function POST(request: Request) {
     
     const newApplication = await CareerApplication.create(body);
 
-    // 📧 Dual Email Notifications
-    if (process.env.RESEND_API_KEY) {
+    // 📧 Email Notifications
+    if (resend) {
       try {
         // 1. Internal Notification (to Raster Media Admin)
         await resend.emails.send({
@@ -55,9 +61,9 @@ export async function POST(request: Request) {
             <div style="font-family: sans-serif; padding: 20px; text-align: center; border: 1px solid #eee;">
               <h1 style="color: #5DCDDB;">Raster Media</h1>
               <h2>Hello ${body.fullName},</h2>
-              <p>Thank you for applying for the <strong>${body.position}</strong> position at Raster Media.</p>
-              <p>We have received your CV and details. Our hiring team will review your application and get in touch if your background matches our needs.</p>
-              <p>Good luck!</p>
+              <p>Thank you for reaching out to <strong>Raster Media</strong> and applying for the <strong>${body.position}</strong> position.</p>
+              <p>We have successfully received your application and CV. Our team will review your profile thoroughly, and we will get back to you soon regarding the next steps.</p>
+              <p>Thank you for your interest in joining our creative team!</p>
               <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;" />
               <p style="font-size: 12px; color: #888;">© 2026 Raster Media. All rights reserved.</p>
             </div>
@@ -73,9 +79,18 @@ export async function POST(request: Request) {
 }
 export async function PATCH(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { id, status } = await request.json();
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+    if (!['pending', 'reviewed', 'shortlisted', 'rejected'].includes(status)) {
+      return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+    }
     await dbConnect();
-    const updated = await CareerApplication.findByIdAndUpdate(id, { status }, { new: true });
+    const updated = await CareerApplication.findByIdAndUpdate(id, { status }, { new: true, runValidators: true });
     return NextResponse.json(updated);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update application' }, { status: 500 });
@@ -84,8 +99,14 @@ export async function PATCH(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
     await dbConnect();
     await CareerApplication.findByIdAndDelete(id);
     return NextResponse.json({ message: 'Deleted' });

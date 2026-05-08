@@ -109,11 +109,11 @@ export default function CareerView() {
                 ))}
               </div>
               <div style={styles.cardFooter}>
-                <span style={{...styles.badge, color: model.status === 'contacted' ? '#5DCDDB' : '#ffcc00'}}>
+                <span style={{...styles.badge, color: model.status === 'accepted' ? '#5DCDDB' : model.status === 'rejected' ? '#ff4d4d' : '#ffcc00'}}>
                   {model.status || 'pending'}
                 </span>
                 <div style={styles.actions}>
-                  <button style={styles.btnAction} onClick={() => updateStatus('model', model._id, 'contacted')}>Contacted</button>
+                  <button style={styles.btnAction} onClick={() => updateStatus('model', model._id, 'accepted')}>Accepted</button>
                   <button style={styles.btnDeleteSm} onClick={() => handleDelete('model', model._id)}>Delete</button>
                 </div>
               </div>
@@ -133,10 +133,10 @@ export default function CareerView() {
               </div>
               <div style={styles.jobActions}>
                 <a href={job.cvUrl} target="_blank" style={styles.btnCV}>View CV</a>
-                <span style={{...styles.badge, marginRight: '20px', color: job.status === 'contacted' ? '#5DCDDB' : '#ffcc00'}}>
+                <span style={{...styles.badge, marginRight: '20px', color: job.status === 'shortlisted' ? '#5DCDDB' : '#ffcc00'}}>
                    {job.status || 'pending'}
                 </span>
-                <button style={{...styles.btnAction, marginRight: '10px'}} onClick={() => updateStatus('job', job._id, 'contacted')}>Mark Contacted</button>
+                <button style={{...styles.btnAction, marginRight: '10px'}} onClick={() => updateStatus('job', job._id, 'shortlisted')}>Shortlist</button>
                 <button style={styles.btnDeleteSm} onClick={() => handleDelete('job', job._id)}>Delete</button>
               </div>
             </div>

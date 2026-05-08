@@ -5,11 +5,17 @@ export const dynamic = 'force-dynamic';
 import dbConnect from '../../../src/lib/mongodb';
 import ModelApplication from '../../../src/models/ModelApplication';
 import { Resend } from 'resend';
+import { getAdminSession } from '../../../src/lib/adminAuth';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function GET() {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     await dbConnect();
     const applications = await ModelApplication.find({}).sort({ createdAt: -1 });
     return NextResponse.json(applications);
@@ -25,8 +31,8 @@ export async function POST(request: Request) {
     
     const newRegistration = await ModelApplication.create(body);
 
-    // 📧 Dual Email Notifications
-    if (process.env.RESEND_API_KEY) {
+    // 📧 Email Notifications
+    if (resend) {
       try {
         // 1. Internal Notification (to Raster Media Admin)
         await resend.emails.send({
@@ -41,7 +47,7 @@ export async function POST(request: Request) {
               <p><strong>Instagram:</strong> <a href="https://instagram.com/${body.instagramHandle.replace('@', '')}">${body.instagramHandle}</a></p>
               <p><strong>Categories:</strong> ${body.categories.join(', ')}</p>
               <br />
-              <a href="https://rastermedia.lk/admin/careers" style="background: #5DCDDB; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Review in Admin Panel</a>
+              <a href="https://rastermedia.lk/models" style="background: #5DCDDB; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Review in Admin Panel</a>
             </div>
           `
         });
@@ -55,9 +61,9 @@ export async function POST(request: Request) {
             <div style="font-family: sans-serif; padding: 20px; text-align: center; border: 1px solid #eee;">
               <h1 style="color: #5DCDDB;">Raster Media</h1>
               <h2>Hello ${body.fullName},</h2>
-              <p>Thank you for registering with Raster Media's model database.</p>
-              <p>We have received your details and photos. We will review your submission and contact you if any upcoming projects or shoots match your profile.</p>
-              <p>We're excited to potentially work with you!</p>
+              <p>Thank you for reaching out to <strong>Raster Media</strong> and registering for our model database.</p>
+              <p>We have successfully received your details and photos. We will review your form and get back to you soon regarding any potential collaborations that match your profile.</p>
+              <p>We look forward to potentially working with you!</p>
               <hr style="margin: 30px 0; border: 0; border-top: 1px solid #eee;" />
               <p style="font-size: 12px; color: #888;">© 2026 Raster Media. All rights reserved.</p>
             </div>
@@ -73,9 +79,18 @@ export async function POST(request: Request) {
 }
 export async function PATCH(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { id, status } = await request.json();
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+    if (!['pending', 'reviewed', 'accepted', 'rejected'].includes(status)) {
+      return NextResponse.json({ error: 'Invalid status' }, { status: 400 });
+    }
     await dbConnect();
-    const updated = await ModelApplication.findByIdAndUpdate(id, { status }, { new: true });
+    const updated = await ModelApplication.findByIdAndUpdate(id, { status }, { new: true, runValidators: true });
     return NextResponse.json(updated);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update registration' }, { status: 500 });
@@ -84,8 +99,14 @@ export async function PATCH(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
     await dbConnect();
     await ModelApplication.findByIdAndDelete(id);
     return NextResponse.json({ message: 'Deleted' });

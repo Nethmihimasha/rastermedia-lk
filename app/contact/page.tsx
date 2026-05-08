@@ -250,7 +250,9 @@ export default function ContactPage() {
                       <div>
                         <div style={{ fontSize: '40px', marginBottom: '12px' }}>📨</div>
                         <h3 style={{ color: '#5DCDDB', fontSize: '20px', marginBottom: '8px', fontFamily: 'Erbaum, sans-serif' }}>Message Received!</h3>
-                        <p style={{ color: '#A0A0A0', fontSize: '14px', margin: 0 }}>Check your inbox for a confirmation email. We&apos;ll be in touch soon.</p>
+                        <p style={{ color: '#A0A0A0', fontSize: '14px', margin: 0 }}>
+                          Thanks for your message. Our team will review it and email you back after approval.
+                        </p>
                       </div>
                     ) : (
                       <p style={{ color: '#ff6b6b', fontSize: '14px', margin: 0 }}>{message}</p>

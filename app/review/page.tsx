@@ -20,18 +20,20 @@ export default function ReviewsPage() {
     review: ''
   });
   const [recentReviews, setRecentReviews] = useState<any[]>([]);
+  const [ratingStats, setRatingStats] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    fetch('/api/reviews')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          setRecentReviews(data);
-        }
+    Promise.all([
+      fetch('/api/reviews?limit=20').then(res => res.json()),
+      fetch('/api/reviews/stats').then(res => res.json()),
+    ])
+      .then(([reviewsData, statsData]) => {
+        if (Array.isArray(reviewsData)) setRecentReviews(reviewsData);
+        setRatingStats(statsData);
       })
-      .catch(err => console.error('Error fetching reviews:', err));
+      .catch(err => console.error('Error fetching review data:', err));
   }, []);
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -68,15 +70,9 @@ export default function ReviewsPage() {
     }
   };
 
-  const displayReviews = recentReviews.length > 0 ? recentReviews : reviews;
+  const displayReviews = recentReviews;
 
-  const ratingDistribution = [
-    { stars: 5, count: 435, percentage: 87 },
-    { stars: 4, count: 50, percentage: 10 },
-    { stars: 3, count: 10, percentage: 2 },
-    { stars: 2, count: 5, percentage: 1 },
-    { stars: 1, count: 0, percentage: 0 },
-  ];
+  const ratingDistribution = ratingStats?.distribution || [];
 
   const { ref: mainRef, isInView: mainInView } = useScrollAnimation();
   const { ref: recentRef, isInView: recentInView } = useScrollAnimation();
@@ -127,9 +123,9 @@ export default function ReviewsPage() {
                     }}
                   >
                     <div style={{ fontSize: '64px', marginBottom: '24px' }}>✨</div>
-                    <h3 style={{ color: '#5DCDDB', fontSize: '24px', marginBottom: '16px', fontFamily: 'Erbaum, sans-serif' }}>Review Submitted!</h3>
+                    <h3 style={{ color: '#5DCDDB', fontSize: '24px', marginBottom: '16px', fontFamily: 'Erbaum, sans-serif' }}>Your review submitted successfully</h3>
                     <p style={{ color: '#A0A0A0', lineHeight: '1.6', marginBottom: '24px' }}>
-                      Thank you for sharing your thoughts. Your review will be visible on our homepage as soon as it is verified by our team.
+                      Thank you for sharing your thoughts. Your review will appear on our website once it has been verified and accepted by our team.
                     </p>
                     <div style={{ padding: '16px', background: 'rgba(93, 205, 219, 0.1)', borderRadius: '4px', fontSize: '14px', color: '#FFF' }}>
                       Check your inbox for a confirmation email.

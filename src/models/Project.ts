@@ -6,6 +6,7 @@ export interface IProject extends Document {
   category: string;
   image: string; // Cloudinary URL
   albumSlug?: string;
+  videoUrl?: string; // Optional Cloudinary URL or YouTube embed URL
   featured: boolean;
   createdAt: Date;
 }
@@ -16,6 +17,7 @@ const ProjectSchema: Schema = new Schema({
   category: { type: String, required: true },
   image: { type: String, required: true },
   albumSlug: { type: String },
+  videoUrl: { type: String },
   featured: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now }
 });

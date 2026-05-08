@@ -28,25 +28,28 @@ interface Album {
   slug: string;
 }
 
-const portfolioItems: PortfolioItem[] = [
-  { id: 1, category: 'Photos', album: 'Christmas', title: 'Snowy Editorial', client: 'Elegance Co.', image: '/portfolio1.jpg' },
-  { id: 2, category: 'Photos', album: 'Fashion', title: 'Tech Product Launch', client: 'Innovation Labs', image: '/portfolio2.jpg' },
-  { id: 3, category: 'Photos', album: 'Architecture', title: 'Modern Architecture Series', client: 'Urban Spaces', image: '/portfolio3.jpg' },
-  { id: 4, category: 'Design', album: 'Brand Refresh', title: 'Beauty Brand Refresh', client: 'Radiance Cosmetics', image: '/portfolio4.jpg' },
-  { id: 5, category: 'Photos', album: 'Fashion', title: 'Editorial Fashion Story', client: 'Vogue Magazine', image: '/portfolio5.jpg' },
-  { id: 6, category: 'Videos', album: 'Campaigns', title: 'Luxury Watch Campaign', client: 'Timepiece Co.', image: '/portfolio6.jpg', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
-  { id: 7, category: 'Photos', album: 'Commercial', title: 'Commercial Product Series', client: 'Various Clients', image: '/portfolio7.jpg' },
-  { id: 8, category: 'Projects', album: 'Identity Systems', title: 'Brand Identity System', client: 'StartUp Inc.', image: '/portfolio8.jpg' },
-  { id: 9, category: 'Digital', album: 'Social', title: 'Social Media Campaign', client: 'Lifestyle Brand', image: '/portfolio9.jpg' },
-  { id: 10, category: 'Design', album: 'Packaging', title: 'Packaging Design Series', client: 'Gourmet Goods', image: '/portfolio10.jpg' },
-  { id: 11, category: 'Photos', album: 'Christmas', title: 'Holiday Lights', client: 'Local Shop', image: '/portfolio3.jpg' },
-  { id: 12, category: 'Photos', album: 'Fashion', title: 'Runway Series', client: 'Vogue Magazine', image: '/portfolio5.jpg' },
+const defaultPortfolioItems: PortfolioItem[] = [
+  { id: 1, category: 'Photos', album: 'Christmas', title: 'Snowy Editorial', client: 'Elegance Co.', image: '/images/album03-basilur-christmas-01.jpg' },
+  { id: 2, category: 'Photos', album: 'Fashion', title: 'Tech Product Launch', client: 'Innovation Labs', image: '/images/album10-winter-studio-01.jpg' },
+  { id: 3, category: 'Photos', album: 'Architecture', title: 'Modern Architecture Series', client: 'Urban Spaces', image: '/images/album06-martex-corporate-01.jpg' },
+  { id: 4, category: 'Design', album: 'Brand Refresh', title: 'Beauty Brand Refresh', client: 'Radiance Cosmetics', image: '/images/design_1.jpg' },
+  { id: 5, category: 'Photos', album: 'Fashion', title: 'Editorial Fashion Story', client: 'Vogue Magazine', image: '/images/album09-winter-classic-01.jpg' },
+  { id: 6, category: 'Videos', album: 'Campaigns', title: 'Luxury Watch Campaign', client: 'Timepiece Co.', image: '/images/video_1.jpg', videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ' },
+  { id: 7, category: 'Photos', album: 'Commercial', title: 'Commercial Product Series', client: 'Various Clients', image: '/images/album01-basilur-autumn-tea-01.jpg' },
+  { id: 8, category: 'Projects', album: 'Identity Systems', title: 'Brand Identity System', client: 'StartUp Inc.', image: '/images/album07-tripson-product-01.jpg' },
+  { id: 9, category: 'Digitals', album: 'Social', title: 'Social Media Campaign', client: 'Lifestyle Brand', image: '/images/design_2.jpg' },
+  { id: 10, category: 'Design', album: 'Packaging', title: 'Packaging Design Series', client: 'Gourmet Goods', image: '/images/design_3.jpg' },
+  { id: 11, category: 'Photos', album: 'Christmas', title: 'Holiday Lights', client: 'Local Shop', image: '/images/album03-basilur-christmas-02.jpg' },
+  { id: 12, category: 'Photos', album: 'Fashion', title: 'Runway Series', client: 'Vogue Magazine', image: '/images/album08-winter-christmas-01.jpg' },
 ];
 
-const categories = ['Photos', 'Videos', 'Design', 'Projects', 'Digitals'];
+const defaultCategories = ['Photos', 'Videos', 'Design', 'Projects', 'Digitals'];
 
 export default function Portfolio() {
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>(defaultPortfolioItems);
+  const categories = useMemo(() => Array.from(new Set(portfolioItems.map((p) => p.category))), [portfolioItems]);
+
+  const [activeCategory, setActiveCategory] = useState<string>(defaultCategories[0]);
   const [isAlbumOpen, setIsAlbumOpen] = useState(false);
   const [activeAlbum, setActiveAlbum] = useState<Album | null>(null);
   const [isWorkOpen, setIsWorkOpen] = useState(false);

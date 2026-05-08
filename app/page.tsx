@@ -17,13 +17,15 @@ export default function HomePage() {
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
-          setFeaturedProjects(data.slice(0, 3));
+          // Display top 3 featured projects or just the 3 most recent
+          const featured = data.filter((p: any) => p.featured).slice(0, 3);
+          setFeaturedProjects(featured.length > 0 ? featured : data.slice(0, 3));
         }
-      }) // Top 3
+      })
       .catch(err => console.error('Error fetching projects:', err));
 
     // Fetch verified reviews
-    fetch('/api/reviews')
+    fetch('/api/reviews?limit=5')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -50,11 +52,12 @@ function HeroSection() {
   return (
     <section style={styles.hero} className="hero-section-container">
       <div style={styles.heroVideo} className="hero-video-wrapper">
-        <div className="hero-video-overlay"></div>
+        <div style={styles.heroOverlayDark} className="hero-video-overlay" />
         <iframe
           src="https://www.youtube.com/embed/OmHLohPk6b0?autoplay=1&mute=1&controls=0&loop=1&playlist=OmHLohPk6b0&modestbranding=1&rel=0"
           title="Raster Media hero video"
           allow="autoplay; fullscreen; picture-in-picture"
+          className="hero-video-iframe"
           style={styles.iframe}
           frameBorder="0"
           allowFullScreen
@@ -435,7 +438,7 @@ function BrandsSection() {
 
 function TestimonialsSection({ reviews: liveReviews }: { reviews: any[] }) {
   // Carousel showing 3 testimonials at a time, with cloned edges for seamless looping
-  const testimonials = liveReviews.length > 0 
+  const testimonials = liveReviews.length > 0
     ? liveReviews.map((r: any) => ({ quote: r.text, name: r.name, role: r.role || 'Client', rating: r.rating || 5, time: r.time || '', avatar: r.avatar || '' }))
     : (reviews as any[]).map((r: any) => ({ quote: r.text, name: r.author, role: r.role || 'Client', rating: r.rating || 5, time: r.time || '', avatar: r.avatar || '' }));
 
@@ -694,37 +697,53 @@ const styles: Record<string, CSSProperties> = {
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
   },
+
+
   hero: {
     position: 'relative',
-    width: '100vw',
-    marginLeft: 'calc(50% - 50vw)',
+    width: '100%',
     height: '100vh',
     minHeight: '100vh',
     overflow: 'hidden',
     backgroundColor: '#000000',
-    marginTop: 0,
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   heroVideo: {
     position: 'absolute',
     top: 0,
     left: 0,
+    right: 0,
+    bottom: 0,
+    zIndex: 0,
+    overflow: 'hidden',
+  },
+  heroOverlayDark: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
     height: '100%',
-    zIndex: 0,
+    background: 'rgba(0, 0, 0, 0.55)',
+    zIndex: 1,
+    pointerEvents: 'none',
   },
   iframe: {
     position: 'absolute',
     top: '50%',
     left: '50%',
-    width: '177.77vh',
-    minWidth: '100%',
+    /* cover formula: wider of (100vw wide) or (177.78vh wide when tall) */
+    width: '100vw',
     height: '56.25vw',
-    minHeight: '100%',
+    minHeight: '100vh',
+    minWidth: '177.78vh',
     transform: 'translate(-50%, -50%)',
     pointerEvents: 'none',
+    zIndex: 0,
   },
+
   heroOverlay: {
     position: 'absolute',
     top: 0,
@@ -748,11 +767,10 @@ const styles: Record<string, CSSProperties> = {
   heroContent: {
     position: 'relative',
     zIndex: 4,
+    width: '100%',
     maxWidth: '1800px',
-    margin: '0 auto',
-    padding: '20px',
+    padding: '0 20px',
     textAlign: 'center',
-    height: '100%',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

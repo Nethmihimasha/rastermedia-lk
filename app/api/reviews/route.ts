@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import dbConnect from '../../../src/lib/mongodb';
 import Review from '../../../src/models/Review';
+import { getAdminSession } from '../../../src/lib/adminAuth';
 
 export const dynamic = 'force-dynamic';
 
@@ -8,10 +9,22 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const all = searchParams.get('all') === 'true';
+    const limitParam = searchParams.get('limit');
+    const limit = limitParam ? Math.max(0, Number(limitParam)) : undefined;
+
+    if (all) {
+      const session = await getAdminSession();
+      if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     await dbConnect();
     
     const query = all ? {} : { verified: true };
-    const reviews = await Review.find(query).sort({ createdAt: -1 });
+    let q = Review.find(query).sort({ createdAt: -1 });
+    if (typeof limit === 'number' && !Number.isNaN(limit) && limit > 0) {
+      q = q.limit(limit);
+    }
+    const reviews = await q;
     return NextResponse.json(reviews);
   } catch (error) {
     return NextResponse.json({ error: 'Failed' }, { status: 500 });
@@ -20,11 +33,19 @@ export async function GET(request: Request) {
 
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    if (!body?.name || !body?.text || typeof body?.rating !== 'number') {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+    if (body.rating < 1 || body.rating > 5) {
+      return NextResponse.json({ error: 'rating must be between 1 and 5' }, { status: 400 });
+    }
+
     await dbConnect();
     
     const newReview = await Review.create({
@@ -36,8 +57,8 @@ export async function POST(request: Request) {
       createdAt: new Date(),
     });
 
-    // 📧 Dual Email Notifications
-    if (process.env.RESEND_API_KEY) {
+    // 📧 Email Notifications
+    if (resend) {
       try {
         // 1. Internal Notification (to Raster Media Admin)
         await resend.emails.send({
@@ -82,9 +103,17 @@ export async function POST(request: Request) {
 }
 export async function PATCH(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { id, verified } = await request.json();
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
+    if (typeof verified !== 'boolean') return NextResponse.json({ error: 'verified must be boolean' }, { status: 400 });
+
     await dbConnect();
-    const updated = await Review.findByIdAndUpdate(id, { verified }, { new: true });
+    const updated = await Review.findByIdAndUpdate(id, { verified }, { new: true, runValidators: true });
     return NextResponse.json(updated);
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update review' }, { status: 500 });
@@ -93,8 +122,14 @@ export async function PATCH(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
+    const session = await getAdminSession();
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const id = searchParams.get('id');
+    if (!id) return NextResponse.json({ error: 'Missing id' }, { status: 400 });
     await dbConnect();
     await Review.findByIdAndDelete(id);
     return NextResponse.json({ message: 'Deleted' });

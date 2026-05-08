@@ -575,7 +575,7 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
             <h2 style={{ color: '#5DCDDB', fontSize: '32px', marginBottom: '12px', fontFamily: 'Erbaum, sans-serif' }}>Booking Received!</h2>
             <p style={{ color: '#A0A0A0', fontSize: '16px', marginBottom: '32px' }}>
               We&apos;ve sent a confirmation email to your inbox.<br />
-              Our team will review your request and confirm availability shortly.
+              We will check availability and confirm your booking within about 2 hours.
             </p>
             <button 
               onClick={onClose}
@@ -591,7 +591,7 @@ function BookingModal({ packageType, selectedDuration, currentPackage, onClose }
               <div style={styles.formGroup}><label style={styles.label}><Mail size={16} style={{color: '#5DCDDB'}} />Email<span className="required-star">*</span></label><input type="email" name="email" value={formData.email} onChange={(e)=>setFormData({...formData, email: e.target.value})} style={styles.input} placeholder="john@example.com" required /></div>
             </div>
             <div style={styles.formRow} className="studio-form-row">
-              <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />Phone<span className="required-star">*</span></label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
+              <div style={styles.formGroup}><label style={styles.label}><Phone size={16} style={{color: '#5DCDDB'}} />WhatsApp Number<span className="required-star">*</span></label><input type="tel" name="phone" value={formData.phone} onChange={(e)=>setFormData({...formData, phone: e.target.value})} style={styles.input} placeholder="+94 77 123 4567" required /></div>
               <div style={styles.formGroup}><label style={styles.label}><Calendar size={16} style={{color: '#5DCDDB'}} />Date<span className="required-star">*</span></label><input type="date" name="date" value={formData.date} onChange={(e)=>setFormData({...formData, date: e.target.value})} style={styles.input} min={new Date().toISOString().split('T')[0]} required /></div>
             </div>
             <div style={styles.formRow} className="studio-form-row">

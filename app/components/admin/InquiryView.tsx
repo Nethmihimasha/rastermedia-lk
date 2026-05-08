@@ -107,14 +107,27 @@ export default function InquiryView() {
               <p style={styles.messageText}>{inquiry.message}</p>
               {inquiry.time && <p style={styles.bookingTime}>🕒 Requested Time: {inquiry.time}</p>}
               <div style={styles.cardFooter}>
-                <span style={inquiry.status === 'pending' ? styles.pending : styles.reviewed}>
-                  {inquiry.status === 'pending' ? '● New' : '✓ Reviewed'}
+                <span
+                  style={
+                    inquiry.status === 'pending'
+                      ? styles.pending
+                      : inquiry.status === 'confirmed'
+                        ? styles.reviewed
+                        : styles.rejected
+                  }
+                >
+                  {inquiry.status === 'pending' ? '● New' : inquiry.status === 'confirmed' ? '✓ Confirmed' : '✕ Rejected'}
                 </span>
                 <div style={styles.actions}>
                   {inquiry.status === 'pending' && (
-                    <button style={styles.btnReview} onClick={() => handleStatusUpdate(inquiry._id, 'reviewed')}>
-                      Mark as Reviewed
-                    </button>
+                    <>
+                      <button style={styles.btnReview} onClick={() => handleStatusUpdate(inquiry._id, 'confirmed')}>
+                        Confirm
+                      </button>
+                      <button style={styles.btnReject} onClick={() => handleStatusUpdate(inquiry._id, 'rejected')}>
+                        Reject
+                      </button>
+                    </>
                   )}
                   <button style={styles.btnDelete} onClick={() => handleDelete(inquiry._id)}>Delete</button>
                 </div>
@@ -144,8 +157,10 @@ const styles: Record<string, CSSProperties> = {
   cardFooter: { display: 'flex', justifyContent: 'space-between', alignItems: 'center' },
   reviewed: { color: '#5DCDDB', fontSize: '12px', fontWeight: 600 },
   pending: { color: '#ffcc00', fontSize: '12px', fontWeight: 600 },
+  rejected: { color: '#ff4d4d', fontSize: '12px', fontWeight: 600 },
   actions: { display: 'flex', gap: '12px' },
   btnReview: { background: '#5DCDDB', border: 'none', padding: '6px 12px', borderRadius: '4px', color: '#000', cursor: 'pointer', fontSize: '12px', fontWeight: 600 },
+  btnReject: { background: 'rgba(255, 77, 77, 0.1)', border: '1px solid #ff4d4d', padding: '6px 12px', borderRadius: '4px', color: '#ff4d4d', cursor: 'pointer', fontSize: '12px', fontWeight: 600 },
   btnDelete: { background: 'rgba(255, 77, 77, 0.1)', border: '1px solid #ff4d4d', padding: '6px 12px', borderRadius: '4px', color: '#ff4d4d', cursor: 'pointer', fontSize: '12px', fontWeight: 600 },
   filterLinks: { display: 'flex', gap: '10px', marginTop: '20px' },
   filterTab: { color: '#888', textDecoration: 'none', fontSize: '12px', padding: '6px 12px', borderRadius: '20px', border: '1px solid #333', transition: 'all 0.2s' },

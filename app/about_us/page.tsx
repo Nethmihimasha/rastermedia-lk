@@ -327,7 +327,6 @@ function BehindTheScenesSection() {
             { id: 'lSGSBUobk2U', title: 'Behind the Scenes 1' },
             { id: 'n5y-MjIwUh0', title: 'Behind the Scenes 2' },
             { id: 'xNJEw8xTqc8', title: 'Behind the Scenes 3' },
-            { id: 'Aw4NQHstMxM', title: 'Behind the Scenes 4' }
           ].map((video) => (
             <button
               key={video.id}
