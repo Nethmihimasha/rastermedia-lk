@@ -240,7 +240,7 @@ export default function ReviewsPage() {
               <div style={styles.infoCard}>
                 <h3 style={styles.infoCardTitle}>Rating Distribution</h3>
                 <div style={styles.distributionList}>
-                  {ratingDistribution.map((item) => (
+                  {ratingDistribution.map((item: { stars: number; percentage: number; count: number }) => (
                     <div key={item.stars} style={styles.distributionItem}>
                       <span style={styles.distributionStars}>{item.stars} ★</span>
                       <div style={styles.distributionBar}>
